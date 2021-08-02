@@ -20,7 +20,7 @@ nav{
 
 /* Secciones */
 header, section{
-	height: 500px;
+	/*height: 500px;*/
 }
 
 /* Encabezado */
@@ -41,3 +41,6 @@ header, section{
 }
 
 /* Pie de página */
+footer{
+	background: #2D394B;
+}
