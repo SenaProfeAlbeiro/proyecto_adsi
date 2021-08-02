@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/all.css">
+	<link rel="stylesheet" href="../assets/css/estilos_index.css">
+	<title>Registrate</title>
+</head>
+<body>
+	<div class="contenedor1">
+		<div class="centrar">
+			<h1>Empresa - Landing Page</h1>
+			<p><a href="../../../index.html">Volver Generalidades Proyecto</a></p>
+			<hr class="border-distancia">
+		</div>
+	</div>
+	<div class="contenedor">
+		<h1 class="titulo">Registrate</h1>
+		<hr class="border">
+		<!-- <form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);  ?>" method="POST" class="formulario" name="registrate"> -->
+		<form id="myForm" action="" method="POST" class="formulario" name="registrate">
+			<div class="form-group">
+				<i class="icono izquierda fas fa-user"></i><input type="text" id="usuario" name="usuario" class="usuario" placeholder="Usuario" tabindex="1">				
+			</div>
+			<div class="form-group">
+				<i class="icono izquierda fas fa-lock"></i><input type="password" id="password" name="password" class="password" placeholder="Contraseña" tabindex="2">				
+			</div>
+			<div class="form-group">
+				<i class="icono izquierda fas fa-lock"></i><input type="password" id="password2" name="password2" class="password_btn" placeholder="Repetir Contraseña" tabindex="3">
+				<button id="registrate"><i id="registrate1" class="submit-btn fas fa-arrow-right" onclick="registrate.submit()" tabindex="4"></i></button>
+			</div>
+			<!-- <?php if(!empty($errores)): ?>
+				<div>
+					<ul>
+						<?php echo $errores; ?>
+					</ul>
+				</div>
+			<?php endif; ?> -->
+		</form>
+		<p class="texto-registrate">
+			¿Ya tienes cuenta?
+			<a href="login.vista.html" tabindex="5">Iniciar Sesión</a>
+			<a href="index_empresa.vista.html" tabindex="6">Inicio</a>
+		</p>
+	</div>
+	<script src="../assets/js/scripts.js"></script>
+</body>
+</html>

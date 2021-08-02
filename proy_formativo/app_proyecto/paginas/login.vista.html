@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../assets/css/all.css">
+	<link rel="stylesheet" href="../assets/css/estilos_index.css">
+	<title>Iniciar Sesión</title>
+</head>
+<body>
+	<div class="contenedor1">
+		<div class="centrar">
+			<h1>Empresa - Landing Page</h1>
+			<p><a href="../../../index.html">Volver Generalidades Proyecto</a></p>
+			<hr class="border-distancia">
+		</div>
+	</div>
+	<div class="contenedor">
+		<h1 class="titulo">Iniciar Sesión</h1>
+		<hr class="border">
+		<!-- <form id="myForm" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);  ?>" method="POST" class="formulario" name="login"> -->
+		<form id="myForm" action="" method="POST" class="formulario" name="login">
+			<div class="form-group">
+				<i class="icono izquierda fas fa-user"></i><input type="text" name="usuario" id="usuario" class="usuario" placeholder="Usuario">				
+			</div>			
+			<div class="form-group">
+				<i class="icono izquierda fas fa-lock"></i><input type="password" name="password" id="password" class="password_btn" placeholder="Contraseña">
+				<button id="login"><i id="login1" class="submit-btn fas fa-arrow-right" onclick="login.submit()" tabindex="4"></i></button>
+			</div>
+			<!-- <?php if(!empty($errores)): ?>
+				<div>
+					<ul>
+						<?php echo $errores; ?>
+					</ul>
+				</div>
+			<?php endif; ?> -->
+		</form>
+		<p class="texto-registrate">
+			¿Aun no tienes Cuenta?
+			<a href="registrate.vista.html">Registrate</a>
+			<a href="index_empresa.vista.html">Inicio</a>
+		</p>
+	</div>
+	<script src="../assets/js/scripts.js"></script>	
+</body>
+</html>
