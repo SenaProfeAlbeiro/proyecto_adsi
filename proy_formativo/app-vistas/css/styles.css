@@ -1,0 +1,39 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+/* Contenedor */
+.container{
+	padding: 0;	
+	width: 90%;
+	max-width: 1200px;
+	margin: auto;
+}
+/* Navegación */
+nav{
+	background: #3EB595;	
+}
+nav img{
+	height: 40px;
+}
+.navbar-nav .nav-link{
+	color: #fff!important;
+}
+/* Título y pie de página */
+.titulo, footer{	
+	height: 50px;	
+}
+/* Encabezado y Secciones */
+header, section{	
+	height: 500px;	
+}
+/* Sección Contáctenos */
+.contactenos .col-arr{
+	padding: 0 15px;
+	height: 70%;
+}
+.contactenos .col-abj{
+	padding: 0 15px;
+	height: 30%;
+}
