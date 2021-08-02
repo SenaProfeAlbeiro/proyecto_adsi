@@ -10,16 +10,7 @@ form.addEventListener('submit', function (event) {
 	} else {
 		alert("Datos Incorrectos");
 		document.getElementById('contrasena').value = "";
-		document.getElementById('usuario').value = "";
-		let cont = contador - 1;
-		contador = cont;
-		if (contador == 0) {
-			alert("Ha superado el número de intentos, se le ha enviado un correo para activar nuevamente su cuenta");
-		} else {
-			document.getElementById('contador').innerHTML = contador;
-			event.preventDefault();
-		}
+		document.getElementById('usuario').value = "";		
+		event.preventDefault();		
 	}		
 });
-
-var contador = 3;

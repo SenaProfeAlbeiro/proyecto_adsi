@@ -1,39 +1,39 @@
 *{
 	box-sizing: border-box;
-	margin: 0;
 	padding: 0;
+	margin: 0;
 }
+/* clases especiales */
+
+
 /* Contenedor */
-.container{
-	padding: 0;	
-	width: 90%;
-	max-width: 1200px;
-	margin: auto;
-}
-/* Navegación */
+
+
+/* Navegador */
 nav{
-	background: #3EB595;	
+	background: #FB4C0F;
 }
-nav img{
-	height: 40px;
+
+/* Secciones */
+header, section{
+	height: 500px;
 }
-.navbar-nav .nav-link{
-	color: #fff!important;
-}
-/* Título y pie de página */
-.titulo, footer{	
-	height: 50px;	
-}
-/* Encabezado y Secciones */
-header, section{	
-	height: 500px;	
-}
-/* Sección Contáctenos */
-.contactenos .col-arr{
-	padding: 0 15px;
+
+/* Encabezado */
+
+
+/* Portafolio */
+
+
+/* Nosotros */
+
+
+/* Contáctenos */
+.col-arr{
 	height: 70%;
 }
-.contactenos .col-abj{
-	padding: 0 15px;
+.col-abj{
 	height: 30%;
 }
+
+/* Pie de página */

@@ -7,11 +7,15 @@
 
 
 /* Contenedor */
-
+.contenedor{
+	width: 100%;
+	max-width: 1200px;
+	margin: auto;
+}
 
 /* Navegador */
 nav{
-	background: #FB4C0F;
+	background: #2D394B;
 }
 
 /* Secciones */
