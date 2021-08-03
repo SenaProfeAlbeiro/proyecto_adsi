@@ -24,7 +24,7 @@ nav .logo{
 	background: #F8F9F9;
 }
 nav .logo img{
-	width: 60%;
+	width: 55;
 	height: auto;
 }
 
@@ -58,6 +58,6 @@ footer{
 /* Tablet */
 @media only screen and (max-width: 991px) {
 	nav .logo img{
-		width: 40%;
+		width: 35%;
 	}
 }
