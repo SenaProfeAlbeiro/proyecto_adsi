@@ -33,17 +33,13 @@ nav .logo img{
 	height: 78vh;	
 }
 /* Botón de Menú */
-#btn-menu-lateral{
-	position: absolute;	
+#btn-menu-lateral{	
 	padding: 0px 12px;
 	border: 1px solid #dee2e6!important;
 	border-radius: 3px;
-	font-size: 1.8em;
-	top: 1.3%;
-	left: 27%;
+	font-size: 1.5em;	
 	color: #fff;
-	cursor: pointer;
-	z-index: 1000!important;
+	cursor: pointer;	
 }
 aside .modulos{
 	height: 66.1vh;
@@ -94,21 +90,7 @@ footer h6{
 	}
 	.entregable{
 		height: auto;
-	}
-	/* Botón de Menú */
-	#btn-menu-lateral{
-		position: absolute;	
-		padding: 0px 12px;
-		border: 1px solid #dee2e6!important;
-		border-radius: 3px;
-		font-size: 1.8em;
-		top:  30%;
-		/*top: 166px;*/
-		left: 1%;
-		color: #fff;
-		cursor: pointer;
-		z-index: 1000!important;
-	}
+	}		
 	main iframe{		
 		height: 100%;
 	}
