@@ -76,4 +76,7 @@ footer{
 	.entregable{
 		height: auto;
 	}
+	main iframe{		
+		height: auto;		
+	}
 }
