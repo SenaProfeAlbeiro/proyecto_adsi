@@ -27,8 +27,11 @@ nav .logo img{
 	width: 40%;
 	height: auto;
 }
+section{
+	height: 75vh;	
+}
 aside .card-header{
-	background: #2D394B;	
+	background: #2D394B!important;	
 }
 aside h2 button{
 	color: #fff!important;
