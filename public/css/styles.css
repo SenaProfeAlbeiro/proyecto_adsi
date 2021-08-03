@@ -19,6 +19,7 @@
 }
 nav{	
 	background: #2D394B;
+	border-bottom: 1px solid #dee2e6!important;
 }
 nav .logo{
 	background: #F8F9F9;
