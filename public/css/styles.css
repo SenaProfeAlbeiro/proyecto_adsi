@@ -27,6 +27,13 @@ nav .logo img{
 	width: 40%;
 	height: auto;
 }
+aside h2{
+	background: #2D394B;	
+}
+aside h2 button{
+	color: #fff!important;
+	text-decoration: none!important;
+}
 
 /* Secciones */
 header, section{
