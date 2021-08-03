@@ -1,5 +1,13 @@
-form  = document.getElementById('enviar');
+// Botón de Menú
+menu = document.getElementById("btn-menu-lateral");
+menu.addEventListener("click", function() {	
+	document.getElementById("panel-lateral").classList.toggle('activar-panel');
+	document.getElementById("principal").classList.toggle('ampliar-principal');
+});
 
+// Iniciar Sesión
+var contador = 3;
+form  = document.getElementById('enviar');
 form.addEventListener('submit', function (event) {
 	usuario  = document.getElementById('usuario').value;	
 	contrasena  = document.getElementById('contrasena').value;
@@ -22,4 +30,4 @@ form.addEventListener('submit', function (event) {
 	}		
 });
 
-var contador = 3;
+
