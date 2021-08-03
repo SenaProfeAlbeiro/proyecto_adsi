@@ -67,6 +67,9 @@ main iframe{
 footer{
 	background: #2D394B;
 }
+footer h6{
+	font-size: 0.8em;
+}
 
 /* Tablet */
 @media only screen and (max-width: 991px) {
