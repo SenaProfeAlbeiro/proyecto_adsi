@@ -118,4 +118,7 @@ footer h6{
 		position: absolute!important;
 		z-index: -100;
 	}
+	main iframe{		
+		height: auto;		
+	}
 }
