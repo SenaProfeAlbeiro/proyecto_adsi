@@ -42,7 +42,7 @@ nav .logo img{
 	color: #fff;
 	cursor: pointer;	
 }
-.activar-panel{
+.activar-panel{	
 	flex: none!important;
     max-width: 0!important;    
     transition: all 200ms linear!important;
@@ -108,6 +108,11 @@ footer h6{
 	}
 	.entregable{
 		height: auto;
+	}
+	aside{
+		flex: 0 0 100%!important;	
+	    max-width: 100%!important;
+	    transition: all 200ms linear!important;
 	}		
 	main iframe{		
 		height: 100%;
