@@ -27,7 +27,7 @@ nav .logo img{
 	width: 40%;
 	height: auto;
 }
-aside h2{
+aside .card-header{
 	background: #2D394B;	
 }
 aside h2 button{
