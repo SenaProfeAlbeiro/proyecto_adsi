@@ -80,8 +80,7 @@ header, section{
 	/*height: 500px;*/
 }
 main{	
-	transition: all 200ms linear!important;
-	z-index: 100;
+	transition: all 200ms linear!important;	
 }
 /* Área Principal */
 main iframe{
@@ -108,29 +107,15 @@ footer h6{
 
 /* Tablet */
 @media only screen and (max-width: 991px) {
-	nav{
-		z-index: 200!important;
+	.entregable{
+		height: auto;
 	}
-	nav .logo img{
-		width: 35%;
-	}	
 	aside{
 		flex: 0 0 100%!important;	
-	    max-width: 100%!important;	    
-	    transition: all 200ms linear!important;
-	    display: block;
-	 	z-index: 10;   
+    	max-width: 100%!important;    	
 	}
-	main{ 		
- 		position: absolute!important;
- 		/*height: 75vh!important;*/
- 		z-index: -100;
- 	}
-	aside .modulos{
-		height: auto;
-		overflow-y: hidden;		
-	}
-	main iframe{		
-		height: 100%; 		
+	main{
+		position: absolute!important;
+		z-index: -100;
 	}
 }
