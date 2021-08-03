@@ -46,6 +46,7 @@ nav .logo img{
 	flex: none!important;
     max-width: 0!important;    
     transition: all 200ms linear!important;
+    /*z-index: -1;*/
 }
 .ampliar-principal{	
     flex: 0 0 100%!important;
@@ -55,12 +56,15 @@ nav .logo img{
 aside{
 	flex: 0 0 25%!important;	
     max-width: 25%!important;
-    transition: all 200ms linear!important;
+    transition: all 200ms linear!important;    
+	border-right: 1px solid #dee2e6!important;
+}
+aside .logosena{
 }
 aside .modulos{
 	height: 66.1vh;
 	overflow-y: scroll;
-	overflow-x: hidden;    
+	overflow-x: hidden;	
 }
 aside .card-header{
 	background: #2D394B!important;	
@@ -68,6 +72,7 @@ aside .card-header{
 aside h2 button{
 	color: #fff!important;
 	text-decoration: none!important;
+	white-space: nowrap;
 }
 /* Secciones */
 header, section{
@@ -82,8 +87,6 @@ main iframe{
 	height: 75.8vh;
 	border: 0;
 }
-
-
 /* Contáctenos */
 .col-arr{
 	height: 70%;
@@ -111,10 +114,21 @@ footer h6{
 	}
 	aside{
 		flex: 0 0 100%!important;	
-	    max-width: 100%!important;
+	    max-width: 100%!important;	    
 	    transition: all 200ms linear!important;
-	}		
+	    display: block;
+	}
+	aside .modulos{
+		height: auto;
+		overflow-y: hidden;		
+	}
 	main iframe{		
 		height: 100%;
 	}
+	main{ 		
+ 		position: absolute!important;
+ 		/*height: 69.9vh;
+ 		width: 95%;*/
+ 		z-index: -10;
+ 	}
 }
