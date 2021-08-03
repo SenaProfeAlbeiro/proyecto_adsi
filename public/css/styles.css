@@ -20,16 +20,30 @@
 nav{	
 	background: #2D394B;
 	border-bottom: 1px solid #dee2e6!important;
+	z-index: 1!important;
 }
 nav .logo{
 	background: #F8F9F9;
 }
 nav .logo img{
 	width: 40%;
-	height: auto;
+	height: auto;	
 }
 .entregable{
-	height: 78vh;
+	height: 78vh;	
+}
+/* Botón de Menú */
+#btn-menu-lateral{
+	position: absolute;	
+	padding: 0px 12px;
+	border: 1px solid #dee2e6!important;
+	border-radius: 3px;
+	font-size: 1.8em;
+	top: 10px;
+	left: 27.4%;
+	color: #fff;
+	cursor: pointer;
+	z-index: 1000!important;
 }
 aside .modulos{
 	height: 66.1vh;
