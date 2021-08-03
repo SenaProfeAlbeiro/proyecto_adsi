@@ -123,7 +123,7 @@ footer h6{
 	}
 	main{ 		
  		position: absolute!important;
- 		height: 75vh!important;
+ 		/*height: 75vh!important;*/
  		z-index: -100;
  	}
 	aside .modulos{
