@@ -14,8 +14,18 @@
 }
 
 /* Navegador */
-nav{
+.navegacion{
+	/*height: 60px;*/
+}
+nav{	
 	background: #2D394B;
+}
+nav .logo{
+	background: #fff;
+}
+nav .logo img{
+	width: 60%;
+	height: auto;
 }
 
 /* Secciones */
@@ -43,4 +53,11 @@ header, section{
 /* Pie de página */
 footer{
 	background: #2D394B;
+}
+
+/* Tablet */
+@media only screen and (max-width: 991px) {
+	nav .logo img{
+		width: 20%;
+	}
 }
