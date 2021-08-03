@@ -33,13 +33,12 @@ header, section{
 	/*height: 500px;*/
 }
 
-/* Encabezado */
-
-
-/* Portafolio */
-
-
-/* Nosotros */
+/* Área Principal */
+main iframe{
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
 
 
 /* Contáctenos */
