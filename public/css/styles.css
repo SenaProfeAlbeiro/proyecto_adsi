@@ -114,6 +114,11 @@ footer h6{
 		flex: 0 0 100%!important;	
     	max-width: 100%!important;    	
 	}
+	aside .modulos{
+		height: auto;
+		overflow-y: hidden;
+		overflow-x: hidden;	
+	}
 	main{
 		position: absolute!important;
 		z-index: -100;
