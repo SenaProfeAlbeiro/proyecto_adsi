@@ -58,6 +58,6 @@ footer{
 /* Tablet */
 @media only screen and (max-width: 991px) {
 	nav .logo img{
-		width: 20%;
+		width: 40%;
 	}
 }
