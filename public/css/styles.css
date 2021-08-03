@@ -45,8 +45,7 @@ nav .logo img{
 .activar-panel{	
 	flex: none!important;
     max-width: 0!important;    
-    transition: all 200ms linear!important;
-    
+    transition: all 200ms linear!important;    
 }
 .ampliar-principal{	
     flex: 0 0 99.8%!important;
@@ -61,6 +60,7 @@ aside{
 	border-right: 1px solid #dee2e6!important;
 }
 aside .logosena{
+	background: #fff;
 }
 aside .modulos{
 	height: 66.1vh;
@@ -110,14 +110,19 @@ footer h6{
 @media only screen and (max-width: 991px) {
 	nav .logo img{
 		width: 35%;
-	}
-	
+	}	
 	aside{
 		flex: 0 0 100%!important;	
 	    max-width: 100%!important;	    
 	    transition: all 200ms linear!important;
 	    display: block;
+	 	z-index: 100;   
 	}
+	main{ 		
+ 		position: absolute!important;
+ 		height: 58.7vh!important;
+ 		z-index: -100;
+ 	}
 	aside .modulos{
 		height: auto;
 		overflow-y: hidden;		
@@ -125,9 +130,4 @@ footer h6{
 	main iframe{		
 		height: 100%; 		
 	}
-	main{ 		
- 		position: absolute;
- 		height: 58.7vh;
- 		/*width: 95%;*/
- 	}
 }
