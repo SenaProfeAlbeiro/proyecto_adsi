@@ -52,7 +52,7 @@ nav .logo img{
     flex: 0 0 99.8%!important;
     max-width: 99.8%!important;
     transition: all 200ms linear!important;
-    /*z-index: initial!important;    */
+    z-index: initial!important;    
 }
 aside{
 	flex: 0 0 25%!important;	
