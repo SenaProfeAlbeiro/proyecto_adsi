@@ -1,0 +1,39 @@
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+/* clases especiales */
+
+
+/* Contenedor */
+
+
+/* Navegador */
+nav{
+	background: #FB4C0F;
+}
+
+/* Secciones */
+header, section{
+	height: 500px;
+}
+
+/* Encabezado */
+
+
+/* Portafolio */
+
+
+/* Nosotros */
+
+
+/* Contáctenos */
+.col-arr{
+	height: 70%;
+}
+.col-abj{
+	height: 30%;
+}
+
+/* Pie de página */
