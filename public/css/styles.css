@@ -5,17 +5,11 @@
 }
 /* clases especiales */
 
-
 /* Contenedor */
 .container{
 	width: 100%;
 	max-width: 1200px;
 	margin: auto;
-}
-
-/* Navegador */
-.navegacion{
-	/*height: 60px;*/
 }
 nav{	
 	background: #2D394B;
@@ -51,7 +45,7 @@ nav .logo img{
     flex: 0 0 99.8%!important;
     max-width: 99.8%!important;
     transition: all 200ms linear!important;
-    z-index: initial!important;    
+    z-index: initial!important;
 }
 aside{
 	flex: 0 0 25%!important;	
@@ -108,16 +102,19 @@ footer h6{
 /* Tablet */
 @media only screen and (max-width: 991px) {
 	.entregable{
-		height: auto;
+		height: auto;		
 	}
+	nav{
+		z-index: 100!important;
+	}	
 	aside{
 		flex: 0 0 100%!important;	
     	max-width: 100%!important;    	
+    	z-index: 1;
 	}
 	aside .modulos{
 		height: auto;
-		overflow-y: hidden;
-		overflow-x: hidden;	
+		overflow-y: hidden;		
 	}
 	main{
 		position: absolute!important;
@@ -125,5 +122,11 @@ footer h6{
 	}
 	main iframe{		
 		height: auto;		
+	}
+	footer{
+		position: fixed;
+		width: 100%;
+		bottom: 0px;
+		z-index: 100;
 	}
 }

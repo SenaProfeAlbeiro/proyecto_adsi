@@ -40,7 +40,7 @@
 			if ($menu == 4) {
 				$division = $num1 / $num2;		
 			}
-		}else{
+		}else{			
 			$menu = "Opción Invalida";
 		}
 	} else {		
