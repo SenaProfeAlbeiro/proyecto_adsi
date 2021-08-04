@@ -24,7 +24,7 @@ nav .logo img{
 	height: auto;	
 }
 .entregable{
-	height: 78vh;	
+	height: 70vh;	
 }
 /* Botón de Menú */
 #btn-menu-lateral{	
@@ -55,7 +55,7 @@ aside .logosena{
 	background: #fff;
 }
 aside .modulos{
-	height: 66.1vh;
+	height: 59.2vh;
 	overflow-y: scroll;
 	overflow-x: hidden;	
 }
@@ -77,7 +77,7 @@ main{
 /* Área Principal */
 main iframe{
 	width: 100%;
-	height: 75.8vh;
+	height: 68.8vh;
 	border: 0;
 }
 /* Contáctenos */
@@ -109,6 +109,10 @@ footer h6{
 		position: absolute!important;
 		width: 100%!important;
 		z-index: -10;
+	}
+	main iframe{
+		height: 59.2vh;		
+		border: 0;
 	}
 	aside .modulos{
 		/*height: auto;		*/
