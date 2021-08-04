@@ -94,6 +94,9 @@ footer h6{
 
 /* Tablet */
 @media only screen and (max-width: 991px) {
+	nav .logo{
+		border: 0!important;
+	}
 	nav .logo img{
 		width: 100%!important;
 	}
