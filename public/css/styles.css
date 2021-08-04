@@ -59,6 +59,9 @@ aside .modulos{
 	overflow-y: scroll;
 	overflow-x: hidden;	
 }
+aside .modulos-amp{
+	height: 55vh!important;
+}
 aside .card-header{
 	background: #2D394B!important;	
 }
@@ -106,7 +109,7 @@ footer h6{
 		z-index: 1;		
 	}	
 	aside .modulos{
-		height: 55vh;
+		height: auto;
 	}
 	main{
 		position: absolute!important;

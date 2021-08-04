@@ -3,6 +3,7 @@ menu = document.getElementById("btn-menu-lateral");
 menu.addEventListener("click", function() {	
 	document.getElementById("panel-lateral").classList.toggle('activar-panel');
 	document.getElementById("principal").classList.toggle('ampliar-principal');
+	document.getElementById("modulos").classList.toggle('modulos-amp');
 });
 
 // Iniciar Sesión
