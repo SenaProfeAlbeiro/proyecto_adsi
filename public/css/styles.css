@@ -27,7 +27,7 @@ nav .logo img{
 	height: 70vh;	
 }
 /* Botón de Menú */
-#btn-menu-lateral{	
+#btn-menu-lateral i{	
 	margin-top: 5px;
 	padding: 0px 7px 0px 7px;
 	border: 1px solid #dee2e6!important;	
