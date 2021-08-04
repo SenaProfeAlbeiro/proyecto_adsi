@@ -100,7 +100,7 @@ footer h6{
 /* Tablet */
 @media only screen and (max-width: 991px) {
 	.entregable{
-		height: 70vh;
+		height: 85vh;
 	}
 	aside{		
 		z-index: 1;		
