@@ -60,7 +60,7 @@ aside .modulos{
 	overflow-x: hidden;	
 }
 aside .modulos-amp{
-	height: 65vh!important;
+	height: 67vh!important;
 }
 aside .card-header{
 	background: #2D394B!important;	
@@ -69,10 +69,6 @@ aside h2 button{
 	color: #fff!important;
 	text-decoration: none!important;
 	white-space: nowrap;
-}
-/* Secciones */
-header, section{
-	/*height: 500px;*/
 }
 main{	
 	transition: all 200ms linear!important;	
@@ -96,7 +92,7 @@ footer{
 	background: #2D394B;
 }
 footer h6{
-	font-size: 0.8em;
+	font-size: 0.7em;
 	margin: 0;
 }
 
