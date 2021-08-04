@@ -5,6 +5,21 @@ menu.addEventListener("click", function() {
 	document.getElementById("principal").classList.toggle('ampliar-principal');
 	document.getElementById("modulos").classList.toggle('modulos-amp');
 });
+// Cambiar cuando se hace click
+const botones = document.querySelectorAll(".ocul-aside");
+const cuandoSeHaceClick = function (evento) {
+	if (screen.width < 992) {
+		document.getElementById("panel-lateral").classList.toggle('activar-panel');
+		document.getElementById("principal").classList.toggle('ampliar-principal');
+		document.getElementById("modulos").classList.toggle('modulos-amp');
+	}
+}
+// botones es un arreglo así que lo recorremos
+botones.forEach(boton => {
+	//Agregar listener
+	boton.addEventListener("click", cuandoSeHaceClick);
+});
+
 
 // Iniciar Sesión
 var contador = 3;
