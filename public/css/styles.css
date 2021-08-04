@@ -104,6 +104,9 @@ footer h6{
 	}
 	aside{		
 		z-index: 1;		
+	}	
+	aside .modulos{
+		/*height: auto;		*/
 	}
 	main{
 		position: absolute!important;
@@ -113,15 +116,6 @@ footer h6{
 	main iframe{
 		height: auto;		
 		border: 0;
-	}
-	aside .modulos{
-		/*height: auto;		*/
-	}
-	.footer-ent{
-		/*position: fixed;
-		width: 100%;
-		bottom: 0;*/
-		z-index: 100;
 	}
 	
 }
