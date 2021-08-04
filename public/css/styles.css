@@ -100,7 +100,7 @@ footer h6{
 /* Tablet */
 @media only screen and (max-width: 991px) {
 	.entregable{
-		height: 85vh;
+		height: auto;
 	}
 	aside{		
 		z-index: 1;		
@@ -111,15 +111,13 @@ footer h6{
 		z-index: -10;
 	}
 	aside .modulos{
-		height: 70vh;
-		/*overflow-y: hidden;*/
-		overflow-x: hidden;		
+		/*height: auto;		*/
 	}
 	.footer-ent{
 		/*position: fixed;
 		width: 100%;
-		bottom: 0;
-		z-index: 100;*/
+		bottom: 0;*/
+		z-index: 100;
 	}
 	
 }
