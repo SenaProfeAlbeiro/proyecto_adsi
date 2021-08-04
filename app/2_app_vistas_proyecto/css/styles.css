@@ -4,7 +4,9 @@
 	margin: 0;
 }
 /* clases especiales */
-
+.titulo{
+	background: #343A40;
+}
 /* Contenedor */
 .container{
 	width: 100%;
@@ -33,5 +35,5 @@ nav .logo{
 
 /* Pie de página */
 footer{
-	background: #2D394B;
+	background: #343A40;	
 }
