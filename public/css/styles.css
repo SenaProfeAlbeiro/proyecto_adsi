@@ -116,10 +116,10 @@ footer h6{
 		overflow-x: hidden;		
 	}
 	.footer-ent{
-		position: fixed;
+		/*position: fixed;
 		width: 100%;
 		bottom: 0;
-		z-index: 100;
+		z-index: 100;*/
 	}
 	
 }
