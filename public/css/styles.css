@@ -28,7 +28,7 @@ nav .logo img{
 }
 /* Botón de Menú */
 #btn-menu-lateral i{
-	display: block;
+	/*display: block;*/
 	margin-top: 5px;
 	padding: 7px;
 	border: 1px solid #dee2e6!important;	
