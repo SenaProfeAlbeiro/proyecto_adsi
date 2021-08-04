@@ -14,14 +14,17 @@
 	margin: auto;
 }
 nav{	
-	background: #EF8814;
-	border-bottom: 1px solid #dee2e6!important;	
+	background: #EF8814;	
 }
 nav .logo{
 	background: #F8F9F9;	
 }
 
 /* Encabezado */
+header{
+	border-left: 1px solid #dee2e6!important;	
+	border-right: 1px solid #dee2e6!important;	
+}
 /* Portafolio */
 /* Nosotros */
 
