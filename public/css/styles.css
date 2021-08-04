@@ -14,7 +14,7 @@
 nav{	
 	background: #2D394B;
 	border-bottom: 1px solid #dee2e6!important;
-	z-index: 1!important;
+	z-index: 100!important;
 }
 nav .logo{
 	background: #F8F9F9;
@@ -47,11 +47,9 @@ nav .logo img{
     transition: all 200ms linear!important;
     z-index: initial!important;
 }
-aside{
-	flex: 0 0 25%!important;	
-    max-width: 25%!important;
+aside{	
     transition: all 200ms linear!important;    
-	border-right: 1px solid #dee2e6!important;
+	border-right: 1px solid #dee2e6!important;	
 }
 aside .logosena{
 	background: #fff;
@@ -101,32 +99,18 @@ footer h6{
 
 /* Tablet */
 @media only screen and (max-width: 991px) {
-	.entregable{
-		height: auto;		
-	}
-	nav{
-		z-index: 100!important;
-	}	
-	aside{
-		flex: 0 0 100%!important;	
-    	max-width: 100%!important;    	
-    	z-index: 1;
-	}
-	aside .modulos{
-		height: auto;
-		overflow-y: hidden;		
+	aside{		
+		z-index: 1;		
 	}
 	main{
 		position: absolute!important;
-		z-index: -100;
+		width: 100%!important;
+		z-index: -10;
 	}
-	main iframe{		
-		height: auto;		
+	aside .modulos{
+		height: 66.1vh;
+		/*overflow-y: hidden;*/
+		overflow-x: hidden;		
 	}
-	footer{
-		position: fixed;
-		width: 100%;
-		bottom: 0px;
-		z-index: 100;
-	}
+	
 }
