@@ -27,9 +27,10 @@ nav .logo img{
 	height: 70vh;	
 }
 /* Botón de Menú */
-#btn-menu-lateral i{	
+#btn-menu-lateral i{
+	display: block;
 	margin-top: 5px;
-	padding: 0px 7px 0px 7px;
+	padding: 7px;
 	border: 1px solid #dee2e6!important;	
 	border-radius: 3px;
 	font-size: 1.5em;	
@@ -60,7 +61,7 @@ aside .modulos{
 	overflow-x: hidden;	
 }
 aside .modulos-amp{
-	height: 65vh!important;
+	height: 63vh!important;
 }
 aside .card-header{
 	background: #2D394B!important;	
