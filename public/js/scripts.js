@@ -8,6 +8,8 @@ menu.addEventListener("click", function() {
 // Cambiar cuando se hace click
 const botones = document.querySelectorAll(".ocul-aside");
 const cuandoSeHaceClick = function (evento) {
+	let titulo_princ = this.innerText;
+	document.getElementById('titulo-princ').innerText = titulo_princ;
 	if (screen.width < 992) {
 		document.getElementById("panel-lateral").classList.toggle('activar-panel');
 		document.getElementById("principal").classList.toggle('ampliar-principal');
