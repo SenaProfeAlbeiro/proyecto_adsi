@@ -28,8 +28,7 @@ nav .logo{
 /* Contáctenos */
 section .mapa iframe{
 	width: 100%;
-	height: auto;
-	border: 0;
+	height: 40vh!important;		
 }
 
 /* Pie de página */
