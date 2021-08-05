@@ -28,6 +28,7 @@ nav .logo img{
 }
 /* Botón de Menú */
 #btn-menu-lateral i{	
+	margin-top: 6px;
 	padding: 5px;
 	border: 1px solid #dee2e6!important;	
 	border-radius: 3px;
@@ -99,6 +100,10 @@ footer h6{
 @media only screen and (max-width: 991px) {
 	.entregable{
 		height: auto;
+	}
+	#btn-menu-lateral i{	
+		margin-top: 0px;
+		padding: 5px;			
 	}
 	aside{		
 		z-index: 1;		
