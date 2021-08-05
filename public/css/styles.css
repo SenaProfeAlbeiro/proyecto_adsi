@@ -78,6 +78,9 @@ aside h2 button{
 	text-decoration: none!important;
 	white-space: nowrap;
 }
+aside a{
+	white-space: nowrap;
+}
 main{	
 	transition: all 200ms linear!important;	
 }
