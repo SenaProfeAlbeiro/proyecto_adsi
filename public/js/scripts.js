@@ -2,9 +2,11 @@
 menu = document.getElementById("btn-menu-lateral");
 menu.addEventListener("click", function() {	
 	document.getElementById("panel-lateral").classList.toggle('activar-panel');
-		document.getElementById("img-ocul").classList.toggle('img-ocul');
+	document.getElementById("img-ocul").classList.toggle('img-ocul');
 	document.getElementById("principal").classList.toggle('ampliar-principal');
-	document.getElementById("modulos").classList.toggle('modulos-amp');
+	if (screen.width < 992) {
+		document.getElementById("modulos").classList.toggle('modulos-amp');
+	}
 });
 // Cambiar cuando se hace click
 const botones = document.querySelectorAll(".ocul-aside");
