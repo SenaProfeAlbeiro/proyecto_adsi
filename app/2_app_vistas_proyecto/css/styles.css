@@ -35,3 +35,12 @@ section .mapa iframe{
 footer{
 	background: #343A40;	
 }
+.contacto .esp-temp{
+	background: rgb(239, 136, 20);
+	color: #fff;
+	font-weight: bold;
+}
+.contacto .esp-temp p{
+	margin: 0;
+	font-size: 0.75em;
+}
