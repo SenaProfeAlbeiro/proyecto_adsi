@@ -5,7 +5,7 @@
 }
 /* clases especiales */
 .titulo{
-	padding-top: 20px;
+	padding-top: 30px;
 	background: #343A40;
 }
 /* Contenedor */
@@ -25,13 +25,11 @@ nav .logo{
 /* Encabezado */
 /* Portafolio */
 /* Nosotros */
-
 /* Contáctenos */
-.col-arr{
-	height: 70%;
-}
-.col-abj{
-	height: 30%;
+section .mapa iframe{
+	width: 100%;
+	height: auto;
+	border: 0;
 }
 
 /* Pie de página */
