@@ -16,11 +16,37 @@ const cuandoSeHaceClick = function (evento) {
 		document.getElementById("modulos").classList.toggle('modulos-amp');
 	}
 }
+const color_fondo = function (evento) {
+	evento.target.style.background = "#6C757D";
+	evento.target.style.color = "#fff";
+}
+const color_fondo2 = function (evento) {
+	evento.target.style.background = "";
+	evento.target.style.color = "#007bff";
+}
+
 // botones es un arreglo así que lo recorremos
 botones.forEach(boton => {
 	//Agregar listener
 	boton.addEventListener("click", cuandoSeHaceClick);
+	boton.addEventListener("focus", color_fondo);
+	boton.addEventListener("blur", color_fondo2);
 });
+
+// // const color_fondo = function (evento) {
+// // 	evento.target.style.background = "#6C757D";
+// // 	evento.target.style.color = "#fff";
+// // }
+// // const color_fondo2 = function (evento) {
+// // 	evento.target.style.background = "";
+// // 	evento.target.style.color = "#007bff";
+// // }
+// // botones es un arreglo así que lo recorremos
+// botones.forEach(boton => {
+// 	//Agregar listener
+// 	boton.addEventListener("click", cuandoSeHaceClick);
+// 	// 
+// });
 
 
 // Iniciar Sesión
