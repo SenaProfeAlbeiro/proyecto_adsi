@@ -2,6 +2,7 @@
 menu = document.getElementById("btn-menu-lateral");
 menu.addEventListener("click", function() {	
 	document.getElementById("panel-lateral").classList.toggle('activar-panel');
+		document.getElementById("img-ocul").classList.toggle('img-ocul');
 	document.getElementById("principal").classList.toggle('ampliar-principal');
 	document.getElementById("modulos").classList.toggle('modulos-amp');
 });
@@ -12,6 +13,7 @@ const cuandoSeHaceClick = function (evento) {
 	document.getElementById('titulo-princ').innerText = titulo_princ;
 	if (screen.width < 992) {
 		document.getElementById("panel-lateral").classList.toggle('activar-panel');
+		document.getElementById("img-ocul").classList.toggle('img-ocul');
 		document.getElementById("principal").classList.toggle('ampliar-principal');
 		document.getElementById("modulos").classList.toggle('modulos-amp');
 	}

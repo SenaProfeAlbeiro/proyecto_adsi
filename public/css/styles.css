@@ -54,6 +54,14 @@ aside{
 aside .logosena{
 	background: #fff;
 }
+.img-ocul{
+	visibility: hidden!important;
+	transition: all 110ms linear!important;	
+}
+aside .logosena img{
+	visibility: visible;
+	transition: all 110ms linear!important;	
+}
 aside .modulos{
 	height: 59.2vh;
 	overflow-y: scroll;
