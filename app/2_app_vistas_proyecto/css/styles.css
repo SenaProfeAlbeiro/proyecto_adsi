@@ -75,3 +75,11 @@ footer h6{
 		bottom: 76px;
 	}
 }
+
+/* Tablet */
+@media only screen and (max-width: 576px) {
+	#nosotros, #portafolio, #contactenos{		
+		height: 100px;
+		bottom: 76px;
+	}
+}
