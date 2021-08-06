@@ -81,7 +81,7 @@ footer h6{
 /* Tablet */
 @media only screen and (max-width: 576px) {
 	#portafolio{		
-		height: 312px;
+		height: 320px;
 	}
 	#nosotros, #contactenos{		
 		height: 100px;
