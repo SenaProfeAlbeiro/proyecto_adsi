@@ -54,7 +54,7 @@ aside{
 aside .logosena{
 	background: #fff;
 }
-.img-ocul{
+.img-ocul{	
 	visibility: hidden!important;
 	transition: all 110ms linear!important;	
 }
