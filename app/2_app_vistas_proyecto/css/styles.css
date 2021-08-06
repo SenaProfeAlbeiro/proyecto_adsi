@@ -32,7 +32,10 @@ nav{
 }
 nav .logo{
 	background: #EF8814;
-	border-bottom: 1px solid rgba(0,0,0,.125);;
+	border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.mr-auto a{
+	border-bottom: 1px solid rgba(0,0,0,.125)!important;
 }
 
 /* Encabezado */
@@ -42,7 +45,7 @@ nav .logo{
 /* Contáctenos */
 section .mapa iframe{
 	width: 100%;
-	height: 42vh!important;		
+	height: 40vh!important;		
 }
 .contacto .esp-temp{
 	background: rgb(239, 136, 20);
@@ -71,15 +74,16 @@ footer h6{
 /* Tablet */
 @media only screen and (max-width: 991px) {
 	#nosotros, #portafolio, #contactenos{		
-		height: 148px;		
-		bottom: 76px;
+		height: 148px;
 	}
 }
 
 /* Tablet */
 @media only screen and (max-width: 576px) {
-	#nosotros, #portafolio, #contactenos{		
+	#portafolio{		
+		height: 310px;
+	}
+	#nosotros, #contactenos{		
 		height: 100px;
-		bottom: 76px;
 	}
 }
