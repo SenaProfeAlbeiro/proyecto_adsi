@@ -3,10 +3,207 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dashboard Administrador</title>
+	<title>Sistema de Información</title>
+	<!-- Estilos -->
+	<link rel="shortcut icon" href="../img/css.png">
+	<link rel="stylesheet" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/styles_dash.css">
+	<link rel="stylesheet" href="../css/all.css">
 </head>
 <body>
-	<h2>Dashboard Administrador</h2>
-	<a href="../index.html">Cerrar Sesión</a>
+	<!-- Contenedor -->
+	<div class="container">
+
+		<!-- Navegador -->
+		<nav class="navegacion row sticky-top d-flex">
+			<div class="logo col-lg-3 d-flex justify-content-center pt-3 border border-bottom-0">
+				<img class="img-fluid" src="../img/logo_sistema.png" alt="">
+			</div>
+			<div class="col-lg-9 p-0">
+				<div class="navbar navbar-expand-lg navbar-light">
+					<div id="btn-menu-lateral"><i class="fas fa-exchange-alt"></i></div>					
+					<button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon text-light"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item active">
+								<a class="nav-link text-white" href="#"><span class="sr-only">(current)</span></a>
+							</li>
+						</ul>
+						<ul class="navbar-nav">
+							<li class="nav-item active">
+								<a class="nav-link text-white ocul-navbar" href="#">Inicio <span class="sr-only">(current)</span></a>
+							</li>
+						</ul>
+						<ul class="navbar-nav">							
+							<li class="nav-item">
+								<a class="nav-link text-white ocul-navbar" href="#">Calendario</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white ocul-navbar" href="#" >Alertas</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link text-white ocul-navbar" href="#">Actividades</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Administrador
+								</a>
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item ocul-navbar" href="#" >Configuración</a>
+									<a class="dropdown-item ocul-navbar" href="../index.html">Cerrar Sesión</a>
+								</div>
+							</li>						
+						</ul>						
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Principal -->
+		<section class="entregable row bg-light border">
+			<!-- Panel lateral -->
+			<aside id="panel-lateral" class="col-12 col-lg-3 p-0">
+				<div class="logosena col-12 text-center p-3">
+					<img id="img-ocul" src="../img/logoUsuario.png" alt="">
+				</div>
+				<div id="modulos" class="modulos col-12 p-0">
+					<div class="accordion" id="accordionExample">
+						<div class="card">
+							<div class="card-header p-1 p-lg-0" id="headingOne">
+								<h2 class="mb-0">
+									<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+										Módulo Usuarios
+									</button>
+								</h2>
+							</div>
+							<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+								<div class="card-body p-lg-1">
+									<div class="card">
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item p-0 bg-light">
+												<a href="1_users/crear_usuario.html" target="area_trabajo" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Crear Usuario</a>
+											</li>
+											<li class="list-group-item p-0 bg-light">
+												<a href="1_users/consultar_usuarios.html" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Consultar Usuarios</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header p-1 p-lg-0" id="headingTwo">
+								<h2 class="mb-0">
+									<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+										Módulo Principal
+									</button>
+								</h2>
+							</div>
+							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+								<div class="card-body p-lg-1">
+									<div class="card">
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item p-0 bg-light">
+												<a href="0_mains/admin_main.html" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Crear Caso de Uso</a>
+											</li>
+											<li class="list-group-item p-0 bg-light">
+												<a href="0_mains/admin_main.html" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Consultar Registros</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header p-1 p-lg-0" id="headingThree">
+								<h2 class="mb-0">
+									<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+										Módulo Secundario
+									</button>
+								</h2>
+							</div>
+							<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+								<div class="card-body p-lg-1">
+									<div class="card">
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item p-0 bg-light">
+												<a href="0_mains/admin_main.html" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Crear Caso de Uso</a>
+											</li>
+											<li class="list-group-item p-0 bg-light">
+												<a href="0_mains/admin_main.html" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Consultar Registros</a>
+											</li>
+											<li class="list-group-item p-0 bg-light">
+												<a href="../../app/1_app_doc_proyecto/1er_Trim/0_Entregables_Proyecto_Formativo_FDS.pdf" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Diagrama de Distribución</a>
+											</li>
+											<li class="list-group-item p-0 bg-light">
+												<a href="../../app/1_app_doc_proyecto/1er_Trim/0_Entregables_Proyecto_Formativo_FDS.pdf" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">WireFrames o Mockups</a>
+											</li>						
+											<li class="list-group-item p-0 bg-light">
+												<a href="../../app/1_app_doc_proyecto/1er_Trim/0_Entregables_Proyecto_Formativo_FDS.pdf" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Evidencias 3er Trimestre</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header p-1 p-lg-0" id="headingFour">
+								<h2 class="mb-0">
+									<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+										Módulo Reportes
+									</button>
+								</h2>
+							</div>
+							<div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+								<div class="card-body p-lg-1">
+									<div class="card">
+										<ul class="list-group list-group-flush">
+											<li class="list-group-item p-0 bg-light">
+												<a href="../../app/1_app_doc_proyecto/1er_Trim/0_Entregables_Proyecto_Formativo_FDS.pdf" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Inventario</a>
+											</li>
+											<li class="list-group-item p-0 bg-light">
+												<a href="../../app/1_app_doc_proyecto/1er_Trim/0_Entregables_Proyecto_Formativo_FDS.pdf" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Informe de Costos</a>
+											</li>
+											<li class="list-group-item p-0 bg-light">
+												<a href="../../app/1_app_doc_proyecto/1er_Trim/0_Entregables_Proyecto_Formativo_FDS.pdf" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Base de Datos - DDL</a>
+											</li>
+											<li class="list-group-item p-0 bg-light">
+												<a href="../../app/1_app_doc_proyecto/1er_Trim/0_Entregables_Proyecto_Formativo_FDS.pdf" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Base de Datos - DML</a>
+											</li>						
+											<li class="list-group-item p-0 bg-light">
+												<a href="../../app/1_app_doc_proyecto/1er_Trim/0_Entregables_Proyecto_Formativo_FDS.pdf" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Evidencias 4to Trimestre</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>						
+					</div>
+				</div>
+			</aside>
+			<!-- Área Principal -->
+			<main id="principal" class="col-12 col-lg-9 p-0">				
+				<iframe name="area_trabajo" src="0_mains/admin_main.html"></iframe>
+			</main>			
+		</section>
+
+		<!-- Pie de Página -->
+		<footer class="footer-ent row">
+			<div class="col p-2 bg-secondary text-white">				
+				<h6 class="text-center">Albeiro Ramos. Instructor SENA</h6>
+				<h6 class="text-center">Cel. 3183888425 / earamos42@misena.edu.co</h6>
+				<h6 class="text-center">profealbeiro2020@gmail.com</h6>
+			</div>
+		</footer>
+	</div>
+
+	<!-- Scripts -->
+	<script src="../js/jquery-3.5.1.slim.min.js"></script>
+	<script src="../js/popper.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/scripts_dash.js"></script>	
 </body>
 </html>
