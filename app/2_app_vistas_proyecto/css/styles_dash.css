@@ -1,0 +1,135 @@
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+/* clases especiales */
+
+/* Contenedor */
+.container{
+	width: 100%;
+	max-width: 1200px;
+	margin: auto;
+}
+nav{	
+	background: #2D394B;
+	border-bottom: 1px solid #dee2e6!important;
+	z-index: 100!important;
+}
+nav .logo{
+	background: #F8F9F9;
+}
+nav .logo img{
+	width: 40%;
+	height: auto;	
+}
+.entregable{
+	height: 70vh;	
+}
+/* Botón de Menú */
+#btn-menu-lateral i{	
+	margin-top: 6px;
+	padding: 5px;
+	border: 1px solid #dee2e6!important;	
+	border-radius: 3px;
+	font-size: 1.5em;	
+	color: #fff;
+	cursor: pointer;	
+}
+.activar-panel{	
+	flex: none!important;
+    max-width: 0!important;    
+    transition: all 200ms linear!important;    
+}
+.ampliar-principal{	
+    flex: 0 0 99.8%!important;
+    max-width: 99.8%!important;
+    transition: all 200ms linear!important;
+    z-index: initial!important;
+}
+aside{	
+    transition: all 200ms linear!important;    
+	border-right: 1px solid #dee2e6!important;	
+}
+aside .logosena{
+	background: #fff;
+}
+.img-ocul{
+	visibility: hidden!important;
+	transition: all 110ms linear!important;	
+}
+aside .logosena img{
+	visibility: visible;
+	transition: all 110ms linear!important;	
+}
+aside .modulos{
+	height: 59.2vh;
+	overflow-y: scroll;
+	overflow-x: hidden;	
+}
+aside .modulos-amp{
+	height: 53.25vh!important;
+}
+aside .card-header{
+	background: #2D394B!important;	
+}
+aside h2 button{
+	color: #fff!important;
+	text-decoration: none!important;
+	white-space: nowrap;
+}
+aside a{
+	white-space: nowrap;
+}
+main{	
+	transition: all 200ms linear!important;	
+}
+/* Área Principal */
+main iframe{
+	width: 100%;
+	height: 68.8vh;
+	border: 0;
+}
+/* Contáctenos */
+.col-arr{
+	height: 70%;
+}
+.col-abj{
+	height: 30%;
+}
+
+/* Pie de página */
+footer{
+	background: #2D394B;
+}
+footer h6{
+	font-size: 0.6em;
+	margin: 0;
+}
+
+/* Tablet */
+@media only screen and (max-width: 991px) {
+	.entregable{
+		height: auto;
+	}
+	#btn-menu-lateral i{	
+		margin-top: 0px;
+		padding: 5px;			
+	}
+	aside{		
+		z-index: 1;		
+	}	
+	aside .modulos{
+		height: auto;
+	}
+	main{
+		position: absolute!important;
+		width: 100%!important;
+		z-index: -10;
+	}
+	main iframe{
+		height: auto;		
+		border: 0;
+	}
+	
+}
