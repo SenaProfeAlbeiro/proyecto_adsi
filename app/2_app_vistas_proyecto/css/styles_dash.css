@@ -63,12 +63,12 @@ aside .logosena img{
 	transition: all 110ms linear!important;	
 }
 aside .modulos{
-	height: 59.2vh;
+	height: 52.6vh;
 	overflow-y: scroll;
 	overflow-x: hidden;	
 }
 aside .modulos-amp{
-	height: 40vh!important;
+	height: 53.25vh!important;
 }
 aside .card-header{
 	background: #2D394B!important;	
