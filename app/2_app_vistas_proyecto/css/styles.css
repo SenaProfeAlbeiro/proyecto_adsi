@@ -7,6 +7,9 @@ html{
 	scroll-behavior: smooth;
 }
 /* clases especiales */
+.color-sena{
+	background: #EF8814;
+}
 .titulo{
 	padding-top: 15px;	
 	background: #343A40;
