@@ -29,7 +29,7 @@ nav .logo{
 /* Contáctenos */
 section .mapa iframe{
 	width: 100%;
-	height: 35vh!important;		
+	height: 20vh!important;		
 }
 .contacto .esp-temp{
 	background: rgb(239, 136, 20);
@@ -38,13 +38,13 @@ section .mapa iframe{
 }
 .contacto .esp-temp p{
 	margin: 0;
-	font-size: 0.75em;
+	font-size: 0.6em;
 	margin-bottom: 7px;
 }
 
 /* Pie de página */
 footer{
-	background: #2D394B;	
+	background: #2D394B!important;	
 }
 footer h6{
 	font-size: 0.6em;
