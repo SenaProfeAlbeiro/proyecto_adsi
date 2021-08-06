@@ -67,3 +67,11 @@ footer h6{
 	font-size: 0.6em;
 	margin: 0;
 }
+
+/* Tablet */
+@media only screen and (max-width: 991px) {
+	#nosotros, #portafolio, #contactenos{		
+		height: 148px;		
+		bottom: 76px;
+	}
+}
