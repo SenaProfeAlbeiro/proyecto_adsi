@@ -25,15 +25,11 @@ nav .logo{
 /* Encabezado */
 /* Portafolio */
 /* Nosotros */
+
 /* Contáctenos */
 section .mapa iframe{
 	width: 100%;
 	height: 35vh!important;		
-}
-
-/* Pie de página */
-footer{
-	background: #343A40;	
 }
 .contacto .esp-temp{
 	background: rgb(239, 136, 20);
@@ -44,4 +40,13 @@ footer{
 	margin: 0;
 	font-size: 0.75em;
 	margin-bottom: 7px;
+}
+
+/* Pie de página */
+footer{
+	background: #343A40;	
+}
+footer h6{
+	font-size: 0.6em;
+	margin: 0;
 }
