@@ -11,7 +11,8 @@ html{
 	background: #343A40;
 }
 #portafolio, #nosotros, #contactenos{
-	padding-top: 60px;
+	background: #343A40;
+	padding-top: 60px;		
 }
 /* Contenedor */
 .container{
@@ -34,7 +35,7 @@ nav .logo{
 /* Contáctenos */
 section .mapa iframe{
 	width: 100%;
-	height: 30vh!important;		
+	height: 40vh!important;		
 }
 .contacto .esp-temp{
 	background: rgb(239, 136, 20);
