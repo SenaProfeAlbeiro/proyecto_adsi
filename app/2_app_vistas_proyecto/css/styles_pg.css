@@ -7,8 +7,10 @@ body{
 	overflow-y: hidden!important;
 	overflow-x: hidden!important;
 }
-
 /* Clases especiales */
+.titulo a{
+	font-size: 0.8em;
+}
 
 /* Contenedor */
 

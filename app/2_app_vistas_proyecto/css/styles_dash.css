@@ -38,7 +38,7 @@ nav .logo img{
 .ampliar-principal{	
     flex: 0 0 99.8%!important;
     max-width: 99.8%!important;
-    transition: all 200ms linear!important;
+    transition: all 200ms linear!important;    
     z-index: initial!important;
 }
 
@@ -116,12 +116,12 @@ footer h6{
 
 	/* Principal */
 	section{
+		position: relative;
 		height: auto;
 	}
 
 	/* Panel lateral */
-	aside{
-		/*position: relative;*/
+	aside{		
 		z-index: 1;		
 	}	
 	aside .modulos{
@@ -130,8 +130,7 @@ footer h6{
 
 	/* Área Principal */
 	main{
-		/*position: absolute!important;		*/
-		left: 0;		
+		position: absolute!important;		
 		z-index: -10;
 	}
 	main iframe{
