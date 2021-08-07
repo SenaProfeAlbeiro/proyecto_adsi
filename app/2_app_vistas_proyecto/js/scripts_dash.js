@@ -17,6 +17,7 @@ const cuandoSeHaceClick = function (evento) {
 		document.getElementById("img-ocul").classList.toggle('img-ocul');
 		document.getElementById("area_principal").classList.toggle('ampliar-principal');
 		document.getElementById("modulos").classList.toggle('modulos-amp');
+		document.getElementById("principal").classList.toggle('principal');
 		// document.getElementById("navbarSupportedContent").classList.toggle('show');
 	}
 }
