@@ -18,7 +18,7 @@ body{
 
 /* Área Principal */
 section{
-	height: 79vh;
+	/*height: 80vh;*/
 	overflow-y: scroll!important;
 	overflow-x: hidden!important;
 }
