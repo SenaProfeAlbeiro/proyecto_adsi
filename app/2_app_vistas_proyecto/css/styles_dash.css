@@ -128,7 +128,7 @@ footer h6{
 		z-index: -10;
 	}
 	main iframe{
-		height: auto;		
+		/*height: auto;		*/
 		border: 0;
 	}
 	
