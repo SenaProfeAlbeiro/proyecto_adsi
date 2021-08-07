@@ -23,9 +23,7 @@ nav .logo img{
 	width: 40%;
 	height: auto;	
 }
-.entregable{
-	height: 70vh;	
-}
+
 /* Botón de Menú */
 #btn-menu-lateral i{	
 	margin-top: 6px;
@@ -62,13 +60,11 @@ aside .logosena img{
 	visibility: visible;
 	transition: all 110ms linear!important;	
 }
-aside .modulos{
-	height: 52.6vh;
+aside .modulos{	
 	overflow-y: scroll;
 	overflow-x: hidden;	
 }
-aside .modulos-amp{
-	height: 43.25vh!important;
+aside .modulos-amp{	
 }
 aside .card-header{
 	background: #2D394B!important;	
@@ -86,8 +82,7 @@ main{
 }
 /* Área Principal */
 main iframe{
-	width: 100%;
-	height: 85vh;
+	width: 100%;	
 	border: 0;	
 }
 /* Contáctenos */
@@ -124,13 +119,12 @@ footer h6{
 	}
 	main{
 		position: absolute!important;
-		height: auto;
+		/*height: auto;*/
 		width: 100%!important;
 		z-index: -10;
 	}
 	main iframe{
-		width: 100%;
-		height: 60.5vh;		
+		width: 100%;		
 	}
 	
 }
