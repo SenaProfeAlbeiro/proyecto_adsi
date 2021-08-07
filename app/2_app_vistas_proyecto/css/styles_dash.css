@@ -11,6 +11,8 @@
 	max-width: 1200px;
 	margin: auto;
 }
+
+/* Navegador */
 nav{	
 	background: #2D394B;
 	border-bottom: 1px solid #dee2e6!important;
@@ -45,6 +47,13 @@ nav .logo img{
     transition: all 200ms linear!important;
     z-index: initial!important;
 }
+
+/* Principal */
+section{
+	height: 80vh;
+}
+
+/* Panel Lateral */
 aside{	
     transition: all 200ms linear!important;    
 	border-right: 1px solid #dee2e6!important;	
@@ -77,10 +86,11 @@ aside h2 button{
 aside a{
 	white-space: nowrap;
 }
+
+/* Área Principal */
 main{	
 	transition: all 200ms linear!important;	
 }
-/* Área Principal */
 main iframe{
 	width: 100%;	
 	border: 0;	
