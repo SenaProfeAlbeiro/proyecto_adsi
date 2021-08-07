@@ -13,11 +13,11 @@ menu.addEventListener("click", function() {
 const botones = document.querySelectorAll(".ocul-aside");
 const cuandoSeHaceClick = function (evento) {	
 	if (screen.width < 992) {
+		document.getElementById("modulos").classList.toggle('modulos-amp');
 		document.getElementById("panel-lateral").classList.toggle('activar-panel');
 		document.getElementById("img-ocul").classList.toggle('img-ocul');
-		document.getElementById("area_principal").classList.toggle('ampliar-principal');
-		document.getElementById("modulos").classList.toggle('modulos-amp');
 		document.getElementById("principal").classList.toggle('principal');
+		document.getElementById("area_principal").classList.toggle('ampliar-principal');
 		// document.getElementById("navbarSupportedContent").classList.toggle('show');
 	}
 }

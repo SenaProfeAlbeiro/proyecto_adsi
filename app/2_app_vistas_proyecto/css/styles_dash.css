@@ -134,7 +134,8 @@ footer h6{
 
 	/* Área Principal */
 	main{
-		position: absolute!important;		
+		position: absolute!important;
+		height: 100%;		
 		z-index: -10;
 	}
 	main iframe{
