@@ -117,11 +117,12 @@ footer h6{
 	/* Principal */
 	section{
 		position: relative;
-		height: 60vh;
+		height: 62vh;
 	}
 
 	/* Panel lateral */
-	aside{		
+	aside{
+		height: auto;		
 		z-index: 1;		
 	}	
 	aside .modulos{
