@@ -33,7 +33,8 @@ nav .logo img{
 .activar-panel{	
 	flex: none!important;
     max-width: 0!important;    
-    transition: all 200ms linear!important;    
+    transition: all 200ms linear!important;
+    border: 0!important;    
 }
 .ampliar-principal{	
     flex: 0 0 99.8%!important;
