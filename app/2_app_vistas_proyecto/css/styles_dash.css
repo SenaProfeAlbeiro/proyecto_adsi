@@ -5,12 +5,6 @@
 }
 /* clases especiales */
 
-/* Contenedor */
-.container{
-	width: 100%;
-	max-width: 1200px;
-	margin: auto;
-}
 
 /* Navegador */
 nav{	
@@ -87,7 +81,7 @@ aside a{
 	white-space: nowrap;
 }
 
-/* Área Principal */
+/* Área trabajo */
 main{	
 	transition: all 200ms linear!important;	
 }
@@ -114,27 +108,36 @@ footer h6{
 
 /* Tablet */
 @media only screen and (max-width: 991px) {
-	.entregable{
-		height: auto;
-	}
+	
 	#btn-menu-lateral i{	
 		margin-top: 0px;
 		padding: 5px;			
 	}
-	aside{		
+
+	/* Principal */
+	section{
+		height: auto;
+	}
+
+	/* Panel lateral */
+	aside{
+		/*position: relative;*/
 		z-index: 1;		
 	}	
 	aside .modulos{
 		height: auto;
 	}
+
+	/* Área Principal */
 	main{
-		position: absolute!important;
-		/*height: auto;*/
-		width: 100%!important;
+		/*position: absolute!important;		*/
+		left: 0;		
 		z-index: -10;
 	}
 	main iframe{
 		width: 100%;		
 	}
+
+	/* Pie de página */
 	
 }
