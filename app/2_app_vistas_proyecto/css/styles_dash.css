@@ -124,12 +124,13 @@ footer h6{
 	}
 	main{
 		position: absolute!important;
+		height: auto;
 		width: 100%!important;
 		z-index: -10;
 	}
 	main iframe{
-		/*height: auto;		*/
-		border: 0;
+		width: 100%;
+		height: 60.5vh;		
 	}
 	
 }
