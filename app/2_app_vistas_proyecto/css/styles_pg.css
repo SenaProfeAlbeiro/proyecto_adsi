@@ -28,7 +28,7 @@ section{
 /* < Tablet */
 @media only screen and (max-width: 991px) {
 	section{
-		height: 73vh;
+		height: 75vh;
 		overflow-y: scroll!important;
 		overflow-x: hidden!important;
 	}
