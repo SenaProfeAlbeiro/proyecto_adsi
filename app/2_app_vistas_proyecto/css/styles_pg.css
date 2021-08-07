@@ -1,0 +1,24 @@
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+body{
+	overflow-y: hidden!important;
+	overflow-x: hidden!important;
+}
+
+/* Clases especiales */
+
+/* Contenedor */
+
+/* Migas de Pan */
+
+/* Titulo */
+
+/* Área Principal */
+section{
+	height: 79vh;
+	overflow-y: scroll!important;
+	overflow-x: hidden!important;
+}

@@ -4,8 +4,76 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Crear Usuario</title>
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<link rel="stylesheet" href="../../css/styles_pg.css">
+	<link rel="stylesheet" href="../../css/all.css">
 </head>
 <body>
-	<h3>Crear Usuario</h3>
+	<!-- Contenedor -->
+	<div class="container-fluid">
+
+		<!-- Migas de Pan -->
+		<div class="row">
+			<div class="col-12 p-0">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb rounded-0">
+						<li class="breadcrumb-item"><a href="../0_mains/admin_main.html">Principal</a></li>
+						<li class="breadcrumb-item"><a href="#">Usuarios</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Crear Usuario</li>
+					</ol>
+				</nav>
+			</div>
+		</div>
+
+		<!-- Título -->
+		<div class="row">
+			<div class="col pb-2 border-bottom d-flex">
+				<div class="col-9">
+					<h3>Crear Usuario</h3>
+				</div>
+				<div class="col-3 d-flex justify-content-center align-items-center">
+					<a href="consultar_usuarios.html" class="btn btn-primary">Consultar</a>
+				</div>				
+			</div>
+		</div>
+
+		<!-- Área Principal -->
+		<section class="row">
+			<div class="col pt-2">
+				<form id="crear_usuario" class="border rounded p-5">
+					<div class="form-row">
+						<div class="form-group col-6">
+							<label for="nombres">Nombres</label>
+							<input type="text" class="form-control" id="nombres" placeholder="Nombres">
+						</div>
+						<div class="form-group col-6">
+							<label for="apellidos">Apellidos</label>
+							<input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="correo">E-Mail</label>
+						<input type="email" class="form-control" id="correo" placeholder="usuario@correo.com">
+					</div>
+					<div class="form-row">
+						<div class="form-group col-6">
+							<label for="contrasena_reg">Contraseña</label>
+							<input type="password" class="form-control" id="contrasena_reg" placeholder="Entre 5 y 8 caracteres">
+						</div>
+						<div class="form-group col-6">
+							<label for="confirmacion">Confirmación</label>
+							<input type="password" class="form-control" id="confirmacion" placeholder="Confirmar contraseña">
+						</div>
+					</div>
+					<button type="submit" class="btn btn-primary">Enviar</button>
+					<button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>							
+				</form>
+			</div>
+		</section>
+	</div>
+	<script src="../../js/jquery-3.5.1.slim.min.js"></script>
+	<script src="../../js/popper.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<script src="../../js/script_pg.js"></script>
 </body>
 </html>
