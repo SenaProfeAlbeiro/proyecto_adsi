@@ -30,6 +30,16 @@ nav .logo img{
 	color: #fff;
 	cursor: pointer;	
 }
+
+/* Principal */
+section{
+	height: 70vh;	
+}
+.principal{
+	/*height: auto;*/
+}
+
+/* Panel Lateral */
 .activar-panel{	
 	flex: none!important;
     max-width: 0!important;    
@@ -37,21 +47,11 @@ nav .logo img{
     border: 0!important;    
 }
 .ampliar-principal{	
-    flex: 0 0 99.8%!important;
-    max-width: 99.8%!important;
+    flex: 0 0 100%!important;
+    max-width: 100%!important;
     transition: all 200ms linear!important;     
     z-index: initial!important;
 }
-
-/* Principal */
-section{
-	/*height: 80vh;*/
-}
-.principal{
-	height: 62vh;	
-}
-
-/* Panel Lateral */
 aside{	
     transition: all 200ms linear!important;    
 	border-right: 1px solid #dee2e6!important;	
@@ -69,7 +69,8 @@ aside .logosena img{
 }
 aside .modulos{	
 	overflow-y: scroll;
-	overflow-x: hidden;	
+	overflow-x: hidden;
+	height: 54.8vh;	
 }
 aside .modulos-amp{	
 }
@@ -87,10 +88,12 @@ aside a{
 
 /* Área trabajo */
 main{	
-	transition: all 200ms linear!important;	
+	transition: all 200ms linear!important;
+	height: auto;
 }
 main iframe{
-	width: 100%;	
+	width: 100%;
+	/*height: 100%;	*/
 	border: 0;	
 }
 /* Contáctenos */
@@ -120,7 +123,11 @@ footer h6{
 
 	/* Principal */
 	section{
-		position: relative;		
+		position: relative;
+		height: auto;		
+	}
+	.principal{
+		height: 62vh;	
 	}
 
 	/* Panel lateral */

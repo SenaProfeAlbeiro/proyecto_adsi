@@ -19,8 +19,8 @@ body{
 /* Titulo */
 
 /* Área Principal */
-section{
-	/*height: 80vh;*/
+section{	
+	height: 84.4vh;
 	overflow-y: scroll!important;
 	overflow-x: hidden!important;
 }
@@ -28,7 +28,6 @@ section{
 /* < Tablet */
 @media only screen and (max-width: 991px) {
 	section{
-		height: 78vh;
 		overflow-y: scroll!important;
 		overflow-x: hidden!important;
 	}
