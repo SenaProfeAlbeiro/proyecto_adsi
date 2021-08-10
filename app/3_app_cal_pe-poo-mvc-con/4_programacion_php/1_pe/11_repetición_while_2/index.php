@@ -77,7 +77,7 @@
 	<ul>
 		<li><a href="?band=1">Encender calculadora normal</a></li>
 		<li><a href="?band=">Apagar calculadora normal</a></li>
-		<li><a href="pagina_1.php">Factorial</a></li>
+		<li><a href="factorial.php">Factorial</a></li>
 	</ul>
 	<form id="calcula" action="" method="GET">
 		<input type="hidden" name="band" id="band" value="<?php echo $band; ?>">
