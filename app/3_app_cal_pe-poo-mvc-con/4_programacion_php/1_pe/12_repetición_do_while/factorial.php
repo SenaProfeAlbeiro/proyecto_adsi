@@ -20,10 +20,9 @@
 	} 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$num1 = $_POST['numero'];		
-		$aux = intval($num1);
-		$band = $_POST["band"];
+		$aux = intval($num1);		
 // Proceso
-		while ($num1 > 1 && $band == true) {
+		while ($num1 > 1) {
 			$factorial = $factorial * $num1;
 			$num1 = $num1 - 1;
 		}
@@ -47,8 +46,7 @@
 		<li><a href="?band=">Apagar calculadora avanzada</a></li>
 		<li><a href="index.php">Volver</a></li>
 	</ul>
-	<form action="" method="POST">
-		<input type="hidden" name="band" id="band" value="<?php echo $band = true ?>">
+	<form action="" method="POST">		
 		<label for="numero">Factorial</label>
 		<input type="text" name="numero" id="numero" <?php echo $encender ?>>
 		<input type="submit" name="submit" value="Enviar" <?php echo $encender ?>>
