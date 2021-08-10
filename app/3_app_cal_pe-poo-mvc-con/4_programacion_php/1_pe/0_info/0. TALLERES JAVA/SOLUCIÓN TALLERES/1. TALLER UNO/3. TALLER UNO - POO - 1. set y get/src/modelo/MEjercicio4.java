@@ -1,0 +1,55 @@
+package modelo;
+
+public class MEjercicio4 {
+    
+    //Declaración y creación de objetos
+    private String resTxt;
+    
+    //Declaración de variables y asignación de valores
+    private double num1, num2, res;
+
+    public MEjercicio4() {
+    }
+
+    public String getResTxt() {
+        return resTxt;
+    }
+
+    public void setResTxt(String resTxt) {
+        this.resTxt = resTxt;
+    }
+
+    public double getNum1() {
+        return num1;
+    }
+
+    public void setNum1(double num1) {
+        this.num1 = num1;
+    }
+
+    public double getNum2() {
+        return num2;
+    }
+
+    public void setNum2(double num2) {
+        this.num2 = num2;
+    }
+
+    public double getRes() {
+        return res;
+    }
+
+    public void setRes(double res) {
+        this.res = res;
+    }
+    
+    //Método para procesar: Sumar
+    public void metDividir() {
+        if (num2 != 0) {
+            res = num1 / num2;            
+            resTxt = String.valueOf(res);            
+        } else {
+            resTxt = "\nimposible, división por cero";
+        }
+    }
+}
