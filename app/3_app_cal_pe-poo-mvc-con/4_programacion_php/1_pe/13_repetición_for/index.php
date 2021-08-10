@@ -79,6 +79,7 @@
 		<li><a href="?band=">Apagar calculadora normal</a></li>
 		<li><a href="factorial.php">Factorial</a></li>
 		<li><a href="fibonacci.php">Fibonacci</a></li>
+		<li><a href="burbuja.php">Burbuja</a></li>
 	</ul>
 	<form id="calcula" action="" method="GET">
 		<input type="hidden" name="band" id="band" value="<?php echo $band; ?>">
