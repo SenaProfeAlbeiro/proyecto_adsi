@@ -11,6 +11,10 @@ body{
 .titulo a{
 	font-size: 0.8em;
 }
+.fondo{
+	background: #2D394B;
+	color: #fff;
+}
 
 /* Contenedor */
 
@@ -28,7 +32,7 @@ section{
 /* < Tablet */
 @media only screen and (max-width: 576px) {
 	section{
-		height: 79vh;
+		height: 78.5vh;
 		overflow-y: scroll!important;
 		overflow-x: hidden!important;
 	}
