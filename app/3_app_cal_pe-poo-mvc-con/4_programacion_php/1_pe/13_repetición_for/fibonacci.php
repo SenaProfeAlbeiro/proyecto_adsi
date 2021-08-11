@@ -24,9 +24,10 @@
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$num1 = $_POST['numero'];		
 		$temp = intval($num1);		
-// Proceso
-		$res = "Los " . $temp . " primeros números de la sucesión de Fibonacci son: ";		
 	}
+
+// Proceso
+	$res = "Los " . $temp . " primeros números de la sucesión de Fibonacci son: ";		
 
 // salida
 ?>
@@ -51,6 +52,8 @@
 		<input type="submit" name="submit" value="Enviar" <?php echo $encender ?>>
 	</form>
 	<h1><?php echo $res ?></h1>
+	
+	<!-- Sigue el Proceso -->
 	<?php 
 		do {
 			echo " - " . $anterior;

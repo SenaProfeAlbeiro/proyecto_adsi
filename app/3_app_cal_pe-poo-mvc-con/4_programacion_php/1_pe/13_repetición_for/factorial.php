@@ -20,12 +20,12 @@
 	} 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$num1 = $_POST['numero'];		
-		$aux = intval($num1);		
+	}
+
 // Proceso
-		while ($num1 > 1) {
-			$factorial = $factorial * $num1;
-			$num1 = $num1 - 1;
-		}
+	while ($num1 > 1) {
+		$factorial = $factorial * $num1;
+		$num1 = $num1 - 1;
 	}
 	$res = "El Factorial del número " . $aux . " es " . $factorial;
 
