@@ -18,7 +18,7 @@
 	<p><?php echo $instruc ?></p>
 	<hr>	
 	<ol>
-		<li><a href="1_calculadora.php/?band=">Calculadora</a></li>
+		<li><a href="1_calculadora.php?band=">Calculadora</a></li>
 		<li><a href="2_factorial.php">Factorial</a></li>
 		<li><a href="3_fibonacci.php">Fibonacci</a></li>		
 		<li><a href="4_serie_par_impar.php">Serie par o impar</a></li>		

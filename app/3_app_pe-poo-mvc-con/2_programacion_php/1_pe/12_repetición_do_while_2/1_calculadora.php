@@ -8,12 +8,11 @@
 	$menu = null;
 	$num1 = 0;
 	$num2 = 0;
-	$res = null;
-	$band = "";	
+	$res = null;	
 
 // entrada
 	if (isset($_GET["band"])) {
-		$band = boolval($_GET["band"]);
+		$band = boolval($_GET["band"]);		
 		if ($band) {			
 			$encender = "";
 			if (isset($_GET["menu"])) {
@@ -77,7 +76,7 @@
 	<ul>
 		<li><a href="?band=1">Encender calculadora normal</a></li>
 		<li><a href="?band=">Apagar calculadora normal</a></li>		
-		<li><a href="../index.php">Volver</a></li>
+		<li><a href="index.php">Volver</a></li>
 	</ul>
 	<hr>
 	<form id="calcula" action="" method="GET">
