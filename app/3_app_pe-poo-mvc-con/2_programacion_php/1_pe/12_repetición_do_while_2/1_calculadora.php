@@ -9,7 +9,7 @@
 	$num1 = 0;
 	$num2 = 0;
 	$res = null;
-	$band = false;	
+	$band = "";	
 
 // entrada
 	if (isset($_GET["band"])) {
@@ -72,15 +72,14 @@
 	<title><?php echo $nom_aplicacion ?></title>
 </head>
 <body>
-	<h1><?php echo $nom_aplicacion; ?></h1>
-	<h3><?php echo $instruc ?></h3>
+	<h1><?php echo $nom_aplicacion ?></h1>
+	<p><?php echo $instruc ?></p>	
 	<ul>
 		<li><a href="?band=1">Encender calculadora normal</a></li>
-		<li><a href="?band=">Apagar calculadora normal</a></li>
-		<li><a href="factorial.php">Factorial</a></li>
-		<li><a href="fibonacci.php">Fibonacci</a></li>
-		<li><a href="burbuja.php">Burbuja</a></li>
+		<li><a href="?band=">Apagar calculadora normal</a></li>		
+		<li><a href="../index.php">Volver</a></li>
 	</ul>
+	<hr>
 	<form id="calcula" action="" method="GET">
 		<input type="hidden" name="band" id="band" value="<?php echo $band; ?>">
 		<div>
