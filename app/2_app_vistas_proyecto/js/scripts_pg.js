@@ -6,12 +6,13 @@ var i, celdas, nombres;
 // Crear controles
 var inputNombres = "<input type='text' class='nombres text-center' autofocus/>";
 var btnGuardar = '<a class="guardar btn btn-success btn-sm mx-1" onclick="guardar()"><i class="fas fa-save"></i></a>';
+var btnActualizar = '<a class="actualizar btn btn-info btn-sm mx-1" onclick="actualizar(this);"><i class="fas fa-pencil-alt"></i></a>';
+var btnEliminar = '<a class="eliminar btn btn-danger btn-sm mx-1"><i class="fas fa-trash-alt"></i></a>';
 
-// Actualizar
-const btnEditar = document.querySelectorAll(".actualizar");
-const actualizar = function (event) {
+// Actualizar	
+function actualizar(fila){
 	// Obtiene el número de fila seleccionada
-	i = this.parentNode.parentNode.rowIndex;
+	i = fila.parentNode.parentNode.rowIndex;
 	// Prepara la fila con sus celdas
 	celdas = tabla.rows[i];
 	// Obtiene el valor de la celda según su posición en la fila
@@ -22,14 +23,12 @@ const actualizar = function (event) {
 	// Le pasamos el nuevo valor al input
 	document.querySelector('.nombres').value = nombres;
 }
-btnEditar.forEach(boton => {
-	boton.addEventListener("click", actualizar);	
-});
 
 // Guardar
 function guardar(){
+	// Se recibe el nuevo valor
 	nombres = document.querySelector('.nombres').value;
+	// Se pasa el nuevo valor a la celda correspondiente
 	celdas.cells[1].innerHTML = nombres;
-	// alert(nombres)
-	// celdas.cells[1].innerHTML = nombres;
+	celdas.cells[8].innerHTML = btnActualizar + btnEliminar;		
 }
