@@ -2,7 +2,7 @@
 var tabla = document.getElementById("tbl_consultar");
 
 // Crear controles
-var inputNombres = "<input type='text' class='nombres text-center'/>";
+var inputNombres = "<input type='text' class='nombres text-center' autofocus/>";
 var btnGuardar = '<a class="guardar btn btn-success btn-sm mx-1"><i class="fas fa-save"></i></a>';
 
 // Actualizar
@@ -16,7 +16,7 @@ const actualizar = function (event) {
 	let nombres = celdas.cells[1].firstChild.data;
 	
 	// Le pasamos el control input a la celda
-	celdas.cells[1].innerHTML = inputNombres;
+	celdas.cells[1].innerHTML = inputNombres;	
 	celdas.cells[8].innerHTML = btnGuardar;
 	
 	document.querySelector('input.nombres').value = nombres;
