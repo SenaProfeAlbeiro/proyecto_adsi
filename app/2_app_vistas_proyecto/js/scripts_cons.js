@@ -6,7 +6,13 @@ var cln = botones.cloneNode(true);
 insertar();
 
 // Crear controles
-var inputNombres = "<input type='text' class='nombres text-center' autofocus/>";
+var inputDocIdent = "<input type='text' class='doc_identidad text-center'/>";
+var inputCorreo = "<input type='text' class='correo text-center'/>";
+var inputNombres = "<input type='text' class='nombres text-center'/>";
+var inputApellidos = "<input type='text' class='apellidos text-center'/>";
+var inputContrasena = "<input type='text' class='contrasena_us text-center'/>";
+var inputPerfil = "<input type='text' class='perfil text-center'/>";
+var inputEstado = "<input type='text' class='estado text-center'/>";
 var btnGuardar = '<a class="btn btn-success btn-sm mx-1" onclick="guardar()"><i class="fas fa-save"></i></a>';
 var btnActualizar = '<a class="btn btn-info btn-sm mx-1" onclick="actualizar(this);"><i class="fas fa-pencil-alt"></i></a>';
 var btnEliminar = '<a class="btn btn-danger btn-sm mx-1" onclick="eliminar(this);"><i class="fas fa-trash-alt"></i></a>';
@@ -49,16 +55,33 @@ function insertar(){
 function actualizar(fila){
 	// Obtiene el número de fila seleccionada
 	i = fila.parentNode.parentNode.rowIndex;
-	// Prepara la fila con sus celdas
-	prueba = "Actualizando";
+	// Prepara la fila con sus celdas	
 	celdas = tabla.rows[i];
-	// Obtiene el valor de la celda según su posición en la fila
-	nombres = celdas.cells[3].firstChild.data;	
+	// Obtiene el valor de la celda según su posición en la fila	
+	doc_identidad = celdas.cells[1].firstChild.data;
+	correo = celdas.cells[2].firstChild.data;
+	nombres = celdas.cells[3].firstChild.data;
+	apellidos = celdas.cells[4].firstChild.data;
+	contrasena_us = celdas.cells[5].firstChild.data;
+	perfil = celdas.cells[6].firstChild.data;
+	estado = celdas.cells[7].firstChild.data;
 	// Le pasamos los input a las celdas
+	celdas.cells[1].innerHTML = inputDocIdent;
+	celdas.cells[2].innerHTML = inputCorreo;
 	celdas.cells[3].innerHTML = inputNombres;
+	celdas.cells[4].innerHTML = inputApellidos;
+	celdas.cells[5].innerHTML = inputContrasena;
+	celdas.cells[6].innerHTML = inputPerfil;
+	celdas.cells[7].innerHTML = inputEstado;
 	celdas.cells[8].innerHTML = btnGuardar;
 	// Le pasamos el nuevo valor al input
+	document.querySelector('.doc_identidad').value = doc_identidad;
+	document.querySelector('.correo').value = correo;
 	document.querySelector('.nombres').value = nombres;
+	document.querySelector('.apellidos').value = apellidos;
+	document.querySelector('.contrasena_us').value = contrasena_us;
+	document.querySelector('.perfil').value = perfil;
+	document.querySelector('.estado').value = estado;
 }
 
 // Eliminar
@@ -70,8 +93,20 @@ function eliminar(fila){
 // Guardar
 function guardar(){
 	// Se recibe el nuevo valor
+	doc_identidad = document.querySelector('.doc_identidad').value;
+	correo = document.querySelector('.correo').value;
 	nombres = document.querySelector('.nombres').value;
+	apellidos = document.querySelector('.apellidos').value;
+	contrasena_us = document.querySelector('.contrasena_us').value;
+	perfil = document.querySelector('.perfil').value;
+	estado = document.querySelector('.estado').value;	
 	// Se pasa el nuevo valor a la celda correspondiente
+	celdas.cells[1].innerHTML = doc_identidad;
+	celdas.cells[2].innerHTML = correo;
 	celdas.cells[3].innerHTML = nombres;
+	celdas.cells[4].innerHTML = apellidos;
+	celdas.cells[5].innerHTML = contrasena_us;
+	celdas.cells[6].innerHTML = perfil;
+	celdas.cells[7].innerHTML = estado;	
 	celdas.cells[8].innerHTML = btnActualizar + btnEliminar;		
 }
