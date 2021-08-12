@@ -86,8 +86,24 @@ function actualizar(fila){
 
 // Eliminar
 function eliminar(fila){
-	i = fila.parentNode.parentNode.rowIndex;
-	tabla.deleteRow(i);
+	i = fila.parentNode.parentNode.rowIndex;	
+	swal({
+            title: "Está seguro de eliminar el registro",
+            text: "Si elimina el registro, ya no podrá ser recuperado de la memoria!",
+            icon: "warning",
+            buttons: [true, "Aceptar"],
+            dangerMode: true,
+        })
+        .then((willDelete) => {            
+            if (willDelete) {
+                swal("El registro ha sido eliminado!", {
+                    icon: "success",
+                });                
+                tabla.deleteRow(i);
+            } else {
+                swal("El registro se ha convervado");
+            }
+        });
 }
 
 // Guardar
