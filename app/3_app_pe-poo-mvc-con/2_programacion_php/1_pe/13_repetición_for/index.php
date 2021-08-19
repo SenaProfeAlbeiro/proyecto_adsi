@@ -1,21 +1,13 @@
-<?php 	
-
-// declaración e inicialización de variables y constantes
-	$nom_aplicacion = "Aplicación";
-	$instruc = "Seleccione una opción del menú";
-
-// Salida
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><?php echo $nom_aplicacion ?></title>
+	<title>Aplicación</title>
 </head>
 <body>
-	<h1><?php echo $nom_aplicacion ?></h1>
-	<p><?php echo $instruc ?></p>
+	<h1>Aplicación</h1>
+	<p>Seleccione una opción del menú</p>
 	<hr>
 	<ol>
 		<li><a href="1_calculadora.php?band=">Calculadora</a></li>
