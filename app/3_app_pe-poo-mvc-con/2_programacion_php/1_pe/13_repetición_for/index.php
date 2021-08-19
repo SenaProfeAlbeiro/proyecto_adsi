@@ -16,7 +16,7 @@
 <body>
 	<h1><?php echo $nom_aplicacion ?></h1>
 	<p><?php echo $instruc ?></p>
-	<hr>	
+	<hr>
 	<ol>
 		<li><a href="1_calculadora.php?band=">Calculadora</a></li>
 		<li><a href="2_factorial.php">Factorial</a></li>

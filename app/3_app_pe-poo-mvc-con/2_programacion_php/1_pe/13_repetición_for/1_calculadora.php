@@ -1,7 +1,7 @@
 <?php 
 
 // declaración e inicialización de variables y constantes
-	$nom_aplicacion = "Calculadora";
+	$nom_aplicacion = "1. Calculadora";
 	$instruc = "";
 	$tipo_operacion = "";
 	$encender = "disabled";

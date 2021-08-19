@@ -1,26 +1,17 @@
 <?php 
 	
 // declaración e inicialización de variables y constantes
-	$nom_aplicacion = "Calculadora Avanzada";
-	$instruc = "Encienda la calculadora";
-	$encender = "disabled";
+	$nom_aplicacion = "3. Fibonacci";
+	$instruc = "Digite la cantidad de números Fibonacci / Enviar";
 	$contador = 0;	
 	$num1 = 0;
 	$anterior = 0;
 	$posterior = 1;
 	$auxiliar = 0;	
 	$temp = 0;	
-	$res = "";	
-	$band = false;
+	$res = "";		
 
-// entrada
-	if (isset($_GET['band'])) {
-		$band = boolval($_GET["band"]);
-		if ($band) {
-			$encender = "";
-			$instruc = "Digite la cantidad de números Fibonacci / Enviar";			
-		} 
-	} 
+// entrada	 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$num1 = $_POST['numero'];		
 		$temp = intval($num1);		
@@ -39,17 +30,16 @@
 	<title><?php echo $nom_aplicacion ?></title>
 </head>
 <body>
-	<h1><?php echo $nom_aplicacion; ?></h1>
-	<h3><?php echo $instruc ?></h3>
-	<ul>
-		<li><a href="?band=1">Encender calculadora avanzada</a></li>
-		<li><a href="?band=">Apagar calculadora avanzada</a></li>
-		<li><a href="index.php">Volver</a></li>
+	<h1><?php echo $nom_aplicacion ?></h1>
+	<p><a href="index.php">Volver</a></p>
+	<hr>
+	<ul>		
+		<li><?php echo $instruc ?></li>
 	</ul>
 	<form action="" method="POST">		
 		<label for="numero">Fibonacci</label>
-		<input type="text" name="numero" id="numero" <?php echo $encender ?>>
-		<input type="submit" name="submit" value="Enviar" <?php echo $encender ?>>
+		<input type="text" name="numero" id="numero">
+		<input type="submit" name="submit" value="Enviar">
 	</form>
 	<h1><?php echo $res ?></h1>
 	
