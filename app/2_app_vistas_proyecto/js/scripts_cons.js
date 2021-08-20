@@ -3,6 +3,7 @@ var tabla = document.getElementById("tbl_consultar");
 var i, celdas, nombres;
 var botones = document.getElementById('botones');
 var cln = botones.cloneNode(true);
+var imprime = document.getElementById('imprimir');
 insertar();
 
 // Crear controles
@@ -125,4 +126,10 @@ function guardar(){
 	celdas.cells[6].innerHTML = perfil;
 	celdas.cells[7].innerHTML = estado;	
 	celdas.cells[8].innerHTML = btnActualizar + btnEliminar;		
+}
+
+imprime.addEventListener("click", imprimir, false);
+
+function imprimir(){
+	window.print();
 }
