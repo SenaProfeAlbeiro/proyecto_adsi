@@ -38,7 +38,7 @@ function insertar(){
 	let perfil = sessionStorage.getItem('perfil');
 	let estado = sessionStorage.getItem('estado');
 	// Cantidad de filas
-	let i = tabla.rows.length;
+	let i = tabla.rows.length;	
 	// Inserta fila
 	let fila = tabla.insertRow(i);
 	// Inserta celdas
@@ -47,9 +47,8 @@ function insertar(){
 	for (var cont = 0; cont < 8; cont++) {
 		celda[cont] = fila.insertCell(cont);
 	}
-	// Insertar datos a las celdas
-	
-	if (doc_identidad == "") {
+	// Insertar datos a las celdas	
+	if (doc_identidad == null || doc_identidad == "") {
 		celda[0].innerHTML = i;	
 		celda[1].innerHTML = "654321";
 		celda[2].innerHTML = "cliente@correo.com";	
