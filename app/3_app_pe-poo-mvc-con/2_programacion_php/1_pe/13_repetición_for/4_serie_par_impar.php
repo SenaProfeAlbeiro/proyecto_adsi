@@ -20,18 +20,21 @@
 				$menu = 0;
 			}
 		} else {
-			$instruc = "Faltó algún dato, inténtelo de nuevo";			
+			$instruc = "Faltó algún dato, inténtelo de nuevo";
 		}
 	}
 
 // Proceso 1
 	# Evalúa si el primer número es mayor al segundo y lo ordena
 	if ($num1 != $num2 ) {
-		if ($num1 > $num2) {
-			$aux = $num1;
-			$num1 = $num2;
-			$num2 = $aux;
+		if ($num1 > $num2) { // $num1 = 200, $num2 = 20;
+			$aux = $num1; // $aux = 200;
+			$num1 = $num2; // $num1 = 20
+			$num2 = $aux; // $num2 = 200 
 		}		
+	} else {
+		$instruc = "Los números no pueden ser iguales";
+		$menu = 0;
 	}		
 
 // salida
@@ -70,13 +73,14 @@
 	
 	<!-- Proceso 2 -->
 	<?php 
+		# Selecciona, ejecuta e imprime la serie par o impar
 		switch ($menu) {
 			case 1:
 				$res = "La serie Par de " . $num1 . " a " . $num2 . " es: ";
 				echo "<h1> $res </h1>";
-				for ($i=$num1; $i <= $num2; $i++) { 
-					if ($i % 2 == 0) {
-						echo " - " . $i;
+				for ($i=$num1; $i <= $num2; $i++) { // ($i = 20; 22 <= 200; $i++ = 22)
+					if ($i % 2 == 0) { // 22 % 2 = 0 == 0
+						echo " - " . $i; // Imprimiendo el valor de $i;
 					}
 				}
 				break;
@@ -88,10 +92,7 @@
 						echo " - " . $i;
 					}
 				}
-				break;
-			default:
-				$instruc = "Faltó algún dato, inténtelo de nuevo";
-				break;
+				break;			
 		}
 	?>
 </body>
