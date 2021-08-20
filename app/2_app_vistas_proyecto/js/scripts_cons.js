@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $('#tbl_consultar').DataTable();
+} );
+
 // Declaración e inicialización de variables
 var tabla = document.getElementById("tbl_consultar");
 var i, celdas, nombres;
