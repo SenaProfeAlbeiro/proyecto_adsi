@@ -799,7 +799,7 @@ DataTable.ext.buttons.copyHtml5 = {
 	className: 'buttons-copy buttons-html5',
 
 	text: function ( dt ) {
-		return dt.i18n( 'buttons.copy', 'Copiar' );
+		return dt.i18n( 'buttons.copy', 'Copy' );
 	},
 
 	action: function ( e, dt, button, config ) {

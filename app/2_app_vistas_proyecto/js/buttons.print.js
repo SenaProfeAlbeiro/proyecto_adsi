@@ -83,7 +83,7 @@ DataTable.ext.buttons.print = {
 	className: 'buttons-print',
 
 	text: function ( dt ) {
-		return dt.i18n( 'buttons.print', 'Imprimir' );
+		return dt.i18n( 'buttons.print', 'Print' );
 	},
 
 	action: function ( e, dt, button, config ) {
