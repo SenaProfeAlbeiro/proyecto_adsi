@@ -33,6 +33,9 @@ iframe{
 	height: 100%;
 	border: 0;
 }
+#chartContainer{
+	height: 97%;
+}
 
 /* < Tablet */
 @media only screen and (max-width: 576px) {
