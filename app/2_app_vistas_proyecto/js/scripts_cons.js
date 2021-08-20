@@ -1,5 +1,11 @@
 $(document).ready(function() {
-    $('#tbl_consultar').DataTable();
+    // $('#tbl_consultar').DataTable();
+    $('#tbl_consultar').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
 } );
 
 // Declaración e inicialización de variables
