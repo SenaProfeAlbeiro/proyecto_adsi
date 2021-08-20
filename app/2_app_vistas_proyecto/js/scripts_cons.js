@@ -37,28 +37,18 @@ function insertar(){
 	let confirmacion = sessionStorage.getItem('confirmacion');
 	let perfil = sessionStorage.getItem('perfil');
 	let estado = sessionStorage.getItem('estado');
-	// Cantidad de filas
-	let i = tabla.rows.length;	
-	// Inserta fila
-	let fila = tabla.insertRow(i);
-	// Inserta celdas
-	let celda = [];	
-	// Coloca cantidad de celdas
-	for (var cont = 0; cont < 8; cont++) {
-		celda[cont] = fila.insertCell(cont);
-	}
 	// Insertar datos a las celdas	
-	if (doc_identidad == null || doc_identidad == "") {
-		celda[0].innerHTML = i;	
-		celda[1].innerHTML = "654321";
-		celda[2].innerHTML = "cliente@correo.com";	
-		celda[3].innerHTML = "Pepito";	
-		celda[4].innerHTML = "Perez";	
-		celda[5].innerHTML = "67890";	
-		celda[6].innerHTML = "cliente";
-		celda[7].innerHTML = "inactivo";	
-		celda = fila.appendChild(cln);		
-	} else {
+	if (!(doc_identidad == null || doc_identidad == "")) {
+		// Cantidad de filas
+		let i = tabla.rows.length;	
+		// Inserta fila
+		let fila = tabla.insertRow(i);
+		// Inserta celdas
+		let celda = [];	
+		// Coloca cantidad de celdas
+		for (var cont = 0; cont < 8; cont++) {
+			celda[cont] = fila.insertCell(cont);
+		}
 		celda[0].innerHTML = i;	
 		celda[1].innerHTML = doc_identidad;	
 		celda[2].innerHTML = correo;	
@@ -68,7 +58,7 @@ function insertar(){
 		celda[6].innerHTML = perfil;
 		celda[7].innerHTML = estado;
 		celda = fila.appendChild(cln);		
-	}	
+	} 	
 }
 
 

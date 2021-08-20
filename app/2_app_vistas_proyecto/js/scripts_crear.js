@@ -1,6 +1,10 @@
 
 // Captura id de la página
 form = document.getElementById('crear_usuario');
+cierra = document.getElementById('cerrar');
+
+// Eventos click
+cierra.addEventListener('click', cerrar, false);
 
 // Evento click Submit
 form.addEventListener('submit', function (event){	
@@ -112,4 +116,16 @@ function crear_usuario(){
 			window.location = 'consultar_usuarios.html';
 		});		
 	}
+}
+
+function cerrar(){
+	swal({
+			title: "No se ha creado ningún usuario!",
+			text: "Consulte la lista de usuarios registrados",
+			icon: "success",
+			button: "Aceptar",
+		})
+		.then((value) => {
+			window.location = 'consultar_usuarios.html';
+		});	
 }
