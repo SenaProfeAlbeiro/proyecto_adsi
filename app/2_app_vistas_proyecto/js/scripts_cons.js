@@ -43,20 +43,33 @@ function insertar(){
 	let fila = tabla.insertRow(i);
 	// Inserta celdas
 	let celda = [];	
-	// Colocar cantidad de celdas
+	// Coloca cantidad de celdas
 	for (var cont = 0; cont < 8; cont++) {
 		celda[cont] = fila.insertCell(cont);
 	}
 	// Insertar datos a las celdas
-	celda[0].innerHTML = i;	
-	celda[1].innerHTML = doc_identidad;	
-	celda[2].innerHTML = correo;	
-	celda[3].innerHTML = nombres;	
-	celda[4].innerHTML = apellidos;	
-	celda[5].innerHTML = contrasena_us;	
-	celda[6].innerHTML = perfil;
-	celda[7].innerHTML = estado;
-	celda = fila.appendChild(cln);	
+	
+	if (doc_identidad == "") {
+		celda[0].innerHTML = i;	
+		celda[1].innerHTML = "654321";
+		celda[2].innerHTML = "cliente@correo.com";	
+		celda[3].innerHTML = "Pepito";	
+		celda[4].innerHTML = "Perez";	
+		celda[5].innerHTML = "67890";	
+		celda[6].innerHTML = "cliente";
+		celda[7].innerHTML = "inactivo";	
+		celda = fila.appendChild(cln);		
+	} else {
+		celda[0].innerHTML = i;	
+		celda[1].innerHTML = doc_identidad;	
+		celda[2].innerHTML = correo;	
+		celda[3].innerHTML = nombres;	
+		celda[4].innerHTML = apellidos;	
+		celda[5].innerHTML = contrasena_us;	
+		celda[6].innerHTML = perfil;
+		celda[7].innerHTML = estado;
+		celda = fila.appendChild(cln);		
+	}	
 }
 
 
