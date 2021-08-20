@@ -38,7 +38,13 @@ function insertar(){
 	let perfil = sessionStorage.getItem('perfil');
 	let estado = sessionStorage.getItem('estado');
 	// Insertar datos a las celdas	
-	if (!(doc_identidad == null || doc_identidad == "")) {
+	if (!(doc_identidad == null || doc_identidad == "") && 
+		!(correo == null || correo == "") &&
+		!(nombres == null || nombres == "") &&
+		!(apellidos == null || apellidos == "") &&
+		!(contrasena_us == null || contrasena_us == "") &&
+		!(confirmacion == null || confirmacion == "") &&
+		(contrasena_us != confirmacion == "")) {
 		// Cantidad de filas
 		let i = tabla.rows.length;	
 		// Inserta fila
