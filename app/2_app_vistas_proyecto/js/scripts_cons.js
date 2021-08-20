@@ -18,6 +18,14 @@ var btnGuardar = '<a class="btn btn-success btn-sm mx-1" onclick="guardar()"><i 
 var btnActualizar = '<a class="btn btn-info btn-sm mx-1" onclick="actualizar(this);"><i class="fas fa-pencil-alt"></i></a>';
 var btnEliminar = '<a class="btn btn-danger btn-sm mx-1" onclick="eliminar(this);"><i class="fas fa-trash-alt"></i></a>';
 
+// Eventos click
+imprime.addEventListener("click", imprimir, false);
+
+// Imprimir
+function imprimir(){
+	window.print();
+}
+
 // insertar
 function insertar(){
 	// Recuperar los datos de variables de sesion
@@ -125,11 +133,11 @@ function guardar(){
 	celdas.cells[5].innerHTML = contrasena_us;
 	celdas.cells[6].innerHTML = perfil;
 	celdas.cells[7].innerHTML = estado;	
-	celdas.cells[8].innerHTML = btnActualizar + btnEliminar;		
-}
-
-imprime.addEventListener("click", imprimir, false);
-
-function imprimir(){
-	window.print();
+	celdas.cells[8].innerHTML = btnActualizar + btnEliminar;
+	swal({
+		title: "Usuario Actualizado correctamente!",
+		text: "Verifique los datos actualizados del usuario",
+		icon: "success",
+		button: "Aceptar",
+	});	
 }

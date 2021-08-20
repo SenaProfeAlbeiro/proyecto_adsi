@@ -1,4 +1,7 @@
+// Captura id de la página
 form = document.getElementById('crear_usuario');
+
+// Eventos click
 form.addEventListener('submit', function (event){
 	// Captura de Datos
 	doc_identidad = document.getElementById('doc_identidad').value;
@@ -19,6 +22,19 @@ form.addEventListener('submit', function (event){
 	sessionStorage.setItem('confirmacion', confirmacion);
 	sessionStorage.setItem('perfil', perfil);
 	sessionStorage.setItem('estado', estado);
-	window.location = 'consultar_usuarios.html';
-	event.preventDefault();	
+	crear_usuario();
+	event.preventDefault();
 });
+
+// Usuario Creado
+function crear_usuario(){
+	swal({
+		title: "Usuario Creado correctamente!",
+		text: "Consulte la lista de usuarios registrados",
+		icon: "success",
+		button: "Aceptar",
+	})
+	.then((value) => {
+		window.location = 'consultar_usuarios.html';
+	});
+}
