@@ -22,20 +22,21 @@
 		} else {
 			$instruc = "Faltó algún dato, inténtelo de nuevo";
 		}
+		
+// Proceso 1
+		# Evalúa si el primer número es mayor al segundo y lo ordena
+		if ($num1 != $num2 ) {
+			if ($num1 > $num2) { // $num1 = 200, $num2 = 20;
+				$aux = $num1; // $aux = 200;
+				$num1 = $num2; // $num1 = 20
+				$num2 = $aux; // $num2 = 200 
+			}		
+		} else {
+			$instruc = "Los números no pueden ser iguales";
+			$menu = 0;
+		}		
 	}
 
-// Proceso 1
-	# Evalúa si el primer número es mayor al segundo y lo ordena
-	if ($num1 != $num2 ) {
-		if ($num1 > $num2) { // $num1 = 200, $num2 = 20;
-			$aux = $num1; // $aux = 200;
-			$num1 = $num2; // $num1 = 20
-			$num2 = $aux; // $num2 = 200 
-		}		
-	} else {
-		$instruc = "Los números no pueden ser iguales";
-		$menu = 0;
-	}		
 
 // salida
 ?>

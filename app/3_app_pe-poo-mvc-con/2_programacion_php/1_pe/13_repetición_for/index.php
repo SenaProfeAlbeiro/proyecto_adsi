@@ -13,7 +13,7 @@
 		<li><a href="1_calculadora.php?band=">Calculadora</a></li>
 		<li><a href="2_factorial.php">Factorial</a></li>
 		<li><a href="3_fibonacci.php">Fibonacci</a></li>		
-		<li><a href="4_serie_par_impar.php">Serie par o impar</a></li>		
+		<li><a href="4_serie_par_impar.php">Serie par o impar</a></li>
 		<li><a href="5_burbuja.php">Burbuja</a></li>		
 		<li><a href="6_vector_ordenado_estatico.php">Vector Ordenado (Estático)</a></li>		
 		<li><a href="7_vector_ordenado_dinamico.php">Vector Ordenado (Dinámico)</a></li>		
