@@ -3,21 +3,39 @@
 // declaración e inicialización de variables, constantes y arreglos
 	$nom_aplicacion = "6. Vector Ordenado Estático";
 	$instruc = "Digite los valores del vector / Seleccione el Orden / Enviar";
-	$posicion = 1;
-	$semana = array('Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo');
-	$valores[] = null;
+	$posicion = 1;	
+	$valores;
 
 // entrada	 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		# Recibe los datos por post y lo asigna a las variables
-		if (isset($_POST['menu'])) {
-			$menu = $_POST['menu'];			
-
-// Proceso 1:			
-		} else {
-			$instruc = "Seleccione el orden e inténtelo de nuevo";
+		# Recibe los valores del arreglo
+		if (isset($_POST['valores'])) {
+			# Valida que todos los controles tengan valor
+			foreach ($_POST['valores'] as $valor) {
+				if ($valor != null) {
+					$valores[] = $valor;					
+				} else {
+					for ($i=0; $i < 10; $i++) { 
+						$valores[$i] = null;	
+					}
+					$instruc = "Digite todos los valores";
+					break;					
+				}
+			}			
+		}  
+	} else {
+		#iniciar el arreglo
+		for ($i=0; $i < 10; $i++) { 
+			$valores[$i] = null;
 		}
-	}
+	}	
+// Proceso 1:			
+		// if (isset($_POST['menu'])) {
+		// 	$menu = $_POST['menu'];			
+
+		// } else {
+		// 	$instruc = "Seleccione el orden e inténtelo de nuevo";
+		// }
 
 // salida
 ?>
@@ -39,17 +57,13 @@
 		<?php 
 			for ($i=0; $i < 10; $i++) { 
 				echo '<div>
-						<label>Posición'. $posicion . '</label>
-						<input type="text" name="indice' . $i . '">
+						<label>Posición'. "_" .  $posicion . '</label>
+						<input type="text" name="valores[]" value="' . $valores[$i] . '">
 					  </div>';
 				$posicion++;
 			}
-
 		?>
-		<!-- <div>
-			<label for="num1">Valor Uno</label>
-			<input type="text" name="num1" id="num1">
-		</div> -->
+		<div>
 			<input type="radio" id="ascendente" name="menu" value="1">
 			<label for="ascendente">Ascendente</label>
 			<input type="radio" id="descendente" name="menu" value="2">
@@ -57,7 +71,19 @@
 		</div>
 		<div>
 			<input type="submit" name="submit" value="Enviar">
+			<input type="reset" name="reset" value="Restaurar">
 		</div>
-	</form>	
+	</form>
+	<h1>Valores ordenados</h1>	
+		<?php
+			# Imprime si todos los índices del arreglo tienen valor			
+			foreach ($valores as $valor) {
+				if ($valor == null) {
+					echo $valor;					
+				} else {
+					echo $valor . ' - ';
+				}
+			}
+		?>
 </body>
 </html>
