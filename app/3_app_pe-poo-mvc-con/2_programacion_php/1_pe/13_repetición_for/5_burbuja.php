@@ -13,33 +13,35 @@
 // entrada	 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		# Recibe los datos por post y lo asigna a las variables
-		$menu = $_POST['menu'];
-		$num1 = $_POST['num1'];		
-		$num2 = $_POST['num2'];
-		$num2 = $_POST['num3'];
+		if (isset($_POST['menu'])) {
+			$menu = $_POST['menu'];
+			$num1 = $_POST['num1'];		
+			$num2 = $_POST['num2'];
+			$num3 = $_POST['num3'];
 
-// Proceso
-		# Evalúa que las variables tengan un valor
-		if ($menu != null && $num1 != null && $num2 != null && $num2 != null) {
-			$instruc = "Faltó algún dato, inténtelo de nuevo";
-			
-		} else {
-			for ($i=0; $i < 2; $i++) { 
-				# ordena los números: Burbuja 
-				if ($num1 >= $num2 ) {					
-					$aux = $num1; 
-					$num1 = $num2;
-					$num2 = $aux;					
+// Proceso 1: Evalúa que las variables tengan un valor		
+			if ($num1 != null && $num2 != null && $num3 != null) {
+				# Ordena los valores
+				for ($i=0; $i < 2; $i++) { 
+					# ordena los números: Burbuja 
+					if ($num1 >= $num2 ) {					
+						$aux = $num1; 
+						$num1 = $num2;
+						$num2 = $aux;					
+					}
+					if ($num2 >= $num3) {					
+						$aux = $num2; 
+						$num2 = $num3;
+						$num3 = $aux;					
+					}
 				}
-				if ($num2 >= $num3) {					
-					$aux = $num2; 
-					$num2 = $num3;
-					$num3 = $aux;					
-				}
+			} else {
+				$instruc = "Faltó algún dato, inténtelo de nuevo";
 			}
+		} else {
+			$instruc = "Seleccione el orden e inténtelo de nuevo";
 		}
 	}
-
 
 // salida
 ?>
@@ -79,27 +81,17 @@
 		<input type="submit" name="submit" value="Enviar">
 	</form>	
 	
-	<!-- Proceso 2 -->
-	<?php 
-		# Selecciona, ejecuta e imprime la serie par o impar
+	<!-- Proceso 2: De acuerdo a la opción del menú, imprime los números -->
+	<!--            de forma ascendente o descendente -->
+	<?php
 		switch ($menu) {
 			case 1:
-				$res = "La serie Par de " . $num1 . " a " . $num2 . " es: ";
-				echo "<h1> $res </h1>";
-				for ($i=$num1; $i <= $num2; $i++) { // ($i = 20; 22 <= 200; $i++ = 22)
-					if ($i % 2 == 0) { // 22 % 2 = 0 == 0
-						echo " - " . $i; // Imprimiendo el valor de $i;
-					}
-				}
+				$res = "El orden Ascendente: " . $num1 . " - " . $num2 . " - " . $num3;
+				echo "<h1> $res </h1>";				
 				break;
 			case 2:
-				$res = "La serie Impar de " . $num1 . " a " . $num2 . " es: ";
-				echo "<h1> $res </h1>";
-				for ($i=$num1; $i <= $num2; $i++) { 
-					if ($i % 2 != 0) {
-						echo " - " . $i;
-					}
-				}
+				$res = "El orden Descendente: " . $num3 . " - " . $num2 . " - " . $num1;
+				echo "<h1> $res </h1>";				
 				break;			
 		}
 	?>
