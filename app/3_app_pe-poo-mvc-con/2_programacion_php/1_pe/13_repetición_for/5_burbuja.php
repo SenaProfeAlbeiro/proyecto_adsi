@@ -2,12 +2,12 @@
 	
 // declaración e inicialización de variables y constantes
 	$nom_aplicacion = "5. Burbuja";
-	$instruc = "Digite tres valores / Enviar";
+	$instruc = "Digite tres valores / Seleccione el Orden / Enviar";
 	$num1 = null;
 	$num2 = null;
 	$num3 = null;
 	$aux = 0;
-	$menu = 0;
+	$menu = null;
 	$res = "";		
 
 // entrada	 
@@ -16,10 +16,11 @@
 		$menu = $_POST['menu'];
 		$num1 = $_POST['num1'];		
 		$num2 = $_POST['num2'];
+		$num2 = $_POST['num3'];
 
 // Proceso
 		# Evalúa que las variables tengan un valor
-		if ($num1 == null || $num2 == null || $num2 == null) {
+		if ($menu != null && $num1 != null && $num2 != null && $num2 != null) {
 			$instruc = "Faltó algún dato, inténtelo de nuevo";
 			
 		} else {
@@ -58,18 +59,22 @@
 	</ul>
 	<form action="" method="POST">		
 		<div>
-			<label for="num1">Mínimo</label>
+			<label for="num1">Valor Uno</label>
 			<input type="text" name="num1" id="num1">
 		</div>
 		<div>
-			<label for="num2">Máximo</label>
+			<label for="num2">Valor Dos</label>
 			<input type="text" name="num2" id="num2">
 		</div>
 		<div>
-			<input type="radio" id="par" name="menu" value="1">
-			<label for="suma">Par</label>
-			<input type="radio" id="impar" name="menu" value="2">
-			<label for="resta">Impar</label>			
+			<label for="num3">Valor Tres</label>
+			<input type="text" name="num3" id="num3">
+		</div>
+		<div>
+			<input type="radio" id="ascendente" name="menu" value="1">
+			<label for="ascendente">Ascendente</label>
+			<input type="radio" id="descendente" name="menu" value="2">
+			<label for="descendente">Descendente</label>			
 		</div>
 		<input type="submit" name="submit" value="Enviar">
 	</form>	
