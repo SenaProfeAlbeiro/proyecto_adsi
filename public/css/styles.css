@@ -82,7 +82,7 @@ aside a{
 	white-space: nowrap;
 }
 main{	
-	transition: all 200ms linear!important;	
+	transition: all 200ms linear!important;		
 }
 /* Área Principal */
 main iframe{
