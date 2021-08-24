@@ -29,6 +29,7 @@
 			$valores[$i] = null;
 		}
 	}	
+		
 // Proceso 1:			
 		// if (isset($_POST['menu'])) {
 		// 	$menu = $_POST['menu'];			

@@ -6,7 +6,7 @@
 	$num1 = null;
 	$num2 = null;
 	$num3 = null;
-	$aux = 0;
+	$aux = null;
 	$menu = null;
 	$res = "";		
 
@@ -24,15 +24,15 @@
 				# Ordena los valores
 				for ($i=0; $i < 2; $i++) { 
 					# ordena los números: Burbuja 
-					if ($num1 >= $num2 ) {					
-						$aux = $num1; 
-						$num1 = $num2;
-						$num2 = $aux;					
+					if ($num1 >= $num2) {
+						$aux = $num1; // $aux = 150
+						$num1 = $num2; // $num1 = 150
+						$num2 = $aux; // $num2 = 20
 					}
 					if ($num2 >= $num3) {					
-						$aux = $num2; 
-						$num2 = $num3;
-						$num3 = $aux;					
+						$aux = $num2; // $aux = 150
+						$num2 = $num3; // $num2 = 30
+						$num3 = $aux; // $num3 = 150
 					}
 				}
 			} else {
