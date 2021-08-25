@@ -17,7 +17,7 @@ public class Ejercicio6 {
         //Descripción del ejercicio
         System.out.println("\nEjercicio 6. Diseñe un programa (en consola) que en un vector "
                 + "de 10 posiciones, primero solicite al \nusuario con un ciclo para el llenado "
-                + "de este, luego ordene el vector en orden ascendente y luego lo \nimprima. "
+                + "de este, luego ordene el vector en orden ascendente o descendente y lo \nimprima. "
                 + "(método burbuja)\n");
 
         //Solicitud de datos

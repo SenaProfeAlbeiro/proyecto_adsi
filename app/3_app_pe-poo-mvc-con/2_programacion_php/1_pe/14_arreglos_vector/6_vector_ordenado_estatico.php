@@ -4,7 +4,7 @@
 	$nom_aplicacion = "6. Vector Ordenado Estático";
 	$instruc = "Digite los valores del vector / Seleccione el Orden / Enviar";
 	$posicion = 1;	
-	$valores;
+	$valores = [];
 
 // entrada	 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -28,15 +28,7 @@
 		for ($i=0; $i < 10; $i++) { 
 			$valores[$i] = null;
 		}
-	}	
-		
-// Proceso 1:			
-		// if (isset($_POST['menu'])) {
-		// 	$menu = $_POST['menu'];			
-
-		// } else {
-		// 	$instruc = "Seleccione el orden e inténtelo de nuevo";
-		// }
+	}
 
 // salida
 ?>
@@ -58,8 +50,8 @@
 		<?php 
 			for ($i=0; $i < 10; $i++) { 
 				echo '<div>
-						<label>Posición'. "_" .  $posicion . '</label>
-						<input type="text" name="valores[]" value="' . $valores[$i] . '">
+						<label>Posición_' . $posicion . '</label>
+						<input type="text" name="valores[]">
 					  </div>';
 				$posicion++;
 			}
@@ -71,17 +63,13 @@
 			<label for="descendente">Descendente</label>			
 		</div>
 		<div>
-			<input type="submit" name="submit" value="Enviar">
-			<input type="reset" name="reset" value="Restaurar">
+			<input type="submit" name="submit" value="Enviar">			
 		</div>
-	</form>
-	<h1>Valores ordenados</h1>	
+	</form>	
 		<?php
-			# Imprime si todos los índices del arreglo tienen valor			
+			# Imprime si todos los índices del arreglo tienen valor		
 			foreach ($valores as $valor) {
-				if ($valor == null) {
-					echo $valor;					
-				} else {
+				if ($valor != null) {
 					echo $valor . ' - ';
 				}
 			}
