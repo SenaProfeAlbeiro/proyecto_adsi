@@ -1,0 +1,12 @@
+. Se utilizó el gestor de referencias bibliográficas Zotero
+
+. Referencias base datos Sena usadas en la guía:
+
+* Reflexiones sobre ingeniería de requisitos y pruebas de software. 
+  https://ebookcentral-proquest-com.bdigital.sena.edu.co/lib/senavirtualsp/detail.action?docID=4795310#
+
+* Fundamentos de periodismo científico y divulgación mediática. 
+  https://ebookcentral-proquest-com.bdigital.sena.edu.co/lib/senavirtualsp/detail.action?docID=3228299
+
+ 
+
