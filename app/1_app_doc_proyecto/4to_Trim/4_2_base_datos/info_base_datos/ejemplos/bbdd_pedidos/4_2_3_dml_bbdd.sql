@@ -179,7 +179,6 @@ FROM productos WHERE seccion = 'DEPORTES'
 -- -------------------------------------------------------------------------------------
 -- CONSULTAS MULTITABLA:
 -- UNIÓN EXTERNA: UNION, UNION ALL, EXCEPT, INTERSECT, MINUS
--- UNIÓN INTERNA: INNER JOIN, LEFT JOIN, RIGHT JOIN
 -- -------------------------------------------------------------------------------------
 -- ## - Seleccione todos los campos de la tabla productos, donde la sección sea 
 --      igual a DEPORTES; una el resultado con la selección de todos los campos
@@ -210,9 +209,8 @@ SELECT * FROM productos_nuevos
 SELECT * FROM productos WHERE seccion = 'DEPORTES' UNION ALL
 SELECT * FROM productos_nuevos
 -- ----------------------------------------------------------------------------
--- Inner Join, Outer Joins (Right Join, Left Join [Composiciones Externas])
--- ----------------------------------------------------------------------------
--- ----------------------------------------------------------------------------
+-- CONSULTAS MULTITABLA:
+-- UNIÓN INTERNA: INNER JOIN, LEFT JOIN, RIGHT JOIN
 -- ----------------------------------------------------------------------------
 -- ## - Inner Join: Solo la información común entre las tablas: clientes y 
 -- pedidos. Clientes de Madrid que SÍ han hecho pedidos
