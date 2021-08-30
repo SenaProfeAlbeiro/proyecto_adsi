@@ -1,0 +1,49 @@
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+body{
+	overflow-y: hidden!important;
+	overflow-x: hidden!important;
+}
+/* Clases especiales */
+.titulo a{
+	font-size: 0.8em;
+}
+.fondo{
+	background: #2D394B;
+	color: #fff;
+}
+
+/* Contenedor */
+
+/* Migas de Pan */
+
+/* Titulo */
+
+/* Área Principal */
+section{	
+	height: 84.4vh;
+	overflow-y: scroll!important;
+	overflow-x: hidden!important;
+}
+iframe{
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+#chartContainer{
+	height: 97%;
+}
+
+/* < Tablet */
+@media only screen and (max-width: 576px) {
+	section{
+		height: 79vh;
+		overflow-y: scroll!important;
+		overflow-x: hidden!important;
+	}
+
+	/* Área Principal */	
+}
