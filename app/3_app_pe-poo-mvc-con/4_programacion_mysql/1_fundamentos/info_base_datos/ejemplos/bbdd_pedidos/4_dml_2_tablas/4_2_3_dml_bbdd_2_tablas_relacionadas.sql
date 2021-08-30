@@ -1,7 +1,9 @@
 -- -------------------------------------------------------------------------------------
--- DML: LENGUAJE DE MANIPULACIÓN DE DATOS (CONSULTAS)
---      CRUD: CREAR (INSERT INTO), CONSULTAR (SELECT), 
---      ACTUALIZAR (UPDATE), ELIMINAR (DELETE)
+-- DML: LENGUAJE DE MANIPULACIÓN DE DATOS (CRUD)
+--      ## CONSULTAS ACCIÓN: CREAR (INSERT INTO), ACTUALIZAR (UPDATE), ELIMINAR (DELETE)
+--						     SELECCIONAR Y MODIFICAR (SELECT INTO)
+--      				     DDL: CREAR TABLA (CREATE)
+--      ## CONSULTAS DE SELECCIÓN: CONSULTAR (SELECT)
 -- -------------------------------------------------------------------------------------
 -- CONSULTAS MULTITABLA:
 -- UNIÓN EXTERNA: UNION Y UNION ALL (EXCEPT, INTERSECT, MINUS -> NO SOPORTADOS MYSQL)
@@ -96,8 +98,9 @@ SELECT * FROM clientes RIGHT JOIN pedidos
 ON clientes.codigo_cliente = pedidos.codigo_cliente
 ORDER BY clientes.codigo_cliente
 -- ----------------------------------------------------------------------------
--- SUBCONSULTA CORRELACIONADA (IN, NOT IN): Devuelve una lista de registros de 
--- Tablas relacionadas
+-- SUBCONSULTA CORRELACIONADA (IN, NOT IN): 
+-- Devuelve una lista de registros de Tablas relacionadas
+-- SELECT de una tabla dentro de otro SELECT de otra tabla. Operadores: ALL, ANY
 -- ----------------------------------------------------------------------------
 -- ## Nombre y precio de aquellos artículos de los que se han pedido más de 20
 --    unidades
@@ -116,3 +119,7 @@ WHERE unidades > 20
 -- ----------------------------------------------------------------------------
 SELECT empresa, poblacion FROM clientes WHERE codigo_cliente NOT IN
 (SELECT codigo_cliente FROM pedidos WHERE forma_pago = 'TARJETA')
+-- ----------------------------------------------------------------------------
+-- CONSULTAS DE ACCIÓN: Actualización, creación de tabla, eliminación, datos
+-- anexados. Comandos DDL-DML: Create, Update, Delete, Insert into, Select into
+-- ----------------------------------------------------------------------------

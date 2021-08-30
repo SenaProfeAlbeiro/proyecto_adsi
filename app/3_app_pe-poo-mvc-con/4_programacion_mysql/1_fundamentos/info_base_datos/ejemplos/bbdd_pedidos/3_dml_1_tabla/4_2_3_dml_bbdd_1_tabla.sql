@@ -1,13 +1,42 @@
 -- -------------------------------------------------------------------------------------
--- DML: LENGUAJE DE MANIPULACIÓN DE DATOS (CONSULTAS)
---      CRUD: CREAR (INSERT INTO), CONSULTAR (SELECT), 
---      ACTUALIZAR (UPDATE), ELIMINAR (DELETE)
 -- -------------------------------------------------------------------------------------
--- ## - CREAR: INSERT INTO, VALUES
+-- DML: LENGUAJE DE MANIPULACIÓN DE DATOS (CRUD)									  --
+--      ## CONSULTAS ACCIÓN: CREAR (INSERT INTO), ACTUALIZAR (UPDATE), 				  --
+--                           ELIMINAR (DELETE), CONSULTAR Y MODIFICAR (SELECT INTO)   --
+--      				     DDL: CREAR TABLA (CREATE)								  --
+--      ## CONSULTAS DE SELECCIÓN: CONSULTAR (SELECT)								  --
 -- -------------------------------------------------------------------------------------
-INSERT INTO pedidos VALUES (null, 4, '2021-05-15', 'Contado', 3.5, 1);
 -- -------------------------------------------------------------------------------------
--- ## - ACTUALIZAR: UPDATE, SET, WHERE
+
+
+-- -------------------------------------------------------------------------------------
+-- CONSULTAS DE ACCIÓN:
+-- CREAR REGISTROS (INSERT INTO, VALUES)
+-- -------------------------------------------------------------------------------------
+-- ## Insertar datos a las tablas: Clientes, productos, pedidos y productos pedidos
+-- -------------------------------------------------------------------------------------
+INSERT INTO clientes VALUES 
+(NULL, 'BELTRÁN E HIJOS','LAS FUENTES 78','MADRID','914456435','ANGEL MARTÍNEZ',NULL)
+-- -------------------------------------------------------------------------------------
+INSERT INTO productos VALUES 
+(NULL, 'FERRETERÍA','DESTORNILLADOR',6.628,'2000-10-22',0,'ESPAÑA',NULL)
+-- -------------------------------------------------------------------------------------
+INSERT INTO pedidos VALUES 
+(null, 1,'2000-03-11','CONTADO',0.02,1)
+-- -------------------------------------------------------------------------------------
+INSERT INTO productos_pedidos VALUES
+(1, 1,11)
+-- -------------------------------------------------------------------------------------
+-- ## Insertar datos a las tablas: Clientes, productos, pedidos y productos pedidos de 
+--    forma masiva (Ver la carpeta 2_dml_datos)
+-- -------------------------------------------------------------------------------------
+
+
+-- -------------------------------------------------------------------------------------
+-- CONSULTAS DE ACCIÓN: 
+-- ACTUALIZAR REGISTROS (UPDATE, SET, WHERE)
+-- -------------------------------------------------------------------------------------
+-- ## Actualizar toda la información del cliente codigo_cliente = 1
 -- -------------------------------------------------------------------------------------
 UPDATE clientes SET 
 empresa = 'EMPANADAS S.A.',
@@ -17,11 +46,33 @@ telefono = '123456789',
 responsable = 'PROFE ALBEIRO'
 WHERE codigo_cliente = 1; 
 -- -------------------------------------------------------------------------------------
--- ## - ELIMINAR: DELETE
+-- ## Incrementar en 10 Euros los artículos de la Sección de Deportes
+-- -------------------------------------------------------------------------------------
+UPDATE productos SET precio = precio + 10
+WHERE seccion = 'DEPORTES'
+-- -------------------------------------------------------------------------------------
+-- ## Decrementar en 10 Euros los artículos de la Sección de Deportes (Devolver)
+-- -------------------------------------------------------------------------------------
+UPDATE productos SET precio = precio - 10
+WHERE seccion = 'DEPORTES'
+-- -------------------------------------------------------------------------------------
+
+
+-- -------------------------------------------------------------------------------------
+-- CONSULTAS DE ACCIÓN: 
+-- ELIMINAR REGISTROS (DELETE)
+-- -------------------------------------------------------------------------------------
+-- ## Eliminar el cliente con codigo_cliente = 1
 -- -------------------------------------------------------------------------------------
 DELETE FROM clientes WHERE codigo_cliente = 1;
 -- -------------------------------------------------------------------------------------
+
+
+
 -- -------------------------------------------------------------------------------------
+-- CONSULTAS DE SELECCIÓN: 
+-- Consultas Generales, criterios, operadores, orden, agrupación o totales, calculadas.
+-- Subconsultas
 -- -------------------------------------------------------------------------------------
 -- CONSULTAS GENERALES: SELECT, *, FROM
 -- -------------------------------------------------------------------------------------
@@ -178,8 +229,8 @@ SELECT nombre_articulo, seccion, precio, fecha,
 DATE_FORMAT(NOW(),'%Y-%m-%d') AS dia_de_hoy, DATEDIFF(NOW(),fecha) AS diferencia_dias 
 FROM productos WHERE seccion = 'DEPORTES'
 -- ----------------------------------------------------------------------------
--- SUBCONSULAS: Escalonada, de lista, correlacionada
--- SELECT dentro de otro SELECT. Operadores: ALL, ANY, IN, NOT IN
+-- SUBCONSULAS: ESCALONADA Y DE LISTA.
+-- SELECT dentro de otro SELECT. Operadores: ALL, ANY
 -- ----------------------------------------------------------------------------
 -- SUBCONSULTA ESCALONADA: Devuelve un único registro
 -- ----------------------------------------------------------------------------
@@ -215,3 +266,8 @@ SELECT * FROM productos WHERE precio > ANY
 -- ----------------------------------------------------------------------------
 SELECT * FROM productos WHERE precio > ANY
 (SELECT precio FROM productos WHERE seccion='JUGUETERÍA')
+-- -------------------------------------------------------------------------------------
+-- CONSULTAS DE ACCIÓN: 
+-- Actualización, creación de tabla, eliminación, datos anexados. 
+-- Comandos DML: Insert into, Update, Delete, Select into, Create
+-- -------------------------------------------------------------------------------------
