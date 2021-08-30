@@ -1,13 +1,100 @@
 -- -------------------------------------------------------------------------------------
--- DML: LENGUAJE DE MANIPULACIÓN DE DATOS (CONSULTAS)
---      CRUD: CREAR (INSERT INTO), CONSULTAR (SELECT), 
---      ACTUALIZAR (UPDATE), ELIMINAR (DELETE)
+-- DDL: 
+--      
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+-- ## - 
+-- -------------------------------------------------------------------------------------
+
+
+
+
+-- -------------------------------------------------------------------------------------
+-- DDL: ACCIONES BÁSICAS CON TABLAS RELACIONADAS 
+--      ELIMINAR Y CREAR ÍNDICES Y RESTRICCIONES:
+--      SHOW, ALTER TABLE, ADD, DROP, KEY, INDEX, CONSTRAINT, FOREIGN KEY, TRUNCATE
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+-- ## - Eliminar bbdd_pedidos
+-- -------------------------------------------------------------------------------------
+DROP DATABASE bbdd_pedidos;
+-- -------------------------------------------------------------------------------------
+-- ## - Mostar cómo se crearon las tablas de la bbdd_pedidos
+-- -------------------------------------------------------------------------------------
+SHOW CREATE TABLE clientes;
+SHOW CREATE TABLE pedidos;
+SHOW CREATE TABLE productos_pedidos;
+SHOW CREATE TABLE productos;
+-- -------------------------------------------------------------------------------------
+-- ## - Eliminar restricción CONSTRAINT e índice KEY de pedidos con clientes
+-- -------------------------------------------------------------------------------------
+ALTER TABLE pedidos DROP CONSTRAINT fk_pedidos_clientes;
+ALTER TABLE pedidos DROP KEY fk_pedidos_clientes;
+-- -------------------------------------------------------------------------------------
+-- ## - Eliminar restricción CONSTRAINT e índice KEY de productos_pedidos con pedidos
+-- -------------------------------------------------------------------------------------
+ALTER TABLE productos_pedidos DROP CONSTRAINT fk_productos_pedidos_pedidos;
+ALTER TABLE productos_pedidos DROP KEY fk_productos_pedidos_pedidos;
+-- -------------------------------------------------------------------------------------
+-- ## - Eliminar restricción CONSTRAINT e índice KEY de productos_pedidos con productos
+-- -------------------------------------------------------------------------------------
+ALTER TABLE productos_pedidos DROP CONSTRAINT fk_productos_pedidos_productos;
+ALTER TABLE productos_pedidos DROP KEY fk_productos_pedidos_productos;
+-- -------------------------------------------------------------------------------------
+-- ## - Eliminar todos los registros de la tabla pedidos y productos_pedidos
+-- -------------------------------------------------------------------------------------
+TRUNCATE pedidos;
+TRUNCATE productos_pedidos;
+-- -------------------------------------------------------------------------------------
+-- ## - Agregar índice y restricción entre la tabla pedidos y clientes
+-- -------------------------------------------------------------------------------------
+ALTER TABLE pedidos
+ADD KEY fk_pedidos_clientes (codigo_cliente),
+ADD CONSTRAINT fk_pedidos_clientes 
+FOREIGN KEY (codigo_cliente)
+REFERENCES clientes (codigo_cliente)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+-- -------------------------------------------------------------------------------------
+-- ## - Agregar índice y restricción entre la tabla productos_pedidos y pedidos
+-- -------------------------------------------------------------------------------------
+ALTER TABLE productos_pedidos
+ADD KEY fk_productos_pedidos_pedidos (numero_pedido),
+ADD CONSTRAINT fk_productos_pedidos_pedidos
+FOREIGN KEY (numero_pedido)
+REFERENCES pedidos (numero_pedido)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+-- -------------------------------------------------------------------------------------
+-- ## - Agregar índice y restricción entre la tabla productos_pedidos y productos
+-- -------------------------------------------------------------------------------------
+ALTER TABLE productos_pedidos
+ADD KEY fk_productos_pedidos_productos (codigo_articulo),
+ADD CONSTRAINT fk_productos_pedidos_productos
+FOREIGN KEY (codigo_articulo)
+REFERENCES productos (codigo_articulo)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+
+
+
+
+-- -------------------------------------------------------------------------------------
+-- CRUD: CREAR (INSERT INTO), CONSULTAR (SELECT), ACTUALIZAR (UPDATE), ELIMINAR (DELETE)
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------
 -- ## - CREAR: INSERT INTO, VALUES
 -- -------------------------------------------------------------------------------------
 INSERT INTO pedidos VALUES (null, 4, '2021-05-15', 'Contado', 3.5, 1);
 -- -------------------------------------------------------------------------------------
--- ## - ACTUALIZAR: UPDATE, SET, WHERE
+-- ## - ACTUALIZAR: UPDATE, SET
 -- -------------------------------------------------------------------------------------
 UPDATE clientes SET 
 empresa = 'EMPANADAS S.A.',
@@ -23,7 +110,14 @@ DELETE FROM clientes WHERE codigo_cliente = 1;
 -- -------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------
--- CONSULTAS GENERALES: SELECT, *, FROM
+-- -------------------------------------------------------------------------------------
+
+
+
+-- -------------------------------------------------------------------------------------
+-- CONSULTAS GENERALES: *, FROM
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------
 -- ## - Seleccione todos (*) los campos de la tabla productos
 -- -------------------------------------------------------------------------------------
@@ -32,6 +126,14 @@ SELECT * FROM productos;
 -- ## - Seleccione los campos sección, nombre_articulo y precio de la tabla productos
 -- -------------------------------------------------------------------------------------
 SELECT seccion, nombre_articulo, precio FROM productos;
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+
+
+
+
 -- -------------------------------------------------------------------------------------
 -- CONSULTAS CON CRITERIOS: WHERE
 -- -------------------------------------------------------------------------------------
@@ -97,15 +199,13 @@ WHERE seccion = 'CERÁMICA'OR seccion = 'DEPORTES'
 ORDER BY seccion, precio;
 -- -------------------------------------------------------------------------------------
 -- ## - Seleccione todos los campos de la tabla productos donde la sección sea igual a 
---      'CERÁMICA' y 'DEPORTES', después lo ordene por sección, país de origen y precio
+--      'CERÁMICA' y 'DEPORTES', después lo ordene por sección y país de origen
 -- -------------------------------------------------------------------------------------
 SELECT * FROM productos 
 WHERE seccion = 'CERÁMICA' OR seccion = 'DEPORTES' 
-ORDER BY seccion, pais_origen, precio;
+ORDER BY seccion, pais_origen;
 -- -------------------------------------------------------------------------------------
--- CONSULTAS DE AGRUPACIÓN O TOTALES
--- FUNCIONES DE AGREGADO: SUM(), AVG(), COUNT(), MAX(), MIN (),
--- CAMPO DE AGRUPACIÓN Y CAMPO DEL CÁLCULO 
+-- CONSULTAS CALCULADAS: SUM(), AVG(), COUNT(), MAX(), MIN (), 
 -- GROUP BY, AS (ALIAS), HAVING (POR WHERE), 
 -- DATE_FORMAT(NOW(),'%Y-%m-%d') AS alias, DATEDIFF(NOW(),fecha)
 -- -------------------------------------------------------------------------------------
@@ -121,7 +221,7 @@ SELECT seccion, SUM(precio) AS sum_articulos FROM productos
 GROUP BY seccion ORDER BY sum_articulos;
 -- -------------------------------------------------------------------------------------
 -- ## - Seleccione la sección (agrupación) y calcule la media de los precios (cálculo) 
---      de la tabla productos, lo agrupe (HAVING) por la sección DEPORTES y CONFECCIÓN y los 
+--      de la tabla productos, lo agrupe por la sección DEPORTES y CONFECCIÓN y los 
 --      ordene por la media de los artículos
 -- -------------------------------------------------------------------------------------
 SELECT seccion, AVG(precio) AS media_articulos FROM productos 
@@ -141,9 +241,6 @@ GROUP BY poblacion ORDER BY num_cliente DESC
 SELECT seccion, MAX(precio) AS precio_alto FROM productos 
 WHERE seccion = 'CONFECCIÓN' GROUP BY seccion
 -- -------------------------------------------------------------------------------------
--- CONSULTAS DE CÁLCULO: NOW(), DATEDIFF(), DATE_FORMAT(), CONCAT(), ROUND(), TRUNCATE()
--- DATE_FORMAT(NOW(),'%Y-%m-%d') AS alias, DATEDIFF(NOW(),fecha)
--- -------------------------------------------------------------------------------------
 -- ## - Seleccione el articulo, seccion y precio de la tabla productos y cree un campo 
 --      calculado del precio más el IVA
 -- -------------------------------------------------------------------------------------
@@ -162,13 +259,6 @@ FROM productos
 SELECT nombre_articulo, seccion, precio, ROUND(precio*1.19,2) AS precio_con_iva 
 FROM productos
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione el articulo, seccion y precio de la tabla productos y cree un campo 
---      calculado con un descuento de 3 euros, redondee a dos decimales y llame el nuevo 
---      campo como descuento
--- -------------------------------------------------------------------------------------
-SELECT nombre_articulo, seccion, precio, precio-3 AS descuento 
-FROM productos
--- -------------------------------------------------------------------------------------
 -- ## - Seleccione el articulo, seccion, precio y fecha de la tabla productos, cree un
 --      campo calculado de la diferencia de días entre la fecha almacenada y la fecha 
 --      actual, agrupelo por la sección DEPORTES
@@ -176,10 +266,7 @@ FROM productos
 SELECT nombre_articulo, seccion, precio, fecha, 
 DATE_FORMAT(NOW(),'%Y-%m-%d') AS dia_de_hoy, DATEDIFF(NOW(),fecha) AS diferencia_dias 
 FROM productos WHERE seccion = 'DEPORTES'
--- -------------------------------------------------------------------------------------
--- CONSULTAS MULTITABLA:
--- UNIÓN EXTERNA: UNION Y UNION ALL (EXCEPT, INTERSECT, MINUS -> NO SOPORTADOS MYSQL)
--- -------------------------------------------------------------------------------------
+
 -- ## - Seleccione todos los campos de la tabla productos, donde la sección sea 
 --      igual a DEPORTES; una el resultado con la selección de todos los campos
 --      de la tabla productosnuevos, donde la sección sea igual a DEPORTES DE 
@@ -209,45 +296,18 @@ SELECT * FROM productos_nuevos
 SELECT * FROM productos WHERE seccion = 'DEPORTES' UNION ALL
 SELECT * FROM productos_nuevos
 -- ----------------------------------------------------------------------------
--- CONSULTAS MULTITABLA:
--- UNIÓN INTERNA: INNER JOIN, LEFT JOIN, RIGHT JOIN --> OUTER JOINS 
--- (COMPOSICIONES EXTERNAS)
+-- Inner Join, Outer Joins (Right Join, Left Join [Composiciones Externas])
 -- ----------------------------------------------------------------------------
--- ## Inner Join: Solo la información común entre las tablas: clientes y 
+-- ----------------------------------------------------------------------------
+-- ----------------------------------------------------------------------------
+-- ## - Inner Join: Solo la información común entre las tablas: clientes y 
 -- pedidos. Clientes de Madrid que SÍ han hecho pedidos
 -- ----------------------------------------------------------------------------
 SELECT * FROM clientes INNER JOIN pedidos 
 ON clientes.codigo_cliente = pedidos.codigo_cliente
 WHERE poblacion = 'MADRID' ORDER BY clientes.codigo_cliente
 -- ----------------------------------------------------------------------------
--- ## Inner Join: Solo la información común entre las tablas: clientes y 
--- pedidos. Campos codigo_cliente, empresa, pobalción, fecha_pedido de la tabla
--- Clientes, que sean de Madrid y que SÍ han hecho pedidos
--- ----------------------------------------------------------------------------
-SELECT clientes.codigo_cliente, empresa, poblacion, fecha_pedido  
-FROM clientes INNER JOIN pedidos 
-ON clientes.codigo_cliente = pedidos.codigo_cliente
-WHERE poblacion = 'MADRID' ORDER BY clientes.codigo_cliente
--- ----------------------------------------------------------------------------
--- ## Inner Join: Ver el codigo_cliente, poblacion, direccion, numero_pedido
--- de la tabla clientes y codigo_cliente, forma_pago de la tabla pedidos donde
--- clientes y pedidos estén relacionados
--- ----------------------------------------------------------------------------
-SELECT clientes.codigo_cliente, poblacion, direccion, numero_pedido, 
-pedidos.codigo_cliente, forma_pago FROM clientes INNER JOIN pedidos
-ON clientes.codigo_cliente = pedidos.codigo_cliente
--- ----------------------------------------------------------------------------
--- ## Inner Join: Ver el codigo_cliente, poblacion, direccion, numero_pedido
--- de la tabla clientes y codigo_cliente, forma_pago de la tabla pedidos donde
--- clientes y pedidos estén relacionados. Además, filtre solo los de Madrid y
--- los ordene de menor a mayor
--- ----------------------------------------------------------------------------
-SELECT clientes.codigo_cliente, poblacion, direccion, 
-numero_pedido, forma_pago FROM clientes INNER JOIN pedidos
-ON clientes.codigo_cliente = pedidos.codigo_cliente
-WHERE poblacion = "MADRID" ORDER BY clientes.codigo_cliente
--- ----------------------------------------------------------------------------
--- ## Left Join: La información de la tabla de la izquierda (clientes) y 
+-- ## - Left Join: La información de la tabla de la izquierda (clientes) y 
 -- y la información común entre las tablas: clientes y pedidos.
 -- Todos los clientes de Madrid y que además hayan hecho pedidos
 -- ----------------------------------------------------------------------------
@@ -255,14 +315,32 @@ SELECT * FROM clientes LEFT JOIN pedidos
 ON clientes.codigo_cliente = pedidos.codigo_cliente
 WHERE poblacion = 'MADRID' ORDER BY clientes.codigo_cliente
 -- ----------------------------------------------------------------------------
--- ## Left Join: Todos los clientes de Madrid y que no hayan hecho pedidos
+-- ## - Left Join: Ver el codigo_cliente, poblacion, direccion, numero_pedido
+-- de la tabla clientes y codigo_cliente, forma_pago de la tabla pedidos donde
+-- clientes y pedidos estén relacionados
+-- ----------------------------------------------------------------------------
+SELECT clientes.codigo_cliente, poblacion, direccion, numero_pedido, 
+pedidos.codigo_cliente, forma_pago FROM clientes INNER JOIN pedidos
+ON clientes.codigo_cliente = pedidos.codigo_cliente
+-- ----------------------------------------------------------------------------
+-- ## - Left Join: Ver el codigo_cliente, poblacion, direccion, numero_pedido
+-- de la tabla clientes y codigo_cliente, forma_pago de la tabla pedidos donde
+-- clientes y pedidos estén relacionados. Además, filtre solo los de Madrid y
+-- los ordene de menor a mayor
+-- ----------------------------------------------------------------------------
+SELECT clientes.codigo_cliente, poblacion, direccion, numero_pedido, 
+pedidos.codigo_cliente, forma_pago FROM clientes INNER JOIN pedidos
+ON clientes.codigo_cliente = pedidos.codigo_cliente
+WHERE poblacion = "MADRID" ORDER BY clientes.codigo_cliente
+-- ----------------------------------------------------------------------------
+-- ## - Todos los clientes de Madrid y que no hayan hecho pedidos
 -- ----------------------------------------------------------------------------
 SELECT * FROM clientes LEFT JOIN pedidos 
 ON clientes.codigo_cliente = pedidos.codigo_cliente
 WHERE poblacion = 'MADRID' AND pedidos.codigo_cliente IS NULL
 ORDER BY clientes.codigo_cliente
 -- ----------------------------------------------------------------------------
--- ## Right Join: La información de la tabla de la derecha (pedidos) y 
+-- ## - Right Join: La información de la tabla de la derecha (pedidos) y 
 -- y la información común entre las tablas: clientes y pedidos
 -- Todos pedidos que se hayan hecho, así no tengan clientes asociados (OJO)
 -- ----------------------------------------------------------------------------
@@ -270,46 +348,7 @@ SELECT * FROM clientes RIGHT JOIN pedidos
 ON clientes.codigo_cliente = pedidos.codigo_cliente
 ORDER BY clientes.codigo_cliente
 -- ----------------------------------------------------------------------------
--- SUBCONSULAS: Escalonada, de lista, correlacionada
--- SELECT dentro de otro SELECT. Operadores: ALL, ANY, IN, NOT IN
+-- ## - Consultas multitabla: Escalonada, de lista, correlacionada
+-- SELECT dentro de otro SELECT
 -- ----------------------------------------------------------------------------
--- SUBCONSULTA ESCALONADA: Devuelve un único registro
--- ----------------------------------------------------------------------------
--- ## Nombre y sección de los productos cuyo precio sea inferior a la media
--- ----------------------------------------------------------------------------
-SELECT nombre_articulo, seccion FROM productos 
-WHERE precio < (SELECT AVG(precio) FROM productos)
--- ----------------------------------------------------------------------------
--- SUBCONSULTA DE LISTA (ALL): Devuelve una lista de registros (Todos)
--- ----------------------------------------------------------------------------
--- ## Todos los artículos cuyo precio sea superior a todos (Precio más alto) 
---    los artículos de la sección cerámica
--- ----------------------------------------------------------------------------
-SELECT * FROM productos WHERE precio > ALL
-(SELECT precio FROM productos WHERE seccion='CERÁMICA')
--- ----------------------------------------------------------------------------
--- ## Todos los artículos cuyo precio sea superior a todos los artículos de 
---    juguetería (Precio más alto)
--- ----------------------------------------------------------------------------
-SELECT * FROM productos WHERE precio > ALL
-(SELECT precio FROM productos WHERE seccion='JUGUETERÍA')
--- ----------------------------------------------------------------------------
--- SUBCONSULTA DE LISTA (ANY): Devuelve una lista de registros (Cualquiera)
--- ----------------------------------------------------------------------------
--- ## Todos los artículos cuyo precio sea superior a cualquiera (Precio más 
---    bajo) de los artículos de la sección cerámica
--- ----------------------------------------------------------------------------
-SELECT * FROM productos WHERE precio > ANY
-(SELECT precio FROM productos WHERE seccion='CERÁMICA')
--- ----------------------------------------------------------------------------
--- ## Todos los artículos cuyo precio sea superior a cualquiera los artículos  
---    de juguetería (Precio más bajo)
--- ----------------------------------------------------------------------------
-SELECT * FROM productos WHERE precio > ANY
-(SELECT precio FROM productos WHERE seccion='JUGUETERÍA')
--- ----------------------------------------------------------------------------
--- SUBCONSULTA CORRELACIONADA (IN, NOT IN): Devuelve una lista de registros de 
--- Tablas relacionadas
--- ----------------------------------------------------------------------------
--- ## 
--- ----------------------------------------------------------------------------
+
