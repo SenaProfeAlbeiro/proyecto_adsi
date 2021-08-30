@@ -64,6 +64,7 @@ SELECT * FROM productos WHERE precio > 300;
 --      '2000-03-01' y '2000-04-30'
 -- -------------------------------------------------------------------------------------
 SELECT * FROM productos WHERE fecha BETWEEN '2000-03-01' AND '2000-04-30';
+-- -------------------------------------------------------------------------------------
 SELECT * FROM productos WHERE fecha >= '2000-03-01' AND fecha <= '2000-04-30';
 -- -------------------------------------------------------------------------------------
 -- CONSULTAS ORDENADAS POR UNO O VARIOS CAMPOS: ORDER BY, ASC, DESC
@@ -311,5 +312,9 @@ SELECT * FROM productos WHERE precio > ANY
 -- SUBCONSULTA CORRELACIONADA (IN, NOT IN): Devuelve una lista de registros de 
 -- Tablas relacionadas
 -- ----------------------------------------------------------------------------
--- ## 
+-- ## Nombre y precio de aquellos artículos de los que se han pedido más de 20
+--    unidades
+-- ----------------------------------------------------------------------------
+SELECT nombre_articulo, precio FROM productos WHERE codigo_articulo IN 
+(SELECT codigo_articulo FROM productos_pedidos WHERE unidades > 20)
 -- ----------------------------------------------------------------------------
