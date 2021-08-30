@@ -1,9 +1,72 @@
 -- -------------------------------------------------------------------------------------
--- DML: LENGUAJE DE MANIPULACIÓN DE DATOS (CRUD)
---      ## CONSULTAS ACCIÓN: CREAR (INSERT INTO), ACTUALIZAR (UPDATE), ELIMINAR (DELETE)
---						     SELECCIONAR Y MODIFICAR (SELECT INTO)
---      				     DDL: CREAR TABLA (CREATE)
---      ## CONSULTAS DE SELECCIÓN: CONSULTAR (SELECT)
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+-- DML: LENGUAJE DE MANIPULACIÓN DE DATOS (CRUD)									  --
+--      ## CONSULTAS ACCIÓN --> EN MÁS DE UNA TABLA (MULTITABLA)					  --
+-- 		   TABLA A PARTIR DE OTRA (DDL->CREATE TABLE)								  --
+--		   ELIMINAR (DELETE), DATOS ANEXADOS (INSERT INTO)				 			  --
+-- -------------------------------------------------------------------------------------
+-- 		   NOTA: Insertar datos a las tablas Clientes, Productos, Pedidos y Productos --
+--				 Pedidos de forma masiva (Ver la carpeta 2_dml_datos)  				  --
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+
+-- -------------------------------------------------------------------------------------
+-- CONSULTAS DE ACCIÓN: 
+-- CREAR TABLA A PARTIR DE OTRA (DDL->CREATE TABLE)
+-- -------------------------------------------------------------------------------------
+## Crear una nueva tabla de solo los clientes de Madrid
+-- -------------------------------------------------------------------------------------
+CREATE TABLE clientes_madrid SELECT * FROM clientes
+WHERE poblacion = 'MADRID'
+-- -------------------------------------------------------------------------------------
+
+
+-- -------------------------------------------------------------------------------------
+-- CONSULTAS DE ACCIÓN:
+-- ## Eliminar todos los clientes que no han hecho pedidos
+-- -------------------------------------------------------------------------------------
+DELETE DISTINCTROW clientes.*, pedidos.codigo_cliente 
+FROM clientes LEFT JOIN pedidos 
+ON clientes.codigo_cliente = pedidos.codigo_cliente
+WHERE pedidos.codigo_cliente IS NULL
+-- -------------------------------------------------------------------------------------
+
+
+-- -------------------------------------------------------------------------------------
+-- CONSULTAS DE ACCIÓN:
+-- DATOS ANEXADOS (INSERT INTO, VALUES)
+-- -------------------------------------------------------------------------------------
+## Anexar los registros de la tabla clientes_madrid a clientes
+-- -------------------------------------------------------------------------------------
+INSERT INTO clientes SELECT * FROM clientes_madrid
+-- -------------------------------------------------------------------------------------
+## Anexar los campos codigo_empresa, empresa, poblacion, telefono de la tabla 
+-- clientes_madrid a la tabla clientes
+-- -------------------------------------------------------------------------------------
+INSERT INTO clientes (codigo_cliente, empresa, poblacion, telefono) 
+SELECT codigo_cliente, empresa, poblacion, telefono FROM clientes_madrid
+-- -------------------------------------------------------------------------------------
+
+
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+-- DML: LENGUAJE DE MANIPULACIÓN DE DATOS (CRUD)									  --
+--      ## CONSULTAS DE SELECCIÓN EN MÁS DE UNA TABLA (MULTITABLA):					  --
+--         CONSULTAR (SELECT): Generales, criterios, operadores, ordenadas,			  --
+--  	   agrupación o totales, calculadas y Subconsultas							  --
+-- -------------------------------------------------------------------------------------
+-- 		   NOTA: Eliminar Base de Datos / Cargar nuevamenta base de datos / Insertar  --
+--               datos a las tablas Clientes, Productos, Pedidos y Productos Pedidos  --
+-- 				 de forma masiva (Ver la carpeta 2_dml_datos)		  				  --
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+
+
+
 -- -------------------------------------------------------------------------------------
 -- CONSULTAS MULTITABLA:
 -- UNIÓN EXTERNA: UNION Y UNION ALL (EXCEPT, INTERSECT, MINUS -> NO SOPORTADOS MYSQL)
@@ -41,8 +104,17 @@ SELECT * FROM productos_nuevos
 -- UNIÓN INTERNA: INNER JOIN, LEFT JOIN, RIGHT JOIN --> OUTER JOINS 
 -- (COMPOSICIONES EXTERNAS)
 -- ----------------------------------------------------------------------------
--- ## Inner Join: Solo la información común entre las tablas: clientes y 
--- pedidos. Clientes de Madrid que SÍ han hecho pedidos
+-- ## Empresas que han hecho pedidos
+-- ----------------------------------------------------------------------------
+SELECT empresa FROM clientes INNER JOIN pedidos
+ON clientes.codigo_cliente = pedidos.codigo_cliente
+-- ----------------------------------------------------------------------------
+-- ## Empresas que han hecho pedidos sin repeticiones
+-- ----------------------------------------------------------------------------
+SELECT DISTINCT empresa FROM clientes INNER JOIN pedidos
+ON clientes.codigo_cliente = pedidos.codigo_cliente
+-- ----------------------------------------------------------------------------
+-- ## Clientes de Madrid que SÍ han hecho pedidos
 -- ----------------------------------------------------------------------------
 SELECT * FROM clientes INNER JOIN pedidos 
 ON clientes.codigo_cliente = pedidos.codigo_cliente
@@ -75,7 +147,7 @@ numero_pedido, forma_pago FROM clientes INNER JOIN pedidos
 ON clientes.codigo_cliente = pedidos.codigo_cliente
 WHERE poblacion = "MADRID" ORDER BY clientes.codigo_cliente
 -- ----------------------------------------------------------------------------
--- ## Left Join: La información de la tabla de la izquierda (clientes) y 
+-- ## La información de la tabla de la izquierda (clientes) y 
 -- y la información común entre las tablas: clientes y pedidos.
 -- Todos los clientes de Madrid y que además hayan hecho pedidos
 -- ----------------------------------------------------------------------------
@@ -83,7 +155,7 @@ SELECT * FROM clientes LEFT JOIN pedidos
 ON clientes.codigo_cliente = pedidos.codigo_cliente
 WHERE poblacion = 'MADRID' ORDER BY clientes.codigo_cliente
 -- ----------------------------------------------------------------------------
--- ## Left Join: Todos los clientes de Madrid y que no hayan hecho pedidos
+-- ## Todos los clientes de Madrid y que no hayan hecho pedidos
 -- ----------------------------------------------------------------------------
 SELECT * FROM clientes LEFT JOIN pedidos 
 ON clientes.codigo_cliente = pedidos.codigo_cliente
@@ -123,3 +195,5 @@ SELECT empresa, poblacion FROM clientes WHERE codigo_cliente NOT IN
 -- CONSULTAS DE ACCIÓN: Actualización, creación de tabla, eliminación, datos
 -- anexados. Comandos DDL-DML: Create, Update, Delete, Insert into, Select into
 -- ----------------------------------------------------------------------------
+
+

@@ -1,10 +1,13 @@
 -- -------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
 -- DML: LENGUAJE DE MANIPULACIÓN DE DATOS (CRUD)									  --
---      ## CONSULTAS ACCIÓN: CREAR (INSERT INTO), ACTUALIZAR (UPDATE), 				  --
---                           ELIMINAR (DELETE), CONSULTAR Y MODIFICAR (SELECT INTO)   --
---      				     DDL: CREAR TABLA (CREATE)								  --
---      ## CONSULTAS DE SELECCIÓN: CONSULTAR (SELECT)								  --
+--      ## CONSULTAS ACCIÓN --> EN UNA TABLA										  --
+--		   CREAR (INSERT INTO), ACTUALIZAR (UPDATE), ELIMINAR (DELETE)  			  --
+-- -------------------------------------------------------------------------------------
+-- 		   NOTA: Insertar datos a las tablas Clientes, Productos, Pedidos y Productos --
+--				 Pedidos de forma masiva (Ver la carpeta 2_dml_datos)  				  --
+-- -------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------
 
@@ -13,7 +16,7 @@
 -- CONSULTAS DE ACCIÓN:
 -- CREAR REGISTROS (INSERT INTO, VALUES)
 -- -------------------------------------------------------------------------------------
--- ## Insertar datos a las tablas: Clientes, productos, pedidos y productos pedidos
+## Insertar datos a las tablas: Clientes, productos, pedidos y productos pedidos
 -- -------------------------------------------------------------------------------------
 INSERT INTO clientes VALUES 
 (NULL, 'BELTRÁN E HIJOS','LAS FUENTES 78','MADRID','914456435','ANGEL MARTÍNEZ',NULL)
@@ -27,16 +30,13 @@ INSERT INTO pedidos VALUES
 INSERT INTO productos_pedidos VALUES
 (1, 1,11)
 -- -------------------------------------------------------------------------------------
--- ## Insertar datos a las tablas: Clientes, productos, pedidos y productos pedidos de 
---    forma masiva (Ver la carpeta 2_dml_datos)
--- -------------------------------------------------------------------------------------
 
 
 -- -------------------------------------------------------------------------------------
 -- CONSULTAS DE ACCIÓN: 
 -- ACTUALIZAR REGISTROS (UPDATE, SET, WHERE)
 -- -------------------------------------------------------------------------------------
--- ## Actualizar toda la información del cliente codigo_cliente = 1
+## Actualizar toda la información del cliente codigo_cliente = 1
 -- -------------------------------------------------------------------------------------
 UPDATE clientes SET 
 empresa = 'EMPANADAS S.A.',
@@ -46,15 +46,21 @@ telefono = '123456789',
 responsable = 'PROFE ALBEIRO'
 WHERE codigo_cliente = 1; 
 -- -------------------------------------------------------------------------------------
--- ## Incrementar en 10 Euros los artículos de la Sección de Deportes
+## Incrementar y decrementar en 10 Euros los artículos de la Sección de Deportes
 -- -------------------------------------------------------------------------------------
 UPDATE productos SET precio = precio + 10
 WHERE seccion = 'DEPORTES'
 -- -------------------------------------------------------------------------------------
--- ## Decrementar en 10 Euros los artículos de la Sección de Deportes (Devolver)
--- -------------------------------------------------------------------------------------
 UPDATE productos SET precio = precio - 10
 WHERE seccion = 'DEPORTES'
+-- -------------------------------------------------------------------------------------
+## Cambiar el nombre de la sección DEPORTES A DEPORTIVOS y viceversa
+-- -------------------------------------------------------------------------------------
+UPDATE productos SET seccion = 'DEPORTIVOS'
+WHERE seccion = 'DEPORTES'
+-- -------------------------------------------------------------------------------------
+UPDATE productos SET seccion = 'DEPORTES'
+WHERE seccion = 'DEPORTIVOS'
 -- -------------------------------------------------------------------------------------
 
 
@@ -62,119 +68,164 @@ WHERE seccion = 'DEPORTES'
 -- CONSULTAS DE ACCIÓN: 
 -- ELIMINAR REGISTROS (DELETE)
 -- -------------------------------------------------------------------------------------
--- ## Eliminar el cliente con codigo_cliente = 1
+## Eliminar el cliente con codigo_cliente = 1
 -- -------------------------------------------------------------------------------------
 DELETE FROM clientes WHERE codigo_cliente = 1;
 -- -------------------------------------------------------------------------------------
-
+## Eliminar todos los clientes de Madrid
+-- -------------------------------------------------------------------------------------
+DELETE FROM clientes WHERE poblacion = 'MADRID'
+-- -------------------------------------------------------------------------------------
+## Eliminar articulos de la sección deportes y cerámica
+-- -------------------------------------------------------------------------------------
+DELETE FROM productos 
+WHERE seccion = 'DEPORTES' OR seccion = 'CERÁMICA'
+-- -------------------------------------------------------------------------------------
+## Eliminar articulos de la sección deportes y se encuentran entre 50 y 100 Euros
+-- -------------------------------------------------------------------------------------
+DELETE FROM productos 
+WHERE seccion = 'DEPORTES' AND precio BETWEEN 50 AND 100
+-- -------------------------------------------------------------------------------------
 
 
 -- -------------------------------------------------------------------------------------
--- CONSULTAS DE SELECCIÓN: 
--- Consultas Generales, criterios, operadores, orden, agrupación o totales, calculadas.
--- Subconsultas
 -- -------------------------------------------------------------------------------------
--- CONSULTAS GENERALES: SELECT, *, FROM
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione todos (*) los campos de la tabla productos
+-- DML: LENGUAJE DE MANIPULACIÓN DE DATOS (CRUD)									  --
+--      ## CONSULTAS DE SELECCIÓN --> EN UNA TABLA									  --
+--         CONSULTAR (SELECT): Consultas Generales, criterios, operadores, ordenadas, --
+--  	   agrupación o totales, calculadas y Subconsultas							  --
+-- -------------------------------------------------------------------------------------
+-- 		   NOTA: Eliminar Base de Datos / Cargar nuevamenta base de datos / Insertar  --
+--               datos a las tablas Clientes, Productos, Pedidos y Productos Pedidos  --
+-- 				 de forma masiva (Ver la carpeta 2_dml_datos)		  				  --
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------
+
+
+-- -------------------------------------------------------------------------------------
+-- CONSULTAS DE SELECCIÓN:
+-- CONSULTAS GENERALES (SELECT, *, CAMPOS, FROM)
+-- -------------------------------------------------------------------------------------
+## Seleccione todos (*) los campos de la tabla productos
 -- -------------------------------------------------------------------------------------
 SELECT * FROM productos;
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione los campos sección, nombre_articulo y precio de la tabla productos
+## Seleccione todos (*) los campos de la tabla productos sin repetición de filas
+-- -------------------------------------------------------------------------------------
+SELECT DISTINCTROW * FROM productos;
+-- -------------------------------------------------------------------------------------
+## Seleccione los campos sección, nombre_articulo y precio de la tabla productos
 -- -------------------------------------------------------------------------------------
 SELECT seccion, nombre_articulo, precio FROM productos;
 -- -------------------------------------------------------------------------------------
--- CONSULTAS CON CRITERIOS: WHERE
+
+
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione los campos sección, nombre_articulo y precio de la tabla productos
---      donde la sección sea 'CERÁMICA'
+-- CONSULTAS DE SELECCIÓN:
+-- CONSULTAS CON CRITERIOS (WHERE)
+-- -------------------------------------------------------------------------------------
+## Seleccione los campos sección, nombre_articulo y precio de la tabla productos donde
+-- la sección sea 'CERÁMICA'
 -- -------------------------------------------------------------------------------------
 SELECT seccion, nombre_articulo, precio FROM productos 
 WHERE seccion = 'CERÁMICA';
 -- -------------------------------------------------------------------------------------
--- OPERADORES LÓGICOS Y DE COMPARACIÓN
--- LÓGICOS:      AND, OR, NOT
--- COMPARACIÓN:  LIKE, <>, <=, >=, <, >, BEETWEEN, IN, ANY, ALL
+
+
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione los campos sección, nombre_articulo y precio de la tabla productos 
---      donde sección sea igual a 'CERÁMICA' y (realmente es 'OR') 'DEPORTES'
+-- CONSULTAS DE SELECCIÓN:
+-- CONSULTAS CON CRITERIOS Y OPERADORES
+-- 		# OPERADORES LÓGICOS (AND, OR, NOT)
+-- 		# OPERADORES DE COMPARACIÓN (LIKE, <>, <=, >=, <, >, BEETWEEN, IN, ANY, ALL)
+-- -------------------------------------------------------------------------------------
+## Seleccione los campos sección, nombre_articulo y precio de la tabla productos donde
+-- sección sea igual a 'CERÁMICA' y (realmente es 'OR') 'DEPORTES'
 -- -------------------------------------------------------------------------------------
 SELECT seccion, nombre_articulo, precio FROM productos 
 WHERE seccion = 'CERÁMICA' OR seccion = 'DEPORTES';
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione todos los campos de la tabla productos donde sección sea igual a 
---      'DEPORTES' y su país de origen sea 'USA'
+## Seleccione todos los campos de productos donde sección sea igual a 'DEPORTES' y su
+-- país de origen sea 'USA'
 -- -------------------------------------------------------------------------------------
 SELECT * FROM productos WHERE seccion = 'DEPORTES' AND pais_origen = 'USA';
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione todos los campos de la tabla productos donde precio sea mayor 300
+## - Seleccione todos los campos de la tabla productos donde precio sea mayor 300
 -- -------------------------------------------------------------------------------------
 SELECT * FROM productos WHERE precio > 300;
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione todos los campos de la tabla productos donde la fecha esté entre 
---      '2000-03-01' y '2000-04-30'
+## Seleccione todos los campos productos donde la fecha esté entre '2000-03-01' y
+-- '2000-04-30'
 -- -------------------------------------------------------------------------------------
 SELECT * FROM productos WHERE fecha BETWEEN '2000-03-01' AND '2000-04-30';
 -- -------------------------------------------------------------------------------------
 SELECT * FROM productos WHERE fecha >= '2000-03-01' AND fecha <= '2000-04-30';
 -- -------------------------------------------------------------------------------------
--- CONSULTAS ORDENADAS POR UNO O VARIOS CAMPOS: ORDER BY, ASC, DESC
+
+
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione todos los campos de la tabla productos donde la sección sea igual a 
---      'CERÁMICA' y 'DEPORTES' y que lo ordene por la sección (Ascendente)
+-- CONSULTAS DE SELECCIÓN:
+-- CONSULTAS ORDENADAS POR UNO O VARIOS CAMPOS (ORDER BY, ASC, DESC)
+-- -------------------------------------------------------------------------------------
+## Seleccione todos los campos de la tabla productos donde la sección sea igual a 
+-- 'CERÁMICA' y 'DEPORTES' y que lo ordene por la sección (Ascendente)
 -- -------------------------------------------------------------------------------------
 SELECT * FROM productos 
 WHERE seccion = 'CERÁMICA' OR seccion = 'DEPORTES' 
 ORDER BY seccion ASC;
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione todos los campos de la tabla productos donde la sección sea igual a 
---      'CERÁMICA' y 'DEPORTES' y que lo ordene por la sección (Descendente)
+## Seleccione todos los campos de la tabla productos donde la sección sea igual a 
+-- 'CERÁMICA' y 'DEPORTES' y que lo ordene por la sección (Descendente)
 -- -------------------------------------------------------------------------------------
 SELECT * FROM productos 
 WHERE seccion = 'CERÁMICA' OR seccion = 'DEPORTES' 
 ORDER BY seccion DESC;
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione todos los campos de la tabla productos donde la sección sea igual a 
---      'CERÁMICA' y 'DEPORTES' y que lo ordene por el precio
+## Seleccione todos los campos de la tabla productos donde la sección sea igual a 
+-- 'CERÁMICA' y 'DEPORTES' y que lo ordene por el precio
 -- -------------------------------------------------------------------------------------
 SELECT * FROM productos 
 WHERE seccion = 'CERÁMICA' OR seccion = 'DEPORTES' 
 ORDER BY precio;
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione todos los campos de la tabla productos donde la sección sea igual a 
---      'CERÁMICA' y 'DEPORTES', después lo ordene por sección y luego por precio
+## Seleccione todos los campos de la tabla productos donde la sección sea igual a 
+-- 'CERÁMICA' y 'DEPORTES', después lo ordene por sección y luego por precio
 -- -------------------------------------------------------------------------------------
 SELECT * FROM productos 
 WHERE seccion = 'CERÁMICA'OR seccion = 'DEPORTES' 
 ORDER BY seccion, precio;
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione todos los campos de la tabla productos donde la sección sea igual a 
---      'CERÁMICA' y 'DEPORTES', después lo ordene por sección, país de origen y precio
+## Seleccione todos los campos de la tabla productos donde la sección sea igual a 
+-- 'CERÁMICA' y 'DEPORTES', después lo ordene por sección, país de origen y precio
 -- -------------------------------------------------------------------------------------
 SELECT * FROM productos 
 WHERE seccion = 'CERÁMICA' OR seccion = 'DEPORTES' 
 ORDER BY seccion, pais_origen, precio;
 -- -------------------------------------------------------------------------------------
--- CONSULTAS DE AGRUPACIÓN O TOTALES
--- FUNCIONES DE AGREGADO: SUM(), AVG(), COUNT(), MAX(), MIN (),
--- CAMPO DE AGRUPACIÓN Y CAMPO DEL CÁLCULO 
--- GROUP BY, AS (ALIAS), HAVING (POR WHERE), 
--- DATE_FORMAT(NOW(),'%Y-%m-%d') AS alias, DATEDIFF(NOW(),fecha)
+
+
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione la sección (agrupación) y sume los precios (cálculo) de la tabla 
---      productos y lo agrupe por la sección
+-- CONSULTAS DE SELECCIÓN:
+-- CONSULTAS DE AGRUPACIÓN O TOTALES
+-- 		# FUNCIONES DE AGREGADO (SUM(), AVG(), COUNT(), MAX(), MIN ()).
+-- 		# CAMPO AGRUPACIÓN DE CÁLCULO (GROUP BY, AS (ALIAS), HAVING (POR WHERE)
+--  	# DATE_FORMAT(NOW(),'%Y-%m-%d') AS alias, DATEDIFF(NOW(),fecha)
+-- -------------------------------------------------------------------------------------
+## Seleccione la sección (agrupación) y sume los precios (cálculo) de la tabla productos
+-- y lo agrupe por la sección
 -- -------------------------------------------------------------------------------------
 SELECT seccion, SUM(precio) FROM productos GROUP BY seccion;
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione la sección (agrupación) y sume los precios (cálculo) de la tabla 
---      productos, lo agrupe por la sección y los ordene por precio
+## Seleccione la sección (agrupación) y sume los precios (cálculo) de productos, lo 
+-- agrupe por la sección y los ordene por precio
 -- -------------------------------------------------------------------------------------
 SELECT seccion, SUM(precio) AS sum_articulos FROM productos 
 GROUP BY seccion ORDER BY sum_articulos;
 -- -------------------------------------------------------------------------------------
--- ## - Seleccione la sección (agrupación) y calcule la media de los precios (cálculo) 
---      de la tabla productos, lo agrupe (HAVING) por la sección DEPORTES y CONFECCIÓN y los 
---      ordene por la media de los artículos
+## Seleccione la sección (agrupación) y calcule la media de los precios (cálculo) de la
+-- tabla productos, lo agrupe (HAVING) por la sección DEPORTES y CONFECCIÓN y los ordene
+-- por la media de los artículos
 -- -------------------------------------------------------------------------------------
 SELECT seccion, AVG(precio) AS media_articulos FROM productos 
 GROUP BY seccion HAVING seccion = 'DEPORTES' OR seccion = 'CONFECCIÓN' 
