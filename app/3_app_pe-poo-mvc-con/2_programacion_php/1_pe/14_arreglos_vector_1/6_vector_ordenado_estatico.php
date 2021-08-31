@@ -11,7 +11,6 @@
 	$valores = [];
 	$valores_aux = [];
 
-
 // entrada	 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		# Recibe los valores del arreglo
@@ -71,10 +70,6 @@
 					}
 				}				
 				break;
-			
-			default:
-				// code...
-				break;
 		}
 	} else {
 		#iniciar arreglos
@@ -83,8 +78,6 @@
 			$valores_aux[$i] = null;
 		}
 	}
-
-
 
 // salida
 ?>

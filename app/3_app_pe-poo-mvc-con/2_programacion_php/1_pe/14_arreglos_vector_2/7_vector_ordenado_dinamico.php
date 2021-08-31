@@ -2,32 +2,64 @@
 	
 // declaración e inicialización de variables, constantes y arreglos
 	$nom_aplicacion = "7. Vector Ordenado Dinámico";
-	$instruc = "Instrucciones: Digite el Tamaño del Arreglo (Vector) / Enviar / Seleccione el Orden / Digite los valores del vector / Enviar";
+	$instruc = "Instrucciones: Digite el Tamaño del Arreglo (Vector) / Enviar / Seleccione el Orden / Digite los valores del arreglo / Enviar";
 	$menu = 0;
 	$posicion = 1;
 	$aux = 0;	
 	$res = 'Orden';
 	$res2 = 'Valores Registrados';
-	$cantidad = 0;
+	$cantidad = null;
 	$encender = "disabled";
 	$valores = [];
 	$valores_aux = [];
-// Proceso 1:
-	#iniciar arreglos en PHP
-	for ($i=0; $i < $cantidad; $i++) { 
-		$valores[$i] = null;
-		$valores_aux[$i] = null;
-	}
+
 // entrada: 
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['cantidad'])) {
-		$cantidad = $_POST['cantidad'];			
-		$encender = 'enabled';
-		#iniciar arreglos
-		for ($i=0; $i < $cantidad; $i++) { 
-			$valores[$i] = null;
-			$valores_aux[$i] = null;
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		# Recibe la cantidad del 1er formulario e inicia el 2do formulario
+		if (!empty($_POST['cantidad'])) {
+			$cantidad = $_POST['cantidad'];
+			$encender = 'enabled';						
+			$instruc = "Instrucciones: Seleccione el orden / Digite los valores del arreglo / Enviar";			
+		} else {
+			$instruc = "Instrucciones: Digite el Tamaño del Arreglo (Vector)";
 		}
-	}
+
+		# 2do formulario: Recibe el menú, la cantidad y los valores del 1er formulario
+		if (isset($_POST['menu'])) {
+			$menu = $_POST['menu'];
+			$cantidad = $_POST['cantidad'];			
+			if (isset($_POST['valores'])) {			
+				# Valida que todos los controles tengan valor
+				foreach ($_POST['valores'] as $valor) {
+					if ($valor != null) {
+						$valores[] = $valor;
+					} else {
+						for ($i=0; $i < count($valores); $i++) { 
+							$valores[$i] = null;	
+						}
+						$instruc = "Instrucciones: Seleccione el orden y digite todos los valores";
+						$menu = 0;
+						break;					
+					}
+				}			
+			}
+		}
+
+// Proceso		
+		#Se pasan los datos del arreglo a un arreglo auxiliar
+		$valores_aux = $valores;		
+		# Ordena ascendente o descendente, dependiendo de la opción seleccionada
+		switch ($menu) {
+			case 1:
+				$res = 'Orden Ascendente';
+				sort($valores);				
+				break;
+			case 2:
+				$res = 'Orden Descendente';
+				rsort($valores);				
+				break;
+		}
+	}	
 
 // salida
 ?>
@@ -56,6 +88,7 @@
 	<!-- Formulario 2 -->
 	<form action="" method="POST">
 		<div>
+			<input type="hidden" name="cantidad" value="<?php echo $cantidad ?>">
 			<input type="radio" id="ascendente" name="menu" value="1" <?php echo $encender ?>>
 			<label for="ascendente">Ascendente</label>
 			<input type="radio" id="descendente" name="menu" value="2" <?php echo $encender ?>>
