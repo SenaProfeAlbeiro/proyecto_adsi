@@ -1,64 +1,90 @@
 <?php 
 	
 // declaración e inicialización de variables, constantes y arreglos
-	$nom_aplicacion = "7. Vector Ordenado Dinámico";
-	$instruc = "Instrucciones: Digite el Tamaño del Arreglo (Vector) / Enviar / Seleccione el Orden / Digite los valores del arreglo / Enviar";
+	$nom_aplicacion = "6. Vector Ordenado Estático";
+	$instruc = "Instrucciones: Seleccione el Orden / Digite los valores del vector / Enviar";
 	$menu = 0;
 	$posicion = 1;
 	$aux = 0;	
 	$res = 'Orden';
 	$res2 = 'Valores Registrados';
-	$cantidad = null;
-	$encender = "disabled";
 	$valores = [];
 	$valores_aux = [];
 
-// entrada: 
-	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		# Recibe la cantidad del 1er formulario e inicia el 2do formulario
-		if (!empty($_POST['cantidad'])) {
-			$cantidad = $_POST['cantidad'];
-			$encender = 'enabled';						
-			$instruc = "Instrucciones: Seleccione el orden / Digite los valores del arreglo / Enviar";			
-		} else {
-			$instruc = "Instrucciones: Digite el Tamaño del Arreglo (Vector)";
-		}
 
-		# 2do formulario: Recibe el menú, la cantidad y los valores del 1er formulario
+// entrada	 
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		# Recibe los valores del arreglo
 		if (isset($_POST['menu'])) {
-			$menu = $_POST['menu'];			
+			# se recibe la opción del menú
+			$menu = $_POST['menu'];
 			if (isset($_POST['valores'])) {			
 				# Valida que todos los controles tengan valor
 				foreach ($_POST['valores'] as $valor) {
 					if ($valor != null) {
 						$valores[] = $valor;
 					} else {
-						for ($i=0; $i < count($valores); $i++) { 
+						for ($i=0; $i < 10; $i++) { 
 							$valores[$i] = null;	
 						}
-						$instruc = "Instrucciones: Seleccione el orden y digite todos los valores";
+						$instruc = "Instrucciones: Digite todos los valores";
 						$menu = 0;
 						break;					
 					}
 				}			
 			}
+		} else {
+			$instruc = 'Instrucciones: Seleccione el Orden (Ascendente o Descendente)';
+			#iniciar arreglos
+			for ($i=0; $i < 10; $i++) { 
+				$valores[$i] = null;
+				$valores_aux[$i] = null;
+			}
 		}
 
-// Proceso		
+// Proceso
 		#Se pasan los datos del arreglo a un arreglo auxiliar
 		$valores_aux = $valores;		
 		# Ordena ascendente o descendente, dependiendo de la opción seleccionada
 		switch ($menu) {
 			case 1:
 				$res = 'Orden Ascendente';
-				sort($valores);				
+				for ($i=0; $i < 9; $i++) { 
+					for ($j=0; $j < 9; $j++) { 
+						if ($valores[$j] >= $valores[$j + 1]) {
+							$aux = $valores[$j];
+							$valores[$j] = $valores[$j + 1];
+							$valores[$j + 1] = $aux;
+						}
+					}
+				}
 				break;
 			case 2:
 				$res = 'Orden Descendente';
-				rsort($valores);				
+				for ($i=0; $i < 9; $i++) { 
+					for ($j=0; $j < 9; $j++) { 
+						if ($valores[$j] <= $valores[$j + 1]) {
+							$aux = $valores[$j];
+							$valores[$j] = $valores[$j + 1];
+							$valores[$j + 1] = $aux;
+						}
+					}
+				}				
+				break;
+			
+			default:
+				// code...
 				break;
 		}
-	}	
+	} else {
+		#iniciar arreglos
+		for ($i=0; $i < 10; $i++) { 
+			$valores[$i] = null;
+			$valores_aux[$i] = null;
+		}
+	}
+
+
 
 // salida
 ?>
@@ -76,26 +102,16 @@
 	<ul>		
 		<li><?php echo $instruc ?></li>
 	</ul>
-	<hr>
-	<!-- Formulario 1 -->
-	<form action="" method="POST">
-		<label for="">Tamaño del Arreglo (Vector)</label>
-		<input type="text" name="cantidad">
-		<input type="submit" name="submit" value="Enviar">		
-	</form>
-	<hr>
-	<!-- Formulario 2 -->
 	<form action="" method="POST">
 		<div>
-			<input type="hidden" name="cantidad" value="<?php echo $cantidad ?>">
-			<input type="radio" id="ascendente" name="menu" value="1" <?php echo $encender ?>>
+			<input type="radio" id="ascendente" name="menu" value="1">
 			<label for="ascendente">Ascendente</label>
-			<input type="radio" id="descendente" name="menu" value="2" <?php echo $encender ?>>
+			<input type="radio" id="descendente" name="menu" value="2">
 			<label for="descendente">Descendente</label>			
 		</div>
 		<br>		
 		<?php 
-			for ($i=0; $i < $cantidad; $i++) {			
+			for ($i=0; $i < 10; $i++) { 
 				echo '<div>
 						<label>Posición_' . $posicion . '</label>
 						<input type="text" name="valores[]">
@@ -105,24 +121,23 @@
 		?>
 		<br>		
 		<div>
-			<input type="submit" name="submit" value="Enviar" <?php echo $encender ?>>
+			<input type="submit" name="submit" value="Enviar">			
 		</div>
 	</form>
 	<hr>
-	<!-- Tabla de Resultados -->
 	<table border="1">
 	  <tr>
 	  	<th>Arreglo 1D</th>
 	    <?php 
-	    	for ($i=0; $i < $cantidad; $i++) { 
+	    	for ($i=0; $i < 10; $i++) { 
 	    		echo '<th>Posición_' . $posicion = $i + 1 . '</th>';
 	    	}
 	    ?>	    	    
 	  </tr>
 	  <tr>
-	  	<th>Vector (Dinámico)</th>
+	  	<th>Vector</th>
 	    <?php 
-	    	for ($i=0; $i < $cantidad; $i++) { 
+	    	for ($i=0; $i < 10; $i++) { 
 	    		echo '<th>Índice_' . $i . '</th>';
 	    	}
 	    ?>	    	    
