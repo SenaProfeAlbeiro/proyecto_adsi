@@ -18,9 +18,9 @@
 		$valores[$i] = null;
 		$valores_aux[$i] = null;
 	}
-// entrada	 
+// entrada: 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['cantidad'])) {
-		$cantidad = $_POST['cantidad'];
+		$cantidad = $_POST['cantidad'];			
 		$encender = 'enabled';
 		#iniciar arreglos
 		for ($i=0; $i < $cantidad; $i++) { 
