@@ -84,8 +84,6 @@
 		}
 	}
 
-
-
 // salida
 ?>
 <!DOCTYPE html>

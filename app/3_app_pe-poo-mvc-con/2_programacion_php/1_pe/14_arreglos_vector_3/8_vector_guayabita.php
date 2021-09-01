@@ -1,5 +1,5 @@
-<?php 
-	
+<?php
+
 // declaración e inicialización de variables, constantes y arreglos
 	$nom_aplicacion = "8. Guayabita";
 	$jugadores = [];
@@ -124,7 +124,7 @@
 		</div>
 	</form>
 	<hr>
-
+	<!-- Formulario de la Apuesta -->
 
 	<!-- Formulario para lanzamiento Uno -->
 	<h3><?php echo "Primer Lanzamiento de [" . $jugador . "]" ?></h3>

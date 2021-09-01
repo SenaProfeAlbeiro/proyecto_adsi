@@ -76,7 +76,8 @@
 	<ul>		
 		<li><?php echo $instruc ?></li>
 	</ul>
-	<hr>
+	<hr>	
+
 	<!-- Formulario 1 -->
 	<form action="" method="POST">
 		<label for="">Tamaño del Arreglo (Vector)</label>
@@ -84,10 +85,12 @@
 		<input type="submit" name="submit" value="Enviar">		
 	</form>
 	<hr>
+
 	<!-- Formulario 2 -->
 	<form action="" method="POST">
 		<div>
 			<input type="hidden" name="cantidad" value="<?php echo $cantidad ?>">
+			<br>
 			<input type="radio" id="ascendente" name="menu" value="1" <?php echo $encender ?>>
 			<label for="ascendente">Ascendente</label>
 			<input type="radio" id="descendente" name="menu" value="2" <?php echo $encender ?>>
@@ -136,7 +139,7 @@
 			}
 	    ?>
 	  </tr>
-	  <tr>	    
+	  <tr>
 	    <?php	    	
 			# Imprime los valores ordenados
 			echo '<td align="right">' . $res . '</td>';
