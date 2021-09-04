@@ -111,6 +111,21 @@
 	<p><a href="index.php">Volver</a></p>
 	<hr>
 
+	<!-- Información del Juego: Jugador, Apuesta, Pozo -->
+	<form align="center">
+		<label>Pozo </label>
+		<input type="text" value="<?php echo $pozo ?>" disabled>
+		<label>Jugador </label>
+		<input type="text" value="<?php echo $jugador ?>" disabled>
+		<label>Lanzamiento Uno </label>
+		<input type="text" value="<?php echo $lanza1 ?>" disabled>
+		<label>Apuesta </label>
+		<input type="text" value="<?php echo $apuesta ?>" disabled>
+		<label>Lanzamiento Dos </label>
+		<input type="text" value="<?php echo $lanza2 ?>" disabled>
+	</form>
+	<hr>
+
 
 	<!-- Formulario para cantidad de Jugadores -->
 	<h3>Cantidad de Jugadores</h3>
@@ -263,10 +278,5 @@
 		</div>			
 	</form>
 	<hr>
-
-	<div>
-		<h1><?php echo "Pozo " . $pozo ?></h1>
-	</div>
-
 </body>
 </html>
