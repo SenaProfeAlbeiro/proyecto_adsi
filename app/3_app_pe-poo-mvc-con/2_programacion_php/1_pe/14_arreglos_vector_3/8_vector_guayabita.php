@@ -81,8 +81,7 @@
 							if ($lanza2 != null) {
 								# Verifica la posición del primer jugador
 								if ($posJug != 0) {
-									$posJug--;
-									$jugador = $jugadores[$posJug];									
+									$jugador = $jugadores[$posJug];								
 								} else {
 									$posJug;
 									$jugador = $jugadores[$posJug];									
@@ -91,13 +90,17 @@
 								if ($lanza2 > $lanza1) {
 									$res = "Has Ganado " . $jugador . "!!!";
 									$pozo = $pozo - $apuesta;
-								} else {									
+								} else {
 									$res = "Has Perdido tu Apuesta " . $jugador . "!!!";
 									$pozo = $pozo + $apuesta;
 								}
 								# Cambia al jugador siguiente y primer lanzamiento
 								$posJug++;
-								$jugador = $jugadores[$posJug];
+								if ($cantJug > $posJug) {
+									$jugador = $jugadores[$posJug];
+								} else {
+									$jugador = $jugadores[0];
+								}
 								$res .= "<br>Primer lanzamiento de " . $jugador;
 							}
 						} else {
@@ -147,7 +150,7 @@
 
 	<!-- Formulario para cantidad de Jugadores -->
 	<h3>Cantidad de Jugadores</h3>
-	<form action="" method="POST">		
+	<form action="R" method="POST">		
 		<div>
 			<label>Cantidad de Jugadores</label>
 			<input type="text" name="cantJug" value="<?php echo $cantJug ?>">
