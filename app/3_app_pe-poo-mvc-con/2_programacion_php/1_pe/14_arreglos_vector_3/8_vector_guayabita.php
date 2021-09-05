@@ -125,7 +125,7 @@
 			$posJug = 0;
 			$jugador = $jugadores[$posJug];
 		}		
-		# Si el pozo es igual a cero, entonces reinicia el juego					
+		# Si el pozo es igual a cero, entonces reinicia el juego
 		if ($pozo == 0) {				
 			$res .= "<br>No hay dinero en el pozo, coloquen la apuesta mínima!!!";
 			$pozo = $cantJug;				
@@ -143,6 +143,8 @@
 	<title><?php echo $nom_aplicacion ?></title>
 </head>
 <body>
+
+	<!-- Nombre de la Aplicación -->
 	<h1><?php echo $nom_aplicacion ?></h1>
 	<p><a href="index.php">Volver</a></p>
 	<hr>
@@ -150,7 +152,7 @@
 
 	<!-- Formulario para cantidad de Jugadores -->
 	<h3>Cantidad de Jugadores</h3>
-	<form action="R" method="POST">		
+	<form action="" method="POST">		
 		<div>
 			<label>Cantidad de Jugadores</label>
 			<input type="text" name="cantJug" value="<?php echo $cantJug ?>">
