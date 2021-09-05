@@ -61,14 +61,9 @@
 		// echo "<br>Segundo Lanzamiento: " . $lanza2;
 
 // Proceso
-		# Si la cantJug es igual al pozo, reinicia la posición del jugador
-		if ($cantJug == $posJug) {
-			$posJug = 0;
-			$jugador = $jugadores[$posJug];
-		}
 		# Valida que hayan jugadores
 		$res = "Digite el nombre de los Jugadores";
-		if (count($jugadores) > 0) {
+		if ($jugadores[$cantJug - 1] != null) {
 			# Asigna el nombre al jugador según su posición					
 			$jugador = $jugadores[$posJug];
 			$res = "Primer lanzamiento de " . $jugador;
@@ -90,7 +85,7 @@
 									$jugador = $jugadores[$posJug];									
 								} else {
 									$posJug;
-									$jugador = $jugadores[$posJug];
+									$jugador = $jugadores[$posJug];									
 								}
 								# Compara el lanzamiento uno con el dos
 								if ($lanza2 > $lanza1) {
@@ -122,6 +117,11 @@
 				}
 			}
 		}
+		# Si la cantJug es igual a posJug, reinicia la posición del jugador
+		if ($cantJug == $posJug) {
+			$posJug = 0;
+			$jugador = $jugadores[$posJug];
+		}		
 		# Si el pozo es igual a cero, entonces reinicia el juego					
 		if ($pozo == 0) {				
 			$res .= "<br>No hay dinero en el pozo, coloquen la apuesta mínima!!!";
@@ -271,7 +271,7 @@
 		</div>
 		<div>
 			<!-- <label>Posición </label> -->
-			<input type="hidden" name="posJug" value="<?php echo ($posJug + 1) ?>">
+			<input type="hidden" name="posJug" value="<?php echo $posJug ?>">
 		</div>
 		<div>
 			<!-- <label>Jugador </label> -->
