@@ -10,6 +10,7 @@
 	$lanza1 = null;	
 	$lanza2 = null;	
 	$apuesta = null;
+	$res = "Digite la cantidad de Jugadores";
 
 // entrada: 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -17,6 +18,7 @@
 		if (!empty($_POST['cantJug'])) {
 			$cantJug = $_POST['cantJug'];
 			$pozo = $cantJug;
+			$res = "Escriba el nombre de los Jugadores";
 		}
 		# Recibe el nombre de cada jugador
 		if (isset($_POST['jugadores'])) {
@@ -47,54 +49,77 @@
 			$jugador = $_POST['jugador'];
 		}			
 		# Verificar datos
-		echo "Cantidad Jugadores: " . $cantJug;		
-		echo "<br>Jugadores: ";
-		print_r($jugadores);		
-		echo "<br>Posción jugador: " . $posJug;
-		echo "<br>Nombre jugador: " . $jugador;
-		echo "<br>Primer Lanzamiento:  " . $lanza1;
-		echo "<br>Apuesta: " . $apuesta;
-		echo "<br>Segundo Lanzamiento: " . $lanza2;		
+		// echo "Cantidad Jugadores: " . $cantJug;		
+		// echo "<br>Jugadores: ";
+		// print_r($jugadores);		
+		// echo "<br>Posción jugador: " . $posJug;
+		// echo "<br>Nombre jugador: " . $jugador;
+		// echo "<br>Primer Lanzamiento:  " . $lanza1;
+		// echo "<br>Apuesta: " . $apuesta;
+		// echo "<br>Segundo Lanzamiento: " . $lanza2;
 
 // Proceso
-		if ($pozo > 0) {
-			if ($cantJug > $posJug) {
-				if (count($jugadores) > 0) {					
-					$jugador = $jugadores[$posJug];
-					if ($lanza1 != null) {
-						if ($lanza1 != 1 || $lanza1 != 6) {
-							if ($apuesta <= $pozo) {
-								if ($lanza2 != null) {
-									if ($lanza2 > $lanza1) {
-										echo "<br>Has Ganado!!!";
-										$pozo = $pozo - $apuesta;
-									} else {
-										echo "<br>Has Perdido tu apuesta!!!";
-										$pozo = $pozo + $apuesta;
-									}
+		# Si la cantJug es igual al pozo, reinicia la posición del jugador
+		if ($cantJug == $posJug) {
+			$posJug = 0;
+			$jugador = $jugadores[$posJug];
+		}
+		# Valida que hayan jugadores
+		if (count($jugadores) > 0) {					
+			$jugador = $jugadores[$posJug];
+			$res = "Primer lanzamiento de " . $jugador;			
+			if ($lanza1 != null) {
+				$res = $jugador . " debe Apostar";
+				if ($lanza1 != 1 && $lanza1 != 6) {
+					if ($apuesta != null) {
+						$res = "Segundo lanzamiento de " . $jugador;
+						if ($apuesta <= $pozo) {
+							if ($lanza2 != null) {
+								if ($posJug != 0) {
+									$posJug--;
+									$jugador = $jugadores[$posJug];									
+								} else {
+									$posJug;
+									$jugador = $jugadores[$posJug];
 								}
-							} else {
-								echo "<br>La apuesta debe ser menor o igual al pozo";
+								if ($lanza2 > $lanza1) {
+									$res = "Has Ganado " . $jugador . "!!!";
+									$pozo = $pozo - $apuesta;
+								} else {									
+									$res = "Has Perdido tu Apuesta " . $jugador . "!!!";
+									$pozo = $pozo + $apuesta;
+								}
+								$posJug++;
+								$jugador = $jugadores[$posJug];
+								$res .= "<br>Primer lanzamiento de " . $jugador;
+								$lanza1 = null;
+								$apuesta = null;
+								$lanza2 = null;
 							}
 						} else {
-							echo "<br>Perdiste, coloca una moneda";
-							$pozo--;
-							$posJug++;
+							$res = "La apuesta debe ser menor o igual al pozo";
 						}
 					}
+				} else {
+					$res = "Sacaste 1 o 6. Perdiste " . $jugador . ", coloca una moneda. ";
+					$pozo++;
+					$posJug++;
+					if ($cantJug > $posJug) {
+						$jugador = $jugadores[$posJug];								
+					} else {
+						$jugador = $jugadores[0];
+					}
+					$res .= "<br>Primer lanzamiento de " . $jugador;
+					$lanza1 = null;
 				}
-			} else {
-				echo "<br>Se ha terminado el Juego, no hay dinero en el pozo!!!";
 			}
-			if ($cantJug == $posJug) {
-				$posJug = 0;
-				$jugador = $jugadores[$posJug];
-			}
-			if ($pozo == 0) {
-				echo "<br>No hay dinero en el pozo, coloquen la apuesta mínima!!!";
-				$pozo = $cantJug;				
-			}
-		} 
+		}
+		# Si el pozo es igual a cero, entonces reinicia el juego					
+		if ($pozo == 0) {				
+			$res .= "<br>No hay dinero en el pozo, coloquen la apuesta mínima!!!";
+			$pozo = $cantJug;				
+		}
+		
 	}	
 
 // salida
@@ -112,11 +137,12 @@
 	<hr>
 
 	<!-- Información del Juego: Jugador, Apuesta, Pozo -->
-	<form align="center">
+	<form align="center">				
+		<label>Jugador Actual</label>
+		<input type="text" value="<?php echo $jugador ?>" disabled>
 		<label>Pozo </label>
 		<input type="text" value="<?php echo $pozo ?>" disabled>
-		<label>Jugador </label>
-		<input type="text" value="<?php echo $jugador ?>" disabled>
+		<h1 align="center"><?php echo $res ?></h1>		
 		<label>Lanzamiento Uno </label>
 		<input type="text" value="<?php echo $lanza1 ?>" disabled>
 		<label>Apuesta </label>
@@ -136,30 +162,33 @@
 			<input type="submit" value="Enviar">
 		</div>		
 	</form>
-	<hr>
+	<br>
+	<hr>	
 
 	
 	<!-- Formulario para asignar nombre a los jugadores -->
 	<h3>Asignar Nombre a los Jugadores</h3>
 	<form action="" method="POST">		
 		<div>
-			<label>Cantidad Jugadores </label>
-			<input type="text" name="cantJug" value="<?php echo $cantJug ?>">
+			<!-- <label>Cantidad Jugadores </label> -->
+			<input type="hidden" name="cantJug" value="<?php echo $cantJug ?>">
 		</div>						
 		<div>
-			<label>Pozo </label>			
-			<input type="text" name="pozo" value="<?php echo $pozo ?>">
+			<!-- <label>Pozo </label> -->
+			<input type="hidden" name="pozo" value="<?php echo $pozo ?>">
 		</div>				
 		<?php 
 			for ($i=0; $i < $cantJug; $i++) { 
 				echo '<label for="jugadores">Jugador_' . ($i + 1) . '</label>
 					  <input type="text" name="jugadores[]" id="jugadores"><br>';
 			}
-		?>		
+		?>
+		<br>		
 		<div>
 			<input type="submit" value="Enviar">
 		</div>
 	</form>
+	<br>
 	<hr>
 
 
@@ -167,24 +196,105 @@
 	<form action="" method="POST">		
 		<h3>Lanzamiento Uno</h3>
 		<div>
-			<label>Cantidad Jugadores </label>
-			<input type="text" name="cantJug" value="<?php echo $cantJug ?>">
+			<!-- <label>Cantidad Jugadores </label> -->
+			<input type="hidden" name="cantJug" value="<?php echo $cantJug ?>">
 		</div>
 		<div>
-			<label>Pozo </label>			
-			<input type="text" name="pozo" value="<?php echo $pozo ?>">
+			<!-- <label>Pozo </label>			 -->
+			<input type="hidden" name="pozo" value="<?php echo $pozo ?>">
 		</div>
 		<div>
-			<label>Posición </label>
-			<input type="text" name="posJug" value="<?php echo $posJug ?>">
+			<!-- <label>Posición </label> -->
+			<input type="hidden" name="posJug" value="<?php echo $posJug ?>">
 		</div>
 		<div>
-			<label>Jugador </label>
-			<input type="text" name="jugador" value="<?php echo $jugador ?>">
+			<!-- <label>Jugador </label> -->
+			<input type="hidden" name="jugador" value="<?php echo $jugador ?>">
 		</div>				
 		<div>
-			<label>Lanzamiento Uno </label>
-			<input type="text" name="lanza1" value="<?php echo rand(1,6) ?>">
+			<!-- <label>Lanzamiento Uno </label> -->
+			<input type="hidden" name="lanza1" value="<?php echo rand(1,6) ?>">
+		</div>		
+		<?php 
+			for ($i=0; $i < count($jugadores); $i++) { 
+				echo '<input type="hidden" name="jugadores[]" id="jugadores" value="' . $jugadores[$i] . '">';
+			}
+		?>
+		<div>
+			<input type="submit" value="Enviar">			
+		</div>
+	</form>
+	<br>
+	<hr>
+
+
+	<!-- Formulario para Apostar -->
+	<h3>Apuesta</h3>
+	<form action="" method="POST">
+		<div>
+			<!-- <label>Cantidad de Jugadores:</label> -->
+			<input type="hidden" name="cantJug" value="<?php echo $cantJug ?>">
+		</div>
+		<div>
+			<!-- <label>Pozo </label>			 -->
+			<input type="hidden" name="pozo" value="<?php echo $pozo ?>">
+		</div>		
+		<div>
+			<!-- <label>Posición </label> -->
+			<input type="hidden" name="posJug" value="<?php echo $posJug ?>">
+		</div>
+		<div>
+			<!-- <label>Jugador </label> -->
+			<input type="hidden" name="jugador" value="<?php echo $jugador ?>">
+		</div>
+		<div>
+			<!-- <label>Lanzamiento Uno </label> -->
+			<input type="hidden" name="lanza1" value="<?php echo $lanza1 ?>">
+		</div>
+		<?php 
+			for ($i=0; $i < count($jugadores); $i++) { 
+				echo '<input type="hidden" name="jugadores[]" id="jugadores" value="' . $jugadores[$i] . '">';
+			}
+		?>
+		<div>
+			<label>Apuesta</label>
+			<input type="text" name="apuesta">
+			<input type="submit" value="Enviar">
+		</div>
+	</form>
+	<br>
+	<hr>
+
+	<!-- Formulario para lanzamiento Dos -->	
+	<form action="" method="POST">
+		<h3>Lanzamiento Dos</h3>
+		<div>
+			<!-- <label>Cantidad de Jugadores:</label> -->
+			<input type="hidden" name="cantJug" value="<?php echo $cantJug ?>">
+		</div>
+		<div>
+			<!-- <label>Pozo </label> -->
+			<input type="hidden" name="pozo" value="<?php echo $pozo ?>">
+		</div>
+		<div>
+			<!-- <label>Posición </label> -->
+			<input type="hidden" name="posJug" value="<?php echo ($posJug + 1) ?>">
+		</div>
+		<div>
+			<!-- <label>Jugador </label> -->
+			<input type="hidden" name="jugador" value="<?php echo $jugador ?>">
+		</div>
+		<div>
+			<!-- <label>Apuesta </label>			 -->
+			<input type="hidden" name="apuesta" value="<?php echo $apuesta ?>">
+		</div>
+		<div>
+			<!-- <label>Lanzamiento Uno </label> -->
+			<input type="hidden" name="lanza1" value="<?php echo $lanza1 ?>">
+		</div>		
+		<div>
+			<!-- <label>Lanzamiento Dos </label> -->
+			<input type="hidden" name="lanza2" value="<?php echo rand(1,6) ?>">
 		</div>		
 		<?php 
 			for ($i=0; $i < count($jugadores); $i++) { 
@@ -193,90 +303,9 @@
 		?>		
 		<div>
 			<input type="submit" value="Enviar">			
-		</div>
-	</form>
-	<hr>
-
-
-	<!-- Formulario para Apostar -->
-	<h3>Apuesta</h3>
-	<form action="" method="POST">
-		<div>
-			<label>Cantidad de Jugadores:</label>
-			<input type="text" name="cantJug" value="<?php echo $cantJug ?>">
-		</div>
-		<div>
-			<label>Pozo </label>			
-			<input type="text" name="pozo" value="<?php echo $pozo ?>">
-		</div>		
-		<div>
-			<label>Posición </label>
-			<input type="text" name="posJug" value="<?php echo $posJug ?>">
-		</div>
-		<div>
-			<label>Jugador </label>
-			<input type="text" name="jugador" value="<?php echo $jugador ?>">
-		</div>
-		<?php 
-			for ($i=0; $i < count($jugadores); $i++) { 
-				echo '<input type="hidden" name="jugadores[]" id="jugadores" value="' . $jugadores[$i] . '">';
-			}
-		?>
-		<div>
-			<label>Lanzamiento Uno </label>
-			<input type="text" name="lanza1" value="<?php echo $lanza1 ?>">
-		</div>
-		<div>
-			<label>Apuesta</label>
-			<input type="text" name="apuesta">
-		</div>
-		<br>
-		<div>
-			<input type="submit" value="Enviar">
 		</div>			
 	</form>
-	<hr>
-
-	<!-- Formulario para lanzamiento Dos -->	
-	<form action="" method="POST">
-		<div>
-			<label>Cantidad de Jugadores:</label>
-			<input type="text" name="cantJug" value="<?php echo $cantJug ?>">
-		</div>
-		<div>
-			<label>Pozo </label>
-			<input type="text" name="pozo" value="<?php echo $pozo ?>">
-		</div>
-		<div>
-			<label>Posición </label>
-			<input type="text" name="posJug" value="<?php echo ($posJug + 1) ?>">
-		</div>
-		<div>
-			<label>Jugador </label>
-			<input type="text" name="jugador" value="<?php echo $jugador ?>">
-		</div>
-		<div>
-			<label>Apuesta </label>			
-			<input type="text" name="apuesta" value="<?php echo $apuesta ?>">
-		</div>
-		<div>
-			<label>Lanzamiento Uno </label>
-			<input type="text" name="lanza1" value="<?php echo $lanza1 ?>">
-		</div>		
-		<div>
-			<label>Lanzamiento Dos </label>
-			<input type="text" name="lanza2" value="<?php echo rand(1,6) ?>">
-		</div>		
-		<?php 
-			for ($i=0; $i < count($jugadores); $i++) { 
-				echo '<input type="hidden" name="jugadores[]" id="jugadores" value="' . $jugadores[$i] . '">';
-			}
-		?>
-		<br>
-		<div>
-			<input type="submit" value="Enviar">			
-		</div>			
-	</form>
+	<br>
 	<hr>
 </body>
 </html>
