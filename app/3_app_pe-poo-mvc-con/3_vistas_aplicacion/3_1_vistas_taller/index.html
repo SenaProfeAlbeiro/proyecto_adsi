@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Empresa</title>
+	<!-- Estilos -->
+	<link rel="shortcut icon" href="img/LogoSena.png">
+	<link rel="stylesheet" href="css/bootstrap.min.css">	
+	<link rel="stylesheet" href="css/all.css">	
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<!-- Contenedor -->
+	<div class="container">		
+		<!-- Navegador -->		
+		<nav class="navegacion row sticky-top d-flex">
+			<div class="logo col-lg-3 d-flex justify-content-center p-0">
+				<img class="img-fluid" src="img/bannersena.png" alt="">
+			</div>
+			<div class="col-lg-9 p-0">
+				<div class="navbar navbar-expand-lg navbar-light">
+					<a class="navbar-brand" href="#"></a>
+					<button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon text-light"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item active">
+								<a class="nav-link text-white" href="#"><span class="sr-only">(current)</span></a>
+							</li>
+						</ul>
+						<ul class="navbar-nav">
+							<li class="nav-item active">
+								<a class="nav-link text-white ocul-navbar" href="#">Inicio <span class="sr-only">(current)</span></a>
+							</li>
+						</ul>
+						<ul class="navbar-nav">
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Ingreso
+								</a>
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item ocul-navbar" data-toggle="modal" data-target="#registro" href="#">Registro</a>
+									<a class="dropdown-item ocul-navbar" href="#" data-toggle="modal" data-target="#iniciar-sesion">Iniciar Sesión</a>
+								</div>
+							</li>						
+						</ul>						
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Formulario Modal Ingreso -->		
+		<div class="modal fade" id="iniciar-sesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header color-sena">
+						<h5 class="modal-title text-white" id="exampleModalLabel">Iniciar Sesión</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="enviar">
+							<div class="form-group">
+								<label for="usuario">usuario</label>
+								<input type="email" class="form-control" id="usuario" aria-describedby="emailHelp" value="admin@correo.com">
+							</div>
+							<div class="form-group">
+								<label for="contrasena">Contraseña</label>
+								<input type="password" class="form-control" id="contrasena" value="12345">
+							</div>							
+							<button type="submit" class="btn btn-primary">Enviar</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+						</form>
+					</div>					
+				</div>
+			</div>
+		</div>
+
+		<!-- Formulario Modal Registro -->
+		<div class="modal fade" id="registro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header color-sena">
+						<h5 class="modal-title text-white" id="exampleModalLabel">Registro</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="registro">
+							<div class="form-row">
+								<div class="form-group col-6">
+									<label for="nombres">Nombres</label>
+									<input type="text" class="form-control" id="nombres" placeholder="Nombres">
+								</div>
+								<div class="form-group col-6">
+									<label for="apellidos">Apellidos</label>
+									<input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="correo">E-Mail</label>
+								<input type="email" class="form-control" id="correo" placeholder="usuario@correo.com">
+							</div>
+							<div class="form-row">
+								<div class="form-group col-6">
+									<label for="contrasena_reg">Contraseña</label>
+									<input type="password" class="form-control" id="contrasena_reg" placeholder="Entre 5 y 8 caracteres">
+								</div>
+								<div class="form-group col-6">
+									<label for="confirmacion">Confirmación</label>
+									<input type="password" class="form-control" id="confirmacion" placeholder="Confirmar contraseña">
+								</div>
+							</div>
+							<button type="submit" class="btn btn-primary">Enviar</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>							
+						</form>
+					</div>					
+				</div>
+			</div>
+		</div>
+
+		<!-- Portafolio -->		
+		<section class="portafolio row bg-light border">
+			<div class="col-lg-4 col-md-12 p-2 d-flex justify-content-center">
+				<div class="card p-3">
+					<h5 class="card-title text-center p-0 m-0">Taller UNO</h5>
+					<div class="card-body">
+						<ol class="list-group list-group-flush">
+						  	<li class=""><a href="" class="card-link"></a></li>
+						  	<li class=""><a href="" class="card-link"></a></li>
+						  	<li class=""><a href="" class="card-link"></a></li>
+						  	<li class=""><a href="" class="card-link"></a></li>
+						  	<li class=""><a href="" class="card-link"></a></li>
+						  	<li class=""><a href="" class="card-link"></a></li>
+						  	<li class=""><a href="" class="card-link"></a></li>
+						  	<li class=""><a href="" class="card-link"></a></li>
+						  	<li class=""><a href="" class="card-link"></a></li>
+						  	<li class=""><a href="" class="card-link"></a></li>
+						</ol>
+					</div>
+				</div>
+			</div>			
+			<div class="col-lg-4 col-md-6 p-2 d-flex justify-content-center">
+				<div class="card p-3">
+					<h5 class="card-title text-center p-0 m-0">Taller DOS</h5>
+					<div class="card-body">
+						<ol class="list-group list-group-flush">
+						  	<li class=""><a href="" class="card-link">Calculadora</a></li>
+						  	<li class=""><a href="" class="card-link">Factorial</a></li>
+						  	<li class=""><a href="" class="card-link">Fibonacci</a></li>
+						  	<li class=""><a href="" class="card-link">Serie Par o Impar</a></li>
+						  	<li class=""><a href="" class="card-link">Burbuja</a></li>
+						  	<li class=""><a href="" class="card-link">Arreglo Ordenado Estático (Vector - 1D)</a></li>
+						  	<li class=""><a href="" class="card-link">Arreglo Ordenado Dinámico (Vector - 1D)</a></li>
+						  	<li class=""><a href="" class="card-link">Guayabita</a></li>
+						  	<li class=""><a href="" class="card-link">Arreglo Datos Personales (Matriz - 2D) </a></li>
+						  	<li class=""><a href="" class="card-link">Tiendita el Chavo</a></li>
+						</ol>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 p-2 d-flex justify-content-center">
+				<div class="card p-3">
+					<h5 class="card-title text-center p-0 m-0">APLICACIÓN SOFTWARE</h5>
+					<h5 class="card-title text-center p-0 m-0">T2_EJ10</h5>
+					<h5 class="card-title text-center p-0 m-0">TIENDITA EL CHAVO</h5>
+					<div class="card-body text-center">						
+						<hr>
+						<div class="pt-3">
+							<a href="" class="btn btn-dark" data-toggle="modal" data-target="#registro">Registro</a>
+						</div>
+						<div class="pt-3">
+							<a href="" class="btn btn-dark" data-toggle="modal" data-target="#iniciar-sesion">Iniciar Sesión</a>
+						</div>
+					</div>
+				</div>
+			</div>						
+		</section>
+
+		<!-- Pie de Página -->
+		<footer class="row">
+			<div class="col p-2 text-white">				
+				<h6 class="text-center m-0">Todos los Derechos Reservados a:</h6>
+				<h6 class="text-center m-0">Instructor Albeiro Ramos © 2021</h6>				
+			</div>
+		</footer>
+	</div>
+
+	<!-- Scripts -->
+	<script src="js/jquery-3.5.1.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/scripts.js"></script>	
+</body>
+</html>
