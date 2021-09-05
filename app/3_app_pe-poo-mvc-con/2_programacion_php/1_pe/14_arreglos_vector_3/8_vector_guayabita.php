@@ -4,13 +4,13 @@
 	$nom_aplicacion = "8. Guayabita";
 	$cantJug = null;
 	$pozo = $cantJug;
-	$jugadores = [];
 	$jugador = null;	
 	$posJug = 0;
 	$lanza1 = null;	
 	$lanza2 = null;	
 	$apuesta = null;
 	$res = "Digite la cantidad de Jugadores";
+	$jugadores = [];		
 
 // entrada: 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -18,7 +18,9 @@
 		if (!empty($_POST['cantJug'])) {
 			$cantJug = $_POST['cantJug'];
 			$pozo = $cantJug;
-			$res = "Escriba el nombre de los Jugadores";
+			for ($i=0; $i < $cantJug; $i++) { 
+				$jugadores[$i] = null;
+			}
 		}
 		# Recibe el nombre de cada jugador
 		if (isset($_POST['jugadores'])) {
@@ -65,16 +67,24 @@
 			$jugador = $jugadores[$posJug];
 		}
 		# Valida que hayan jugadores
-		if (count($jugadores) > 0) {					
+		$res = "Digite el nombre de los Jugadores";
+		if (count($jugadores) > 0) {
+			# Asigna el nombre al jugador según su posición					
 			$jugador = $jugadores[$posJug];
-			$res = "Primer lanzamiento de " . $jugador;			
+			$res = "Primer lanzamiento de " . $jugador;
+			# Verifica que el lanzamiento uno no sea nulo
 			if ($lanza1 != null) {
 				$res = $jugador . " debe Apostar";
+				# Si saca 1 o 6 pierde, de lo contrario, hace un 2do lanzamiento
 				if ($lanza1 != 1 && $lanza1 != 6) {
+					# Verifica que la apuesta no esté vacía
 					if ($apuesta != null) {
 						$res = "Segundo lanzamiento de " . $jugador;
+						# La apuesta debe ser menor o igual al pozo
 						if ($apuesta <= $pozo) {
+							# Verifica que el lanzamiento dos no sea nulo
 							if ($lanza2 != null) {
+								# Verifica la posición del primer jugador
 								if ($posJug != 0) {
 									$posJug--;
 									$jugador = $jugadores[$posJug];									
@@ -82,6 +92,7 @@
 									$posJug;
 									$jugador = $jugadores[$posJug];
 								}
+								# Compara el lanzamiento uno con el dos
 								if ($lanza2 > $lanza1) {
 									$res = "Has Ganado " . $jugador . "!!!";
 									$pozo = $pozo - $apuesta;
@@ -89,12 +100,10 @@
 									$res = "Has Perdido tu Apuesta " . $jugador . "!!!";
 									$pozo = $pozo + $apuesta;
 								}
+								# Cambia al jugador siguiente y primer lanzamiento
 								$posJug++;
 								$jugador = $jugadores[$posJug];
 								$res .= "<br>Primer lanzamiento de " . $jugador;
-								$lanza1 = null;
-								$apuesta = null;
-								$lanza2 = null;
 							}
 						} else {
 							$res = "La apuesta debe ser menor o igual al pozo";
@@ -109,8 +118,7 @@
 					} else {
 						$jugador = $jugadores[0];
 					}
-					$res .= "<br>Primer lanzamiento de " . $jugador;
-					$lanza1 = null;
+					$res .= "<br>Primer lanzamiento de " . $jugador;					
 				}
 			}
 		}
@@ -136,29 +144,13 @@
 	<p><a href="index.php">Volver</a></p>
 	<hr>
 
-	<!-- Información del Juego: Jugador, Apuesta, Pozo -->
-	<form align="center">				
-		<label>Jugador Actual</label>
-		<input type="text" value="<?php echo $jugador ?>" disabled>
-		<label>Pozo </label>
-		<input type="text" value="<?php echo $pozo ?>" disabled>
-		<h1 align="center"><?php echo $res ?></h1>		
-		<label>Lanzamiento Uno </label>
-		<input type="text" value="<?php echo $lanza1 ?>" disabled>
-		<label>Apuesta </label>
-		<input type="text" value="<?php echo $apuesta ?>" disabled>
-		<label>Lanzamiento Dos </label>
-		<input type="text" value="<?php echo $lanza2 ?>" disabled>
-	</form>
-	<hr>
-
 
 	<!-- Formulario para cantidad de Jugadores -->
 	<h3>Cantidad de Jugadores</h3>
 	<form action="" method="POST">		
 		<div>
 			<label>Cantidad de Jugadores</label>
-			<input type="text" name="cantJug">
+			<input type="text" name="cantJug" value="<?php echo $cantJug ?>">
 			<input type="submit" value="Enviar">
 		</div>		
 	</form>
@@ -180,7 +172,7 @@
 		<?php 
 			for ($i=0; $i < $cantJug; $i++) { 
 				echo '<label for="jugadores">Jugador_' . ($i + 1) . '</label>
-					  <input type="text" name="jugadores[]" id="jugadores"><br>';
+					  <input type="text" name="jugadores[]" value=' . $jugadores[$i] . '><br>';
 			}
 		?>
 		<br>		
@@ -265,6 +257,7 @@
 	<br>
 	<hr>
 
+
 	<!-- Formulario para lanzamiento Dos -->	
 	<form action="" method="POST">
 		<h3>Lanzamiento Dos</h3>
@@ -306,6 +299,24 @@
 		</div>			
 	</form>
 	<br>
+	<hr>
+
+
+	<!-- Información del Juego: Jugador, Apuesta, Pozo -->
+	<form align="center">				
+		<!-- <label>Jugador Actual</label>
+		<input type="text" value="<?php echo $jugador ?>" disabled> -->
+		<label>Pozo </label>
+		<input type="text" value="<?php echo $pozo ?>" disabled>
+		<h2 align="center"><?php echo $res ?></h2>		
+		<label>Apuesta </label>
+		<input type="text" value="<?php echo $apuesta ?>" disabled>
+		<br><br>
+		<label>Lanzamiento Uno </label>
+		<input type="text" value="<?php echo $lanza1 ?>" disabled>
+		<label>Lanzamiento Dos </label>
+		<input type="text" value="<?php echo $lanza2 ?>" disabled>
+	</form>
 	<hr>
 </body>
 </html>
