@@ -1,46 +1,22 @@
 <?php 
 // declaración e inicialización de variables, constantes y arreglos
-	$nom_aplicacion = "9. Matriz Datos Personales";
-	$numero = 1;
-	$aux = 1;
-	$datos_personales = array(
-		array("Nro", "Nombre", "Sexo", "Cumpleaños", "Estado Civil", "Edad")
+	$nom_aplicacion = "9. Matriz Datos Personales";	
+	$registro = [];	
+	$matriz = array(
+		array("Nro", "Nombre", "Sexo", "Cumpleaños", "Estado Civil", "Teléfono")		
 	);
 
 // entrada 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		# Recibe el numero
-		$numero = $_POST['numero'];
-		$datos_nuevos = $_POST['datos_personales'];		
-		$aux = $numero + 1;
+		if (isset($_POST['registro'])) {
+			$registro = $_POST['registro'];
+			$matriz = $_POST['matriz'];
 
-		# Recibe el Nombre del Participante				
-		// $datos_nuevos = array($_POST['numero'], $_POST['nombre'], $_POST['sexo'], $_POST['cumple'], $_POST['estado'], $_POST['telefono']);
-			
-// Proceso
-		# Almacena los datos
-		for ($i= $numero ; $i < $aux ; $i++) {
-			$datos_personales[$i][0] = $_POST['numero'];
-			$datos_personales[$i][1] = $_POST['nombre'];
-			$datos_personales[$i][2] = $_POST['sexo'];
-			$datos_personales[$i][3] = $_POST['cumple'];
-			$datos_personales[$i][4] = $_POST['estado'];
-			$datos_personales[$i][5] = $_POST['telefono'];
-		}		
-		
-		echo "<br>" . $numero;
-		echo "<br>" . $aux;
-		echo "<br>";
-		$numero++;
-		
-	}	
-	for ($i=0; $i < $aux ; $i++) { 
-		for ($j=0; $j < 6 ; $j++) { 
-			echo $datos_personales[$i][$j] . " - ";
+// proceso
+			array_push($matriz, $registro);
 		}
-		echo "<br>";
 	}
-
+	
 // salida
 ?>
 <!DOCTYPE html>
@@ -55,52 +31,75 @@
 	<p><a href="index.php">Volver</a></p>
 	<hr>
 
-	<!-- Formulario Captura de Datos -->
+	<!-- Formulario: Crear Registro -->
+	<h3>Crear Registro</h3>
 	<form action="" method="POST">
-		<div>
-			<label>Nro</label>
-			<input type="text" name="numero" value="<?php echo $numero ?>">
-		</div>		
+		<div>			
+			<input type="hidden" name="registro[]" value="<?php echo count($matriz) ?>">
+		</div>
 		<div>
 			<label>Nombre</label>
-			<input type="text" name="nombre">
+			<input type="text" name="registro[]">
 		</div>
 		<div>
 			<label>Sexo</label>
-			<input type="text" name="sexo">
+			<select name="registro[]">
+				<option value="Masculino">Masculino</option>
+				<option value="Femenino">Femenino</option>
+			</select>
 		</div>
 		<div>
 			<label>Cumpleaños</label>
-			<input type="text" name="cumple">
+			<input type="date" name="registro[]">
 		</div>
 		<div>
 			<label>Estado Civil</label>
-			<input type="text" name="estado">
+			<select name="registro[]">
+				<option value="Soltero(a)">Soltero(a)</option>
+				<option value="Unión Libre">Unión Libre</option>
+				<option value="Casado(a)">Casado(a)</option>
+			</select>
 		</div>
 		<div>
 			<label>Teléfono</label>
-			<input type="text" name="telefono">
+			<input type="text" name="registro[]">
 		</div>
-		<?php 
-			for ($i=$numero; $i < $aux; $i++) { 
-				echo '<input type="hidden" name="datos_personales[]" value="' . $datos_personales[$i] . '">';
+		<br>
+		<div>
+			<input type="submit" value="Cargar">
+		</div>
+		<br>
+		<div style="display:none;">
+			<?php
+			for ($i=0; $i < count($matriz); $i++) { 
+				for ($j=0; $j < 6; $j++) { 					
+					echo '<input type="text" name="matriz[' . $i . '][' . $j . ']" value="' . $matriz[$i][$j] . '">';
+				}
+				echo '<br>';
 			}
 		?>
-		<input type="submit" name="submit" value="Enviar">		
+		</div>
 	</form>
 	<hr>
 	
-	<!-- Tabla de Resultados -->
+	<h3>Muestra de Resultados</h3>
 	<table border="1">
-	  <tr>	  	
-	    <?php 
-	    	// for ($i=0; $i < 1; $i++) { 
-	    	// 	for ($j=0; $j < 6; $j++) { 
-	    	// 		echo "<th>" . $datos_personales[$i][$j] . "</th>";
-	    	// 	}
-	    	// }
-	    ?>	    	    
-	  </tr>
+		<tr>
+			<?php 				
+				for ($j=0; $j < 6; $j++) { 
+					echo '<th>' . $matriz[0][$j] . '</th>';
+				}				
+			?>			
+		</tr>		
+		<?php 
+			for ($i=1; $i < count($matriz); $i++) {
+				echo '<tr>'; 
+				for ($j=0; $j < 6; $j++) { 
+					echo '<td>' . $matriz[$i][$j] . '</td>';
+				}
+				echo '</tr>';
+			}
+		?>
 	</table>
 </body>
 </html>
