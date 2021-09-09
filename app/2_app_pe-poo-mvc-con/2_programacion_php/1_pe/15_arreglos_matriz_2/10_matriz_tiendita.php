@@ -46,12 +46,7 @@
 		} else {			
 			$total_parcial = floatval($matriz_uno[$articulo][2] * $cantidad);
 		}
-
-		# Calcular el total a pagar
-		for ($x=0; $x < count($matriz_dos); $x++) { 
-			$total_pagar = floatval($total_pagar) + floatval($matriz_dos[$x][6]);			
-		}
-
+		
 		# Según el artículo seleccionado se crea un registro
 		$matriz_dos[$contador][0] = $contador;
 		$matriz_dos[$contador][1] = $articulo;
@@ -60,6 +55,12 @@
 		$matriz_dos[$contador][4] = $matriz_uno[$articulo][2];
 		$matriz_dos[$contador][5] = $matriz_uno[$articulo][3];
 		$matriz_dos[$contador][6] = floatval($total_parcial);
+
+		# Calcular el total a pagar
+		for ($x=0; $x < count($matriz_dos); $x++) { 
+			$total_pagar = floatval($total_pagar) + floatval($matriz_dos[$x][6]);			
+		}
+
 	}
 	
 // salida
