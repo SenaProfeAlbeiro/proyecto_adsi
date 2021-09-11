@@ -3,7 +3,7 @@
 	$nom_aplicacion = "9. Matriz Datos Personales";	
 	$registro = [];	
 	$matriz = array(
-		array("Nro", "Nombre", "Sexo", "Cumpleaños", "Estado Civil", "Teléfono")		
+		array("Nro", "Nombre", "Sexo", "Cumpleaños", "Estado Civil", "Teléfono")
 	);
 
 // entrada 
@@ -71,13 +71,13 @@
 		<br>
 		<div style="display:none;">
 			<?php
-			for ($i=0; $i < count($matriz); $i++) { 
-				for ($j=0; $j < 6; $j++) { 					
-					echo '<input type="text" name="matriz[' . $i . '][' . $j . ']" value="' . $matriz[$i][$j] . '">';
+				for ($i=0; $i < count($matriz); $i++) { 
+					for ($j=0; $j < 6; $j++) { 					
+						echo '<input type="text" name="matriz[' . $i . '][' . $j . ']" value="' . $matriz[$i][$j] . '">';
+					}
+					echo '<br>';
 				}
-				echo '<br>';
-			}
-		?>
+			?>
 		</div>
 	</form>
 	<hr>

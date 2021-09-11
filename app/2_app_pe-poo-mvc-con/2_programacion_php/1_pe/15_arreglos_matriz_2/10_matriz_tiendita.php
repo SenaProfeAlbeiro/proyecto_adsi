@@ -9,7 +9,7 @@
 	$total_pagar = 0;	
 	$matriz_uno = array(
 		array('ID', 'NOMBRE', 'VALOR UNIDAD', 'IVA'),
-		array(1, 'Arroz L', 2500, 'No'),
+		array(1, 'Arroz L', 3500, 'No'),
 		array(2, 'Azucar L', 1800, 'Si'),
 		array(3, 'Sal L', 900, 'Si'),
 		array(4, 'Café L', 4000, 'Si'),
@@ -19,8 +19,7 @@
 		array(8, 'Leche Ltr', 3800, 'No'),
 		array(9, 'Aceite Ltr', 10000, 'Si'),
 		array(10, 'Gaseosa Ltr', 3000, 'Si')
-	);
-	$registro = array();
+	);	
 	$matriz_dos = array(
 		array('ITEM', 'ID', 'NOMBRE DEL PRODUCTO', 'CANTIDAD', 'VALOR UNITARIO', 'IVA', 'TOTAL')
 	);
@@ -33,8 +32,6 @@
 			$cantidad = intval($_POST['cantidad']);
 			$matriz_dos = $_POST['matriz_dos'];
 			$contador = count($matriz_dos);
-
-
 		} else {
 			echo 'Seleccione la cantidad de articulos';
 		}
@@ -58,7 +55,7 @@
 
 		# Calcular el total a pagar
 		for ($x=0; $x < count($matriz_dos); $x++) { 
-			$total_pagar = floatval($total_pagar) + floatval($matriz_dos[$x][6]);			
+			$total_pagar = floatval($total_pagar) + floatval($matriz_dos[$x][6]);
 		}
 
 	}
@@ -135,13 +132,13 @@
 		</div>
 		<div style="display:none;">
 			<?php
-			for ($i=0; $i < count($matriz_dos); $i++) { 
-				for ($j=0; $j < 7; $j++) { 					
-					echo '<input type="text" name="matriz_dos[' . $i . '][' . $j . ']" value="' . $matriz_dos[$i][$j] . '">';
+				for ($i=0; $i < count($matriz_dos); $i++) { 
+					for ($j=0; $j < 7; $j++) { 					
+						echo '<input type="text" name="matriz_dos[' . $i . '][' . $j . ']" value="' . $matriz_dos[$i][$j] . '">';
+					}
+					echo '<br>';
 				}
-				echo '<br>';
-			}
-		?>
+			?>
 		</div>
 	</form>
 	<hr>
@@ -179,6 +176,5 @@
 			</td>
 		</tr>
 	</table>
-
 </body>
 </html>
