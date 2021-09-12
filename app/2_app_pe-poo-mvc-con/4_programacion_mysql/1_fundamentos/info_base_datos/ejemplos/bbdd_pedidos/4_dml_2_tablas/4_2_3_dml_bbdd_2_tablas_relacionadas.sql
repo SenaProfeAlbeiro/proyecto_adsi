@@ -32,6 +32,7 @@ WHERE poblacion = 'MADRID'
 ## Eliminar todos los clientes de Madrid
 -- -------------------------------------------------------------------------------------
 DELETE FROM clientes WHERE poblacion = 'MADRID'
+-- -------------------------------------------------------------------------------------
 ## Eliminar todos los clientes que no han hecho pedidos
 -- -------------------------------------------------------------------------------------
 DELETE DISTINCTROW clientes.*, pedidos.codigo_cliente 
