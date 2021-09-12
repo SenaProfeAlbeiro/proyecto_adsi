@@ -35,10 +35,9 @@ DELETE FROM clientes WHERE poblacion = 'MADRID'
 -- -------------------------------------------------------------------------------------
 ## Eliminar todos los clientes que no han hecho pedidos
 -- -------------------------------------------------------------------------------------
-DELETE DISTINCTROW clientes.*, pedidos.codigo_cliente 
-FROM clientes LEFT JOIN pedidos 
+DELETE clientes FROM clientes LEFT JOIN pedidos 
 ON clientes.codigo_cliente = pedidos.codigo_cliente
-WHERE pedidos.codigo_cliente IS NULL
+WHERE pedidos.codigo_cliente IS NULL;
 -- -------------------------------------------------------------------------------------
 
 
