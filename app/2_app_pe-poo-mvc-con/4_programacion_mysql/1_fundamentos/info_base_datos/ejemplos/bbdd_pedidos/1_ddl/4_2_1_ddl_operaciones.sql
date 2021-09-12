@@ -3,17 +3,19 @@
 -- -------------------------------------------------------------------------------------
 -- DDL: LENGUAJE DE DEFINICIÓN DE DATOS (ESTRUCTURA)
 --      ## ACCIONES BÁSICAS CON TABLAS RELACIONADAS: 
---         # EN CONSOLA, ELIMINAR BASE DE DATOS, MOSTRAR CREACIÓN DE TABLAS, ELIMINAR Y 
---           CREAR ÍNDICES Y RESTRICCIONES. 
---         # SHOW, USE ALTER TABLE, ADD, DROP, KEY, INDEX, 
---         CONSTRAINT, FOREIGN KEY, TRUNCATE
+--         # EN CONSOLA, MOSTRAR BBDD, USAR BBDD, MOSTRAR TABLAS Y COLUMNAS, MOSTRAR 
+--           CREACIÓN DE TABLAS Y COLUMNAS, AGREGAR, MODIFICAR Y ELIMINAR COLUMNAS,
+--           ELIMINAR Y CREAR ÍNDICES Y RESTRICCIONES, ELIMINAR REGISTROS, ELIMINAR 
+--           BBDD Y TABLAS.
 -- -------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------
--- -------------------------------------------------------------------------------------
-## CONSOLA: XAMPP / SHELL / cd mysql/bin / mysql -h localhost -u root -p / ENTER
 -- -------------------------------------------------------------------------------------
 
 
+
+
+-- -------------------------------------------------------------------------------------
+-- EN CONSOLA: XAMPP / SHELL / cd mysql/bin / mysql -h localhost -u root -p / ENTER
 -- -------------------------------------------------------------------------------------
 ## Mostrar bases de datos (SHOW DATABASES)
 -- -------------------------------------------------------------------------------------
@@ -44,6 +46,35 @@ SHOW CREATE TABLE productos;
 
 
 -- -------------------------------------------------------------------------------------
+-- AGREGAR UN CAMPO A UNA TABLA (ALTER TABLE, ADD, COLUMN)
+-- -------------------------------------------------------------------------------------
+## Agregar campo a una tabla
+-- -------------------------------------------------------------------------------------
+ALTER TABLE clientes ADD COLUMN correo DATE;
+-- -------------------------------------------------------------------------------------
+## Agregar campo a una tabla con un valor por defecto
+-- -------------------------------------------------------------------------------------
+ALTER TABLE clientes ADD COLUMN correo DATE;
+-- -------------------------------------------------------------------------------------
+
+
+-- -------------------------------------------------------------------------------------
+-- MODIFICAR UN CAMPO DE UNA TABLA (ALTER TABLE, CHANGE, COLUMN)
+-- -------------------------------------------------------------------------------------
+ALTER TABLE clientes CHANGE correo correo VARCHAR(50);
+-- -------------------------------------------------------------------------------------
+
+
+-- -------------------------------------------------------------------------------------
+-- ELIMINAR UN CAMPO DE UNA TABLA (ALTER TABLE, DROP, COLUMN)
+-- -------------------------------------------------------------------------------------
+ALTER TABLE clientes DROP COLUMN correo;
+-- -------------------------------------------------------------------------------------
+
+
+-- -------------------------------------------------------------------------------------
+-- ELIMINAR RESTRICCIONES E ÍNDICES (ALTER TABLE, DROP)
+-- -------------------------------------------------------------------------------------
 ## Eliminar restricción CONSTRAINT e índice KEY de pedidos con clientes
 -- -------------------------------------------------------------------------------------
 ALTER TABLE pedidos DROP CONSTRAINT fk_pedidos_clientes;
@@ -62,13 +93,19 @@ ALTER TABLE productos_pedidos DROP KEY fk_productos_pedidos_productos;
 
 
 -- -------------------------------------------------------------------------------------
-## Eliminar todos los registros de la tabla pedidos y productos_pedidos
+-- ELIMINAR REGISTROS DE UNA TABLA (TRUNCATE)
 -- -------------------------------------------------------------------------------------
+## Eliminar todos los registros de una tabla
+-- -------------------------------------------------------------------------------------
+TRUNCATE clientes;
 TRUNCATE pedidos;
+TRUNCATE productos;
 TRUNCATE productos_pedidos;
 -- -------------------------------------------------------------------------------------
 
 
+-- -------------------------------------------------------------------------------------
+-- AGREGAR RESTRICCIONES E ÍNDICES (ALTER TABLE, ADD)
 -- -------------------------------------------------------------------------------------
 ## Agregar índice y restricción entre la tabla pedidos y clientes
 -- -------------------------------------------------------------------------------------
@@ -102,6 +139,15 @@ ON UPDATE CASCADE;
 -- -------------------------------------------------------------------------------------
 
 
+-- -------------------------------------------------------------------------------------
+-- ELIMINAR TABLAS Y BASES DE DATOS (DROP)
+-- -------------------------------------------------------------------------------------
+## Eliminar Tabla
+-- -------------------------------------------------------------------------------------
+DROP TABLE clientes;
+DROP TABLE pedidos;
+DROP TABLE productos;
+DROP TABLE productos_pedidos;
 -- -------------------------------------------------------------------------------------
 ## Eliminar Base de Datos
 -- -------------------------------------------------------------------------------------
