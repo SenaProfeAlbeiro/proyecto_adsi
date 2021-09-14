@@ -5,9 +5,9 @@
 	
 	$res_global = '';
 
-// Funciones: Proceso
+// Funciones
 
-	# Inicia el Proceso y devuelve un valor
+	# Inicia el Proceso / Llama otras Funciones / Devuelve un valor
 	function iniciar($menu, $num1, $num2){
 		switch ($menu) {
 			case 1:
