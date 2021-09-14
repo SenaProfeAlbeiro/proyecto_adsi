@@ -9,12 +9,12 @@
 	<h1><?php echo $nom_aplicacion ?></h1>
 	<p><?php echo $instrucciones ?></p>	
 	<ul>
-		<li><a href="?band=1">Encender calculadora normal</a></li>
+		<li><a href="../3_controlador/1_calculadora_controlador.php?band=1">Encender calculadora normal</a></li>
 		<li><a href="?band=">Apagar calculadora normal</a></li>		
 		<li><a href="../index.php">Volver</a></li>
 	</ul>
 	<hr>
-	<form id="calcula" action="" method="POST">		
+	<form id="calcula" action="../3_controlador/1_calculadora_controlador.php" method="POST">		
 		<div>
 			<label for="num1">Número Uno</label>
 			<input type="text" name="num1" id="num1" <?php echo $encendido_global ?>>

@@ -1,26 +1,31 @@
 <?php 
 	
-// declaración e inicialización de variables y constantes
-	$nom_aplicacion = "2. Factorial";
-	$instruc = "Digite el factorial / Enviar";	
-	$num1 = 0;
-	$aux = 0;
-	$factorial = 1;	
-	$res = "";
+// Declarar e Iniciar variables, constantes, arreglos y objetos
+	
+	$nom_aplicacion = "2. Factorial";	
+	$res_global = '';
 
-// entrada	 
+// Funciones
+
+	# Inicia el Proceso / Devuelve un valor
+	function iniciar($numero){		
+		$factorial = 1;
+		while ($numero > 1) {
+			$factorial = $factorial * $numero;
+			$numero = $numero - 1;
+		}
+		return $factorial;
+	}
+
+// Entrada
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		$num1 = $_POST['numero'];		
+		if ($_POST['numero'] != null) {
+			$numero = $_POST['numero'];
+			$res_global = 'El factorial de ' . $numero . ' es ' . iniciar($numero);
+		}
 	}
 
-// Proceso
-	while ($num1 > 1) {
-		$factorial = $factorial * $num1;
-		$num1 = $num1 - 1;
-	}
-	$res = "El Factorial del número " . $aux . " es " . $factorial;
-
-// salida
+// Salida
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,13 +39,13 @@
 	<p><a href="index.php">Volver</a></p>
 	<hr>
 	<ul>		
-		<li><?php echo $instruc ?></li>
+		<li>Digite el Factorial / Enviar</li>
 	</ul>
 	<form action="" method="POST">		
 		<label for="numero">Factorial</label>
 		<input type="text" name="numero" id="numero">
 		<input type="submit" name="submit" value="Enviar">
 	</form>
-	<h1><?php echo $res ?></h1>
+	<h1><?php echo $res_global ?></h1>
 </body>
 </html>

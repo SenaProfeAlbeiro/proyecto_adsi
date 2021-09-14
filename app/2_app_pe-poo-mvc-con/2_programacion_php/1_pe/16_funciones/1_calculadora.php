@@ -1,6 +1,7 @@
 <?php 
 
 // Declarar e Iniciar variables, constantes, arreglos y objetos
+	
 	$nom_aplicacion = "1. Calculadora";
 	$instrucciones = "Encienda la Calculadora";
 	$encendido_global = "disabled";

@@ -11,7 +11,7 @@
 	<hr>
 	<ol>
 		<li><a href="3_controlador/1_calculadora_controlador.php">Calculadora</a></li>
-		<li><a href="2_factorial.php">Factorial</a></li>
+		<li><a href="2_vista/2_factorial_vista.php">Factorial</a></li>
 		<li><a href="3_fibonacci.php">Fibonacci</a></li>		
 		<li><a href="4_serie_par_impar.php">Serie par o impar</a></li>
 		<li><a href="5_burbuja.php">Burbuja</a></li>		
