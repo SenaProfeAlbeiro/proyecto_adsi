@@ -1,12 +1,11 @@
 <?php 
 	
-// Declarar e Iniciar variables, constantes, arreglos y objetos
+// Declarar e Iniciar variables, constantes, arreglos y objetos	
 	$res_global = '';
 
 // Funciones
-
-	# Inicia el Proceso / Devuelve un valor
-	function iniciar($numero){		
+	# Calcula el factorial / Devuelve un valor
+	function calcular_factorial($numero){		
 		$factorial = 1;
 		while ($numero > 1) {
 			$factorial = $factorial * $numero;
@@ -17,13 +16,16 @@
 
 // Entrada
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		if ($_POST['numero'] != null) {
+		if ($_POST['numero'] != null && $_POST['numero'] > 0) {
+			$instrucciones = "Digite el Factorial / Enviar";
 			$numero = $_POST['numero'];
-			$res_global = 'El factorial de ' . $numero . ' es ' . iniciar($numero);
+			$res_global = 'El factorial de ' . $numero . ' es ' . calcular_factorial($numero);
+		} else {
+			$instrucciones = 'El Factorial no puede ser negativo, nulo o cero';
 		}
-	}
+	} 
 
 // Salida
-	require_once '../2_vista/2_factorial_vista.php';
-	echo '<h1>' . $res_global . '</h1>'
+	require_once ('../2_vista/2_factorial_vista.php');
+	echo '<h1>' . $res_global . '</h1>';
 ?>

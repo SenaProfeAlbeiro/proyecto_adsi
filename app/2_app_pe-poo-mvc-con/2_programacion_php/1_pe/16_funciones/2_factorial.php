@@ -1,14 +1,14 @@
 <?php 
 	
 // Declarar e Iniciar variables, constantes, arreglos y objetos
-	
-	$nom_aplicacion = "2. Factorial";	
+
+	$instrucciones = "Digite el Factorial / Enviar";
 	$res_global = '';
 
 // Funciones
 
-	# Inicia el Proceso / Devuelve un valor
-	function iniciar($numero){		
+	# Calcula el factorial / Devuelve un valor
+	function calcular_factorial($numero){		
 		$factorial = 1;
 		while ($numero > 1) {
 			$factorial = $factorial * $numero;
@@ -19,9 +19,11 @@
 
 // Entrada
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		if ($_POST['numero'] != null) {
+		if ($_POST['numero'] != null && $_POST['numero'] > 0) {
 			$numero = $_POST['numero'];
-			$res_global = 'El factorial de ' . $numero . ' es ' . iniciar($numero);
+			$res_global = 'El factorial de ' . $numero . ' es ' . calcular_factorial($numero);
+		} else {
+			$instrucciones = 'El Factorial no puede ser negativo, nulo o cero';
 		}
 	}
 
@@ -32,14 +34,14 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><?php echo $nom_aplicacion ?></title>
+	<title>2. Factorial</title>
 </head>
 <body>
-	<h1><?php echo $nom_aplicacion ?></h1>
+	<h1>2. Factorial</h1>
 	<p><a href="index.php">Volver</a></p>
 	<hr>
 	<ul>		
-		<li>Digite el Factorial / Enviar</li>
+		<li><?php echo $instrucciones ?></li>
 	</ul>
 	<form action="" method="POST">		
 		<label for="numero">Factorial</label>
