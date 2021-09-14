@@ -6,10 +6,9 @@
 	$tipo_operacion = "";
 	$encender = "disabled";
 	$menu = null;
-	$num1 = null;
-	$num2 = null;	
-	$res = null;
-	$band = null;
+	$num1 = 0;
+	$num2 = 0;
+	$res = null;	
 
 // entrada
 	if (isset($_GET["band"])) {
@@ -23,76 +22,43 @@
 				$instruc = "Digite los números / seleccione una operación / Enviar";
 			}
 		}	
-	}
+	}	
 
-// Proceso
-	# Validar datos
-	echo '<br>Bandera: ' . $band;
-	echo '<br>Menú: ' . $menu;
-	$res = principal($band, $menu, $num1, $num2);
-	echo '<br>Función Principal: ' . principal($band, $menu, $num1, $num2);
-
-// funciones
-
-	# Función principal
-	function principal($band, $menu, $num1, $num2){
-		$num1 = $num1;
-		$num2 = $num2;	
-		if ($band) {
-			# Condicional múltiple: switch
-			switch ($menu) {
-				case 1:
-					return sumar($num1, $num2);
-					$tipo_operacion = "La Suma es : ";
-					break;
-				case 2:
-					return restar($num1, $num2);
-					$tipo_operacion = "La Resta es : ";
-					break;
-				case 3:
-					return multiplicar($num1, $num2);				
-					$tipo_operacion = "La Multiplicación es : ";
-					break;
-				case 4:
-					return dividir($num1, $num2);			
-					$tipo_operacion = "La División es : ";
-					break;
-				default:
-					if ($menu == null) {
-						$instruc = "Digite los números / seleccione una operación / Enviar";
-					} else {
-						$instruc = "Opción Incorrecta";
-					}
-					break;
-			}		
-		} else {
-			$instruc = "Encienda la calculadora";
-		}
-	}
-
-	# Función Sumar
-	function sumar($num1, $num2){
-		$res = $num1 + $num2;
-		return $res;
-	}
-	# Función Restar
-	function restar($num1, $num2){
-		$res = $num1 - $num2;
-		return $res;
-	}
-	# Función Multiplicar
-	function multiplicar($num1, $num2){
-		$res = $num1 * $num2;
-		return $res;
-	}
-	# Función Dividir
-	function dividir($num1, $num2){
-		if ($num2 == 0) {				
-			$res = "Imposible por 0";				
-		} else {
-			$res = $num1 / $num2;				
+// proceso	
+	# Condicional Doble
+	if ($band) {
+		# Condicional múltiple: switch
+		switch ($menu) {
+			case 1:
+				$res = $num1 + $num2;
+				$tipo_operacion = "La Suma es : ";
+				break;
+			case 2:
+				$res = $num1 - $num2;			
+				$tipo_operacion = "La Resta es : ";
+				break;
+			case 3:
+				$res = $num1 * $num2;
+				$tipo_operacion = "La Multiplicación es : ";
+			break;
+			case 4:
+				if ($num2 == 0) {				
+					$res = "Imposible por 0";				
+				} else {
+					$res = $num1 / $num2;				
+				}			
+				$tipo_operacion = "La División es : ";
+				break;
+			default:
+				if ($menu == null) {
+					$instruc = "Digite los números / seleccione una operación / Enviar";
+				} else {
+					$instruc = "Opción Incorrecta";
+				}
+				break;
 		}		
-		return $res;
+	} else {
+		$instruc = "Encienda la calculadora";
 	}
 
 // salida
