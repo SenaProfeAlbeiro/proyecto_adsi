@@ -1,9 +1,11 @@
 <?php 
 	
 // Declarar e Iniciar variables, constantes, arreglos y objetos	
+	
 	$res_global = '';
 
 // Funciones
+	
 	# Calcula el factorial / Devuelve un valor
 	function calcular_factorial($numero){		
 		$factorial = 1;
