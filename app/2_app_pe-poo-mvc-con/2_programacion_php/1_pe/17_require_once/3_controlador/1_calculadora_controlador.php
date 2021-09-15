@@ -1,12 +1,6 @@
 <?php
 
 // Funciones
-	
-	# Encender calculadora
-	function encender(){
-		$encendido_local = '';
-		return $encendido_local;		
-	}
 
 	# Inicia el Proceso / Llama otras Funciones / Devuelve un valor
 	function iniciar($menu, $num1, $num2){
@@ -28,6 +22,12 @@
 				break;
 		}
 		return $res_local;
+	}
+
+	# Encender calculadora
+	function encender(){
+		$encendido_local = '';
+		return $encendido_local;		
 	}
 
 	# Suma
@@ -76,6 +76,8 @@
 
 // Entrada: POST
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// Declarar e Iniciar variables, constantes, arreglos y objetos
+		$res_global = '';
 		$encendido_global = encender();
 		$instrucciones = "Digite los números / Seleccione el Orden / Enviar";
 		if ($_POST['num1'] != null && $_POST['num2'] != null) {
