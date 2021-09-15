@@ -14,10 +14,10 @@
 	<h1>2. Factorial</h1>
 	<p><a href="../index.php">Volver</a></p>
 	<hr>
-	<ul>		
+	<ul>
 		<li><?php echo $instrucciones ?></li>
 	</ul>
-	<form action="../3_controlador/2_factorial_controlador.php" method="POST">		
+	<form action="../3_controlador/2_factorial_controlador.php" method="POST">
 		<label for="numero">Factorial</label>
 		<input type="text" name="numero" id="numero">
 		<input type="submit" name="submit" value="Enviar">

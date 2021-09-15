@@ -5,12 +5,12 @@
 	$nom_aplicacion = "1. Calculadora";
 	$instrucciones = "Encienda la Calculadora";
 	$encendido_global = "disabled";
-	$res_global = '';	
+	$res_global = '';
 
 // Funciones
 
 	# Encender calculadora
-	function encender(){		
+	function encender(){
 		$encendido_local = '';
 		return $encendido_local;		
 	}
@@ -87,7 +87,7 @@
 				$num2 = $_POST['num2'];
 				$res_global = iniciar($menu, $num1, $num2);
 			} else {
-				$instrucciones = "Digite los números / Seleccione el Orden";
+				$instrucciones = "Digite los números / Seleccione la Operación";
 			}
 		} else {
 			$instrucciones = "Digite los números";
