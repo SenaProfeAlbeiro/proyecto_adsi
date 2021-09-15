@@ -65,7 +65,6 @@
 		return $divide_local;	
 	}
 
-
 // Entrada: GET
 	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		if (isset($_GET["band"])) {			
@@ -80,6 +79,7 @@
 // Entrada: POST
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$encendido_global = encender();
+		$instrucciones = "Digite los números / Seleccione el Orden / Enviar";
 		if ($_POST['num1'] != null && $_POST['num2'] != null) {
 			if(isset($_POST['menu'])){
 				$menu = $_POST['menu'];
