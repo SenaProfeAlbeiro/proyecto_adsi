@@ -27,6 +27,7 @@
 					break;
 				default:
 					$res_local = 'La opción no existe';
+					return $res_local;
 					break;
 			}
 		}

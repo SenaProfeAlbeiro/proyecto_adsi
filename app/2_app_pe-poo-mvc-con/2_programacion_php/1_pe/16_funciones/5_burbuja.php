@@ -1,48 +1,67 @@
 <?php 
 	
-// declaración e inicialización de variables y constantes
+// Declarar e Iniciar variables, constantes, arreglos y objetos	
+
 	$nom_aplicacion = "5. Burbuja";
-	$instruc = "Digite tres valores / Seleccione el Orden / Enviar";
+	$instrucciones = "Digite tres valores / Seleccione el Orden / Enviar";
 	$num1 = null;
 	$num2 = null;
 	$num3 = null;
 	$aux = 0;
 	$menu = null;
-	$res = "";		
+	$res_global = '';
 
-// entrada	 
-	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		# Recibe los datos por post y lo asigna a las variables
-		if (isset($_POST['menu'])) {
-			$menu = $_POST['menu'];
-			$num1 = $_POST['num1'];		
-			$num2 = $_POST['num2'];
-			$num3 = $_POST['num3'];
+// Funciones
 
-// Proceso 1: Evalúa que las variables tengan un valor		
-			if ($num1 != null && $num2 != null && $num3 != null) {
-				# Ordena los valores
-				for ($i=0; $i < 2; $i++) { 
-					# ordena los números: Burbuja 
-					if ($num1 >= $num2 ) {					
-						$aux = $num1; 
-						$num1 = $num2;
-						$num2 = $aux;					
-					}
-					if ($num2 >= $num3) {					
-						$aux = $num2; 
-						$num2 = $num3;
-						$num3 = $aux;					
-					}
+	# Inicia el Proceso / Llama otras Funciones / Devuelve un valor
+	function iniciar($menu, $num1, $num2, $num3){
+		if ($num1 != null && $num2 != null && $num3 != null) {
+			# Ordena los valores
+			for ($i=0; $i < 2; $i++) { 
+				# ordena los números: Burbuja 
+				if ($num1 >= $num2 ) {					
+					$aux = $num1; 
+					$num1 = $num2;
+					$num2 = $aux;					
 				}
-			} else {
-				$instruc = "Faltó algún dato, inténtelo de nuevo";
+				if ($num2 >= $num3) {					
+					$aux = $num2; 
+					$num2 = $num3;
+					$num3 = $aux;					
+				}
 			}
-		} else {
-			$instruc = "Seleccione el orden e inténtelo de nuevo";
+			switch ($menu) {
+				case 1:
+					$res_local = "El orden Ascendente: " . $num1 . " - " . $num2 . " - " . $num3;
+					break;
+				case 2:
+					$res_local = "El orden Descendente: " . $num3 . " - " . $num2 . " - " . $num1;
+					break;
+				default:
+					$res_local = 'La opción no existe';
+					break;
+			}
+			return $res_local;
 		}
 	}
 
+// Entrada	 
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {		
+		# Recibe los datos por post y lo asigna a las variables
+		if ($_POST['num1'] != null && $_POST['num2'] != null && $_POST['num3'] != null) {
+			if(isset($_POST['menu'])){
+				$menu = $_POST['menu'];
+				$num1 = $_POST['num1'];
+				$num2 = $_POST['num2'];
+				$num3 = $_POST['num3'];
+				$res_global = iniciar($menu, $num1, $num2, $num3);
+			} else {
+				$instrucciones = "Digite los números / Seleccione el Orden";
+			}
+		} else {
+			$instrucciones = "Digite los números";
+		}
+	}	
 // salida
 ?>
 <!DOCTYPE html>
@@ -57,7 +76,7 @@
 	<p><a href="index.php">Volver</a></p>
 	<hr>
 	<ul>		
-		<li><?php echo $instruc ?></li>
+		<li><?php echo $instrucciones ?></li>
 	</ul>
 	<form action="" method="POST">		
 		<div>
@@ -78,22 +97,11 @@
 			<input type="radio" id="descendente" name="menu" value="2">
 			<label for="descendente">Descendente</label>			
 		</div>
-		<input type="submit" name="submit" value="Enviar">
+		<br>
+		<div>
+			<input type="submit" name="submit" value="Enviar">
+		</div>
 	</form>	
-	
-	<!-- Proceso 2: De acuerdo a la opción del menú, imprime los números -->
-	<!--            de forma ascendente o descendente -->
-	<?php
-		switch ($menu) {
-			case 1:
-				$res = "El orden Ascendente: " . $num1 . " - " . $num2 . " - " . $num3;
-				echo "<h1> $res </h1>";				
-				break;
-			case 2:
-				$res = "El orden Descendente: " . $num3 . " - " . $num2 . " - " . $num1;
-				echo "<h1> $res </h1>";				
-				break;			
-		}
-	?>
+	<?php echo '<h1>' . $res_global . '</h1>'; ?>
 </body>
 </html>
