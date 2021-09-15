@@ -1,11 +1,4 @@
-<?php 
-
-// Declarar e Iniciar variables, constantes, arreglos y objetos	
-	$instrucciones = "Digite el valor mínimo y máximo de la Serie / Seleccione si es par o impar / Enviar";
-	$num1 = null;	
-	$num2 = null;	
-	$aux = 0;
-	$menu = 0;
+<?php
 
 // Funciones	
 
@@ -56,6 +49,11 @@
 
 // entrada	 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// Declarar e Iniciar variables, constantes, arreglos y objetos
+		$instrucciones = "Digite el valor mínimo y máximo de la Serie / Seleccione si es par o impar / Enviar";
+		$num1 = null;	
+		$num2 = null;
+		$menu = 0;
 		# Evalúa que los controles estén usados (tengan algún valor)
 		if ($_POST['num1'] != null && $_POST['num2'] != null) {
 			if(isset($_POST['menu'])){
@@ -71,38 +69,6 @@
 	}
 
 // salida
+	require_once('../2_vista/4_serie_par_impar_vista.php');
+	echo iniciar($menu, $num1, $num2)
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>4. Serie Par o Impar</title>
-</head>
-<body>
-	<h1>4. Serie Par o Impar</h1>
-	<p><a href="index.php">Volver</a></p>
-	<hr>
-	<ul>		
-		<li><?php echo $instrucciones ?></li>
-	</ul>
-	<form action="" method="POST">		
-		<div>
-			<label for="num1">Valor Uno</label>
-			<input type="text" name="num1" id="num1">
-		</div>
-		<div>
-			<label for="num2">Valor Dos</label>
-			<input type="text" name="num2" id="num2">
-		</div>
-		<div>
-			<input type="radio" id="par" name="menu" value="1">
-			<label for="suma">Par</label>
-			<input type="radio" id="impar" name="menu" value="2">
-			<label for="resta">Impar</label>			
-		</div>
-		<input type="submit" name="submit" value="Enviar">
-	</form>
-	<?php echo iniciar($menu, $num1, $num2) ?>
-</body>
-</html>

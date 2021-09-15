@@ -1,8 +1,4 @@
-<?php 
-	
-// Declarar e Iniciar variables, constantes, arreglos y objetos	
-	
-	$res_global = '';
+<?php
 
 // Funciones
 	
@@ -18,6 +14,8 @@
 
 // Entrada
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// Declarar e Iniciar variables, constantes, arreglos y objetos
+		$res_global = '';
 		if ($_POST['numero'] != null && $_POST['numero'] > 0) {
 			$instrucciones = "Digite el Factorial / Enviar";
 			$numero = $_POST['numero'];

@@ -1,8 +1,4 @@
-<?php 
-
-// Declarar e Iniciar variables, constantes, arreglos y objetos
-	
-	$res_global = '';
+<?php
 
 // Funciones
 	
@@ -65,6 +61,8 @@
 // Entrada: GET
 	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		if (isset($_GET["band"])) {
+// Declarar e Iniciar variables, constantes, arreglos y objetos
+			$res_global = '';
 			$band = boolval($_GET["band"]);
 			if ($band == 1) {				
 				$encendido_global = encender();

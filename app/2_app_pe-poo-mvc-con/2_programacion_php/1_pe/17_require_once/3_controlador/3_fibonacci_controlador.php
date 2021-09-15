@@ -1,7 +1,4 @@
-<?php 
-	
-// Declarar e Iniciar variables, constantes, arreglos y objetos	
-	$numero = 0;
+<?php
 
 // Funciones
 
@@ -24,7 +21,9 @@
 	}
 
 // Entrada	 
-	if ($_SERVER['REQUEST_METHOD'] == 'POST') {		
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// Declarar e Iniciar variables, constantes, arreglos y objetos	
+		$numero = 0;		
 		if ($_POST['numero'] != null && $_POST['numero'] > 0) {
 			$numero = $_POST['numero'];
 			$instrucciones = "Digite la cantidad de números Fibonacci / Enviar";		
