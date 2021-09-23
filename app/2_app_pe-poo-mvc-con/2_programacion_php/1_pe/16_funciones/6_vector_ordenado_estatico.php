@@ -1,8 +1,9 @@
 <?php 
 	
 // declaración e inicialización de variables, constantes y arreglos
+
 	$nom_aplicacion = "6. Vector Ordenado Estático";
-	$instruc = "Instrucciones: Seleccione el Orden / Digite los valores del vector / Enviar";
+	$instrucciones = "Instrucciones: Seleccione el Orden / Digite los valores del vector / Enviar";
 	$menu = 0;
 	$posicion = 1;
 	$aux = 0;	
@@ -12,75 +13,89 @@
 	$valores_aux = [];
 
 
-// entrada	 
-	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		# Recibe los valores del arreglo
-		if (isset($_POST['menu'])) {
-			# se recibe la opción del menú
-			$menu = $_POST['menu'];
-			if (isset($_POST['valores'])) {			
-				# Valida que todos los controles tengan valor
-				foreach ($_POST['valores'] as $valor) {
-					if ($valor != null) {
-						$valores[] = $valor;
-					} else {
-						for ($i=0; $i < 10; $i++) { 
-							$valores[$i] = null;	
-						}
-						$instruc = "Instrucciones: Digite todos los valores";
-						$menu = 0;
-						break;					
-					}
-				}			
-			}
-		} else {
-			$instruc = 'Instrucciones: Seleccione el Orden (Ascendente o Descendente)';
-			#iniciar arreglos
-			for ($i=0; $i < 10; $i++) { 
-				$valores[$i] = null;
-				$valores_aux[$i] = null;
-			}
-		}
+// Funciones
 
-// Proceso
+	# Inicia el Proceso / Llama otras Funciones / Devuelve un Valor
+	function iniciar($menu, $valores){
 		#Se pasan los datos del arreglo a un arreglo auxiliar
 		$valores_aux = $valores;		
 		# Ordena ascendente o descendente, dependiendo de la opción seleccionada
 		switch ($menu) {
 			case 1:
 				$res = 'Orden Ascendente';
-				for ($i=0; $i < 9; $i++) { 
-					for ($j=0; $j < 9; $j++) { 
-						if ($valores[$j] >= $valores[$j + 1]) {
-							$aux = $valores[$j];
-							$valores[$j] = $valores[$j + 1];
-							$valores[$j + 1] = $aux;
-						}
-					}
-				}
+				ordenar_asc($valores);				
 				break;
 			case 2:
 				$res = 'Orden Descendente';
-				for ($i=0; $i < 9; $i++) { 
-					for ($j=0; $j < 9; $j++) { 
-						if ($valores[$j] <= $valores[$j + 1]) {
-							$aux = $valores[$j];
-							$valores[$j] = $valores[$j + 1];
-							$valores[$j + 1] = $aux;
-						}
-					}
-				}				
-				break;
-			
-			default:
-				// code...
+				ordenar_des($valores);				
 				break;
 		}
-	} else {
-		#iniciar arreglos
-		for ($i=0; $i < 10; $i++) { 
-			$valores[$i] = null;
-			$valores_aux[$i] = null;
+	}
+
+	# Inicia los inputs
+	function iniciar_inputs(){
+		for ($i=0; $i < 10; $i++) {
+			echo '<div>'; 
+			echo '<label>Posición_' . ($i + 1) . '</label>';
+			echo '<input type="text" name="valores[]">';
+			echo '</div>';			
+		}
+	}
+
+	# Validar Nulos: Valida que los controles tengan un valor
+	function validar_nulos($valores){
+		foreach ($valores as $valor) {
+			if ($valor != null) {
+				$valores[] = $valor;
+			} else {
+				for ($i=0; $i < 10; $i++) { 
+					$valores[$i] = null;	
+				}
+			}
+		}
+	}
+
+	# Ordenar Ascendente
+	function ordenar_asc($valores){
+		for ($i=0; $i < 9; $i++) { 
+			for ($j=0; $j < 9; $j++) { 
+				if ($valores[$j] >= $valores[$j + 1]) {
+					$aux = $valores[$j];
+					$valores[$j] = $valores[$j + 1];
+					$valores[$j + 1] = $aux;
+				}
+			}
+		}
+	}
+
+	# Ordenar Descendente
+	function ordenar_des($valores){
+		for ($i=0; $i < 9; $i++) { 
+			for ($j=0; $j < 9; $j++) { 
+				if ($valores[$j] <= $valores[$j + 1]) {
+					$aux = $valores[$j];
+					$valores[$j] = $valores[$j + 1];
+					$valores[$j + 1] = $aux;
+				}
+			}
+		}
+	}
+
+
+// entrada	 
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		# Recibe los datos por post y lo asigna a las variables
+		if (isset($_POST['menu'])) {			
+			$menu = $_POST['menu'];
+			$valores = $_POST['valores'];
+			if (validar_nulos($valores)) {
+			   	iniciar($menu, $valores);
+			 } else {
+				$instrucciones = 'Instrucciones: Seleccione el Orden (Ascendente o Descendente) / Digite todos los campos (No puede existir valores vacíos)';
+			 }
+			print_r($valores);
+		} else {
+			$instrucciones = 'Instrucciones: Seleccione el Orden (Ascendente o Descendente)';
 		}
 	}
 
@@ -98,7 +113,7 @@
 	<p><a href="index.php">Volver</a></p>
 	<hr>
 	<ul>		
-		<li><?php echo $instruc ?></li>
+		<li><?php echo $instrucciones ?></li>
 	</ul>
 	<form action="" method="POST">
 		<div>
@@ -108,15 +123,7 @@
 			<label for="descendente">Descendente</label>			
 		</div>
 		<br>		
-		<?php 
-			for ($i=0; $i < 10; $i++) { 
-				echo '<div>
-						<label>Posición_' . $posicion . '</label>
-						<input type="text" name="valores[]">
-					  </div>';
-				$posicion++;
-			}
-		?>
+		<?php iniciar_inputs();	?>
 		<br>		
 		<div>
 			<input type="submit" name="submit" value="Enviar">			

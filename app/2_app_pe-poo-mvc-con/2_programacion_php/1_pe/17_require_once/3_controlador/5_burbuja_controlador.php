@@ -36,7 +36,7 @@
 
 // Entrada	 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		// Declarar e Iniciar variables, constantes, arreglos y objetos	
+// Declarar e Iniciar variables, constantes, arreglos y objetos	
 		$instrucciones = "Digite tres valores / Seleccione el Orden / Enviar";
 		$num1 = null;
 		$num2 = null;
