@@ -15,7 +15,7 @@
 		<li><a href="2_vista/3_fibonacci_vista.php">Fibonacci</a></li>
 		<li><a href="2_vista/4_serie_par_impar_vista.php">Serie par o impar</a></li>
 		<li><a href="2_vista/5_burbuja_vista.php">Burbuja</a></li>
-		<li><a href="6_vector_ordenado_estatico.php">Vector Ordenado (Estático)</a></li>
+		<li><a href="2_vista/6_vector_ordenado_estatico_vista.php">Vector Ordenado (Estático)</a></li>
 		<li><a href="7_vector_ordenado_dinamico.php">Vector Ordenado (Dinámico)</a></li>
 		<li><a href="8_vector_guayabita.php">Guayabita</a></li>
 		<li><a href="9_matriz_datos_personales.php">Datos personales (Matriz)</a></li>
