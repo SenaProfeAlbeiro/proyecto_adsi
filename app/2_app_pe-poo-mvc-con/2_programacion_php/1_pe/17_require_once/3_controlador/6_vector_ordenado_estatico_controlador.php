@@ -20,7 +20,6 @@
 		foreach ($valores as $valor) {
 			if ($valor != null) {
 				$res_local = true;
-				break;
 			} else {				
 				$res_local = false;
 				break;

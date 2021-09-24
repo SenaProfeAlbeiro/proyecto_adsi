@@ -29,11 +29,10 @@
 	function validar_nulos($valores){
 		foreach ($valores as $valor) {
 			if ($valor != null) {
-				$res_local = true;
-				break;
+				$res_local = true;				
 			} else {				
 				$res_local = false;
-				break;
+				break;				
 			}
 		}
 		return $res_local;
@@ -86,7 +85,7 @@
 			if (validar_nulos($_POST['valores'])) {				
 				$valores = $_POST['valores'];				
 			   	$valores = iniciar($menu, $valores);
-			   	$orden = mostrar_respuesta($menu);
+			   	$orden = mostrar_respuesta($menu);			   	
 			 } else {
 				$instrucciones = 'Instrucciones: Seleccione el Orden (Ascendente o Descendente) / Digite todos los campos (No pueden existir valores vacíos) / Enviar';				
 			 }
