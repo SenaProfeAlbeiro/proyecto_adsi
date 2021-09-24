@@ -12,6 +12,9 @@
 	$res = "Digite la cantidad de Jugadores";
 	$jugadores = [];		
 
+// Funciones
+
+
 // entrada: 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		# Recibe la cantidad de Jugadores
