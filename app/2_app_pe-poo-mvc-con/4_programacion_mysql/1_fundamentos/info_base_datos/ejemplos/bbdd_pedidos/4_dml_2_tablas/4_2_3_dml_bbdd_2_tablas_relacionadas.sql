@@ -65,7 +65,7 @@ SELECT codigo_cliente, empresa, poblacion, telefono FROM clientes_madrid
 -- DML: LENGUAJE DE MANIPULACIÓN DE DATOS (CRUD)									  --
 --      ## CONSULTAS DE SELECCIÓN --> EN MÁS DE UNA TABLA (MULTITABLA):				  --
 --		## UNION EXTERNA (UNION, UNION ALL)											  --
---		## UNION INTERNA (INNER JOIN, LEFT JOIN, RIGHT JOINT)
+--		## UNION INTERNA (INNER JOIN, LEFT JOIN, RIGHT JOIN)
 --		## SUBCONSULTAS																  --
 -- -------------------------------------------------------------------------------------
 -- 		   NOTA: Eliminar Base de Datos / Cargar nuevamenta base de datos / Insertar  --
