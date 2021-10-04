@@ -1,13 +1,14 @@
 -- -------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------
--- TRIGERS: DISPARADORES -> TAREAS DE MANTENIMIENTO Y ADMIN DE BBDD					  -- 
---          (SON OBJETOS, SON EVENTOS, ASOCIADOS A UNA TABLA)						  --
---			# ¿CUÁNDO?: BEFORE, AFTER												  --
---          # TIPOS: INSERT (QUIÉN INSERTÓ, COMPROBAR)		 				  		  --
---           		 UPDATE (COPIA_SEG)		  		  								  --
---           		 DELETE (COPIA_SEG)		  		  								  --
---			# USO: OLD, NEW													  --
+-- TRIGERS: DISPARADORES -> VALIDACIÓN, TAREAS DE MANTENIMIENTO Y ADMIN DE BBDD			  -- 
+--          (SON OBJETOS, SON EVENTOS, ASOCIADOS A UNA TABLA)												  --
+--			# ¿CUÁNDO?: BEFORE, AFTER												  														--
+--          # TIPOS: INSERT (QUIÉN INSERTÓ, COMPROBAR)		 				  		  						--
+--           		 UPDATE (COPIA_SEG)		  		  								  											--
+--           		 DELETE (COPIA_SEG)		  		  								  											--
+--			# USO: OLD, NEW													  																		--
+--			# DELIMITER, BEGIN, END									  																		--
 -- -------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------
@@ -153,4 +154,35 @@ FOR EACH ROW INSERT INTO productos_eliminados (
 ## DELETE: Eliminar un Registro de la Tabla productos y comprobar
 -- -------------------------------------------------------------------------------------
 DELETE FROM productos WHERE codigo_articulo = 39;
+-- -------------------------------------------------------------------------------------
+
+
+-- -------------------------------------------------------------------------------------
+-- TRIGGER QUE IMPIDA ACTUALIZACIÓN DE UN PRECIO SINO CUMPLE UNA CONDICIÓN
+-- -------------------------------------------------------------------------------------
+## Crear el trigger con condicional
+-- -------------------------------------------------------------------------------------
+DELIMITER $$
+CREATE TRIGGER revisa_precio_bu 
+BEFORE UPDATE ON productos FOR EACH ROW
+BEGIN
+	IF (NEW.precio < 0) THEN
+		SET NEW.precio = OLD.precio;
+	ELSEIF (NEW.precio > 1000) THEN
+		SET NEW.precio = OLD.precio;
+	END IF;
+END;$$
+DELIMITER ;
+-- -------------------------------------------------------------------------------------
+## Actualizar el precio de un artículo (normal)
+-- -------------------------------------------------------------------------------------
+UPDATE productos SET precio = 15 WHERE codigo_articulo = 1;
+-- -------------------------------------------------------------------------------------
+## Actualizar el precio de un artículo (Si sobrepasa los 1000 -> Triger)
+-- -------------------------------------------------------------------------------------
+UPDATE productos SET precio = 8500 WHERE codigo_articulo = 1;
+-- -------------------------------------------------------------------------------------
+## Actualizar el precio de un artículo (Si es negativo -> Triger)
+-- -------------------------------------------------------------------------------------
+UPDATE productos SET precio = -85 WHERE codigo_articulo = 1;
 -- -------------------------------------------------------------------------------------
