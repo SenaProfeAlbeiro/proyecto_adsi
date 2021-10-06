@@ -1,7 +1,9 @@
 <?php 
+	
 	// Clase
 	class Person {
-		// Atributos
+
+		// Atributos (public, private, protected -> Modificadores de Acceso)
 		public $firstName = 'Juan';
 		public $lastName = 'Ramírez';
 		private $dateOfBirth = '1990-12-01';
@@ -9,8 +11,8 @@
 		// Métodos
 		
 		# Constructor(es)
-		public function __construct($fisrtName, $lastName, $dateOfBirth) { 
-			$this->fisrtName = $firstName; 
+		public function __construct($firstName, $lastName, $dateOfBirth) { 
+			$this->firstName = $firstName; 
 			$this->lastName = $lastName; 
 			$this->dateOfBirth = $dateOfBirth; 
 		}
