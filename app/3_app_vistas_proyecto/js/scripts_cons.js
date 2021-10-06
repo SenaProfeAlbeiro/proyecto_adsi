@@ -1,8 +1,19 @@
+$(document).ready(function() {
+    // $('#tbl_consultar').DataTable();
+    $('#tbl_consultar').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+
 // Declaración e inicialización de variables
 var tabla = document.getElementById("tbl_consultar");
 var i, celdas, nombres;
 var botones = document.getElementById('botones');
 var cln = botones.cloneNode(true);
+var imprime = document.getElementById('imprimir');
 insertar();
 
 // Crear controles
@@ -28,26 +39,34 @@ function insertar(){
 	let confirmacion = sessionStorage.getItem('confirmacion');
 	let perfil = sessionStorage.getItem('perfil');
 	let estado = sessionStorage.getItem('estado');
-	// Cantidad de filas
-	let i = tabla.rows.length;
-	// Inserta fila
-	let fila = tabla.insertRow(i);
-	// Inserta celdas
-	let celda = [];	
-	// Colocar cantidad de celdas
-	for (var cont = 0; cont < 8; cont++) {
-		celda[cont] = fila.insertCell(cont);
-	}
-	// Insertar datos a las celdas
-	celda[0].innerHTML = i;	
-	celda[1].innerHTML = doc_identidad;	
-	celda[2].innerHTML = correo;	
-	celda[3].innerHTML = nombres;	
-	celda[4].innerHTML = apellidos;	
-	celda[5].innerHTML = contrasena_us;	
-	celda[6].innerHTML = perfil;
-	celda[7].innerHTML = estado;
-	celda = fila.appendChild(cln);	
+	// Insertar datos a las celdas	
+	if (!(doc_identidad == null || doc_identidad == "") && 
+		!(correo == null || correo == "") &&
+		!(nombres == null || nombres == "") &&
+		!(apellidos == null || apellidos == "") &&
+		!(contrasena_us == null || contrasena_us == "") &&
+		!(confirmacion == null || confirmacion == "") &&
+		(contrasena_us != confirmacion == "")) {
+		// Cantidad de filas
+		let i = tabla.rows.length;	
+		// Inserta fila
+		let fila = tabla.insertRow(i);
+		// Inserta celdas
+		let celda = [];	
+		// Coloca cantidad de celdas
+		for (var cont = 0; cont < 8; cont++) {
+			celda[cont] = fila.insertCell(cont);
+		}
+		celda[0].innerHTML = i;	
+		celda[1].innerHTML = doc_identidad;	
+		celda[2].innerHTML = correo;	
+		celda[3].innerHTML = nombres;	
+		celda[4].innerHTML = apellidos;	
+		celda[5].innerHTML = contrasena_us;	
+		celda[6].innerHTML = perfil;
+		celda[7].innerHTML = estado;
+		celda = fila.appendChild(cln);		
+	} 	
 }
 
 
@@ -124,5 +143,11 @@ function guardar(){
 	celdas.cells[5].innerHTML = contrasena_us;
 	celdas.cells[6].innerHTML = perfil;
 	celdas.cells[7].innerHTML = estado;	
-	celdas.cells[8].innerHTML = btnActualizar + btnEliminar;		
+	celdas.cells[8].innerHTML = btnActualizar + btnEliminar;
+	swal({
+		title: "Usuario Actualizado correctamente!",
+		text: "Verifique los datos actualizados del usuario",
+		icon: "success",
+		button: "Aceptar",
+	});	
 }
