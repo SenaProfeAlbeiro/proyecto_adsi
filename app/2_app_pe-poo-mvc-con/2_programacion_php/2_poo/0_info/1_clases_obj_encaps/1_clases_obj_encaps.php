@@ -7,6 +7,13 @@
 		private $dateOfBirth = '1990-12-01';
 
 		// Métodos
+		
+		# Constructor(es)
+		public function __construct($fisrtName, $lastName, $dateOfBirth) { 
+			$this->fisrtName = $firstName; 
+			$this->lastName = $lastName; 
+			$this->dateOfBirth = $dateOfBirth; 
+		}
 		# Devuelve el Nombre y el Apellido
 		public function fullName() { 
 			return $this->firstName . ' ' . $this->lastName; 
