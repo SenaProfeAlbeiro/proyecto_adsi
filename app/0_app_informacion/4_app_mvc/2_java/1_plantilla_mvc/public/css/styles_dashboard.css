@@ -1,0 +1,10 @@
+*{
+	background: #444;
+	color: #fff;
+}
+#tabla_consulta a{
+	text-decoration: none;		
+}
+#tabla_consulta button{
+	cursor: pointer;
+}
