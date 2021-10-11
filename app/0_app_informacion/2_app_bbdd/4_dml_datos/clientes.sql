@@ -2,7 +2,7 @@
 -- En Excel:
 -- =CONCATENAR("(";A2;", '";B2;"','";C2;"','";D2;"','";E2;"','";F2;"',";G2;"),")
 -- -------------------------------------------------------------------------------------
--- ## - Insertar varios clientes
+-- ## - INSERTAR CLIENTES
 -- -------------------------------------------------------------------------------------
 INSERT INTO clientes VALUES 
 (NULL, 'BELTRÁN E HIJOS','LAS FUENTES 78','MADRID','914456435','ANGEL MARTÍNEZ',NULL),
