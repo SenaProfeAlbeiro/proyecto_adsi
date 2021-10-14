@@ -3,7 +3,7 @@
 	<div class="col p-0">
 		<div aria-label="breadcrumb">
 			<ol class="breadcrumb rounded-0 m-0 p-2">
-				<li class="breadcrumb-item"><a href="../0_mains/admin_main.html">Inicio</a></li>
+				<li class="breadcrumb-item"><a href="?c=DashboardAdmin">Inicio</a></li>
 				<li class="breadcrumb-item">Módulo Usuarios</li>
 				<li class="breadcrumb-item active" aria-current="page">Consultar Usuarios</li>
 			</ol>
@@ -18,7 +18,7 @@
 			<h5 class="m-0">Consultar Usuarios</h5>
 		</div>
 		<div class="col-5 d-flex justify-content-end align-items-center p-0">
-			<a href="crear_usuario.html" class="btn btn-primary">Crear Usuario</a>
+			<a href="?c=Users&a=crear" class="btn btn-primary">Crear Usuario</a>
 		</div>
 	</div>
 </div>
@@ -51,7 +51,7 @@
 					<td>administrador</td>
 					<td>activo</td>
 					<td class="d-flex flex-row pt-2 justify-content-center">
-						<a class="btn btn-info btn-sm mx-1" onclick="actualizar(this);"><i class="fas fa-pencil-alt"></i></a>
+						<a href="?c=Users&a=actualizar" class="btn btn-info btn-sm mx-1"><i class="fas fa-pencil-alt"></i></a>
 						<a class="btn btn-danger btn-sm mx-1" onclick="eliminar(this);"><i class="fas fa-trash-alt"></i></a>
 					</td>
 				</tr>
@@ -65,7 +65,7 @@
 					<td>empleado</td>
 					<td>activo</td>
 					<td id="botones" class="d-flex flex-row pt-2 justify-content-center">
-						<a class="btn btn-info btn-sm mx-1" onclick="actualizar(this);"><i class="fas fa-pencil-alt"></i></a>
+						<a href="?c=Users&a=actualizar" class="btn btn-info btn-sm mx-1"><i class="fas fa-pencil-alt"></i></a>
 						<a class="btn btn-danger btn-sm mx-1" onclick="eliminar(this);"><i class="fas fa-trash-alt"></i></a>
 					</td>
 				</tr>

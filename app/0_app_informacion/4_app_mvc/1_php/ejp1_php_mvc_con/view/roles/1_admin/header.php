@@ -88,10 +88,10 @@
 									<div class="card">
 										<ul class="list-group list-group-flush">
 											<li class="list-group-item p-0 bg-light">
-												<a href="1_users/crear_usuario.html" target="area_trabajo" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Crear Usuario</a>
+												<a href="?c=Users&a=crear" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Crear Usuario</a>
 											</li>
 											<li class="list-group-item p-0 bg-light">
-												<a href="1_users/consultar_usuarios.html" target="area_trabajo" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Consultar Usuarios</a>
+												<a href="?c=Users&a=consultar" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Consultar Usuarios</a>
 											</li>
 										</ul>
 									</div>

@@ -3,7 +3,7 @@
 	<div class="col p-0">
 		<div aria-label="breadcrumb">
 			<ol class="breadcrumb rounded-0 m-0 p-2">
-				<li class="breadcrumb-item"><a href="../0_mains/admin_main.html">Inicio</a></li>
+				<li class="breadcrumb-item"><a href="?DashboardAdmin">Inicio</a></li>
 			</ol>
 		</div>
 	</div>
@@ -28,8 +28,8 @@
 			  	</div>
 				<div class="card-body">
 					<ul class="list-group list-group-flush">
-					  <li class="list-group-item"><a href="../1_users/crear_usuario.html" class="card-link">Crear usuarios</a></li>
-					  <li class="list-group-item"><a href="../1_users/consultar_usuarios.html" class="card-link">Consultar Usuarios</a></li>							  
+					  <li class="list-group-item"><a href="?c=Users&a=crear" class="card-link">Crear usuarios</a></li>
+					  <li class="list-group-item"><a href="?c=Users&a=consultar" class="card-link">Consultar Usuarios</a></li>							  
 					</ul>
 				</div>
 			</div>
@@ -42,8 +42,8 @@
 			  	</div>
 				<div class="card-body">							
 					<ul class="list-group list-group-flush">
-					  <li class="list-group-item"><a href="../5_others/error404.html" class="card-link">Crear Caso de uso</a></li>
-					  <li class="list-group-item"><a href="../5_others/error404.html" class="card-link">Consultar Caso de Uso</a></li>							  
+					  <li class="list-group-item"><a href="?c=Error404" class="card-link">Crear Caso de uso</a></li>
+					  <li class="list-group-item"><a href="?c=Error404" class="card-link">Consultar Caso de Uso</a></li>							  
 					</ul>
 				</div>
 			</div>
@@ -56,8 +56,8 @@
 			  	</div>
 				<div class="card-body">							
 					<ul class="list-group list-group-flush">
-					  <li class="list-group-item"><a href="../5_others/error404.html" class="card-link">Crear Caso de uso</a></li>
-					  <li class="list-group-item"><a href="../5_others/error404.html" class="card-link">Consultar Caso de Uso</a></li>							  
+					  <li class="list-group-item"><a href="?c=Error404" class="card-link">Crear Caso de uso</a></li>
+					  <li class="list-group-item"><a href="?c=Error404" class="card-link">Consultar Caso de Uso</a></li>							  
 					</ul>
 				</div>
 			</div>
@@ -70,8 +70,8 @@
 			  	</div>
 				<div class="card-body">							
 					<ul class="list-group list-group-flush">
-					  <li class="list-group-item"><a href="../4_mod_reports/reports_graf/reportes_graf.html" class="card-link">Reportes Gráficos</a></li>
-					  <li class="list-group-item"><a href="../4_mod_reports/reports_imp/reports_imp.html" class="card-link">Reportes Impresos</a></li>							  
+					  <li class="list-group-item"><a href="?c=Error404" class="card-link">Reportes Gráficos</a></li>
+					  <li class="list-group-item"><a href="?c=Error404" class="card-link">Reportes Impresos</a></li>							  
 					</ul>
 				</div>
 			</div>

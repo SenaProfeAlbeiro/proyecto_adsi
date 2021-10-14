@@ -113,7 +113,7 @@ function crear_usuario(){
 			button: "Aceptar",
 		})
 		.then((value) => {
-			window.location = 'consultar_usuarios.html';
+			window.location = '?c=Users&a=consultar';
 		});		
 	}
 }
@@ -126,6 +126,6 @@ function cerrar(){
 			button: "Aceptar",
 		})
 		.then((value) => {
-			window.location = 'consultar_usuarios.html';
+			window.location = '?c=Users&a=consultar';
 		});	
 }
