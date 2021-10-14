@@ -1,9 +1,13 @@
 <?php 
+	
+	require_once 'model/User.php';
 
 	class Users {
 
-		public function __construct() {
+		private $model;
 
+		public function __construct() {
+			$this->model = new User();
 		}
 
 		public function index(){

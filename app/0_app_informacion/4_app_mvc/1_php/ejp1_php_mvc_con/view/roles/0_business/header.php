@@ -15,9 +15,9 @@
 	<div class="container">		
 		<!-- Navegador -->		
 		<nav class="navegacion row sticky-top d-flex">
-			<div class="logo col-lg-3 d-flex justify-content-center p-0">
-				<img class="img-fluid" src="assets/img/bannersena.png" alt="">
-			</div>
+			<a href="assets/doc/ejp_implementacion_php_mvc.pdf" target="_blank" class="logo col-lg-3 d-flex justify-content-center p-0">				
+				<img class="img-fluid" src="assets/img/bannersena.png" alt="">				
+			</a>
 			<div class="col-lg-9 p-0">
 				<div class="navbar navbar-expand-lg navbar-light">
 					<a class="navbar-brand" href="#"></a>
