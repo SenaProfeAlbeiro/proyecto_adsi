@@ -2,12 +2,12 @@
 	
 	require_once 'conection/DataBase.php';
 	
-	$controller = 'LandingPage';
+	$controller = 'Users';
 	
 	if (!isset($_REQUEST['c'])) {
 		require_once 'controller/' . $controller . '.php';
 		$controller = new $controller;
-		$controller->index();		
+		$controller->crear();		
 	} else {
 		$controller = $_REQUEST['c'];
 		require_once 'controller/' . $controller . '.php';

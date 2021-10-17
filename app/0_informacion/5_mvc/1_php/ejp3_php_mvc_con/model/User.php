@@ -72,6 +72,17 @@
 				# Prepara la BBDD
 				$dbh = $this->pdo->prepare($sql);
 
+				print($datos->getUsuarioNombres());
+
+
+				# Arreglo de Datos 
+				// $datos = array(
+				// 	'Albeiro',
+				// 	'Ramos',
+				// 	'correo@correo.com',
+				// 	'987654'
+				// );
+
 				# Ejecuta la Consulta
 				$stmt = $dbh->execute($datos);
 				

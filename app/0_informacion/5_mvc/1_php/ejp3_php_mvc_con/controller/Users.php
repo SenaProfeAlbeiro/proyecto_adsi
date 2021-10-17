@@ -19,15 +19,12 @@
 
 		public function crear(){
 			echo 'Controlador: Users. Acción: Crear()';
-			$crear = new User();
-			# Arreglo de Datos
-			$datos = array(
-							'Edwin',
-							'Villamil',
-							'profealbeiro2020@gmail.com',
-							'54321'
-						);
-			// $crear->registrar($datos);
+			$datos = new User();
+			$datos->setUsuarioNombres('Pepito');
+			$datos->setUsuarioApellidos('Perez');
+			$datos->setUsuarioCorreo('perez@correo.com');
+			$datos->setUsuarioPass('987654');
+			$this->model->registrar($datos);
 			// require_once 'view/roles/1_admin/header.php'; 
 			// require_once 'view/modules/1_users/user.create.view.php';
 			// require_once 'view/roles/1_admin/footer.php';
