@@ -17,14 +17,33 @@
 			// require_once 'view/roles/1_admin/footer.php';
 		}
 
-		public function crear(){
-			echo 'Controlador: Users. Acción: Crear()';
-			$datos = new User();
-			$datos->setUsuarioNombres('Pepito');
-			$datos->setUsuarioApellidos('Perez');
-			$datos->setUsuarioCorreo('perez@correo.com');
-			$datos->setUsuarioPass('987654');
-			$this->model->registrar($datos);
+		public function registrar(){			
+			
+			$usuario = new User();
+
+			$usuario->setNombresUsuario('Pepinito');			
+			$usuario->setApellidosUsuario('Perez');			
+			$usuario->setCorreoUsuario('pepinito@correo.com');			
+			$usuario->setPassUsuario('12345');			
+
+			$this->model->registrar($usuario);
+
+			// require_once 'view/roles/1_admin/header.php'; 
+			// require_once 'view/modules/1_users/user.create.view.php';
+			// require_once 'view/roles/1_admin/footer.php';
+		}
+
+		public function crear(){			
+			
+			$usuario = new User();
+
+			$usuario->setNombresUsuario('Pepinito');			
+			$usuario->setApellidosUsuario('Perez');			
+			$usuario->setCorreoUsuario('pepinito@correo.com');			
+			$usuario->setPassUsuario('12345');			
+
+			$this->model->registrar($usuario);
+
 			// require_once 'view/roles/1_admin/header.php'; 
 			// require_once 'view/modules/1_users/user.create.view.php';
 			// require_once 'view/roles/1_admin/footer.php';

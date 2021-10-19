@@ -2,15 +2,17 @@
 
 	class User {
 
-		private $id_usuario;
-		private $usuario_nombres;
-		private $usuario_apellidos;
-		private $usuario_correo;
-		private $usuario_pass;
+		private $idRol;
+		private $idUsuario;
+	    private $nombresUsuario;
+    	private $apellidosUsuario;
+    	private $correoUsuario;
+    	private $passUsuario;
+    	private $estadoUsuario;
 
-		private $pdo;
+    	private $pdo;
 
-		public function __construct(){
+    	public function __construct(){
 			try {
 				$this->pdo = DataBase::conexion();
 			} catch (Exception $e) {
@@ -18,48 +20,64 @@
 			}
 		}
 
-		public function setIdUsuario($id_usuario){
-			$this->$id_usuario = $id_usuario;
-		}
+		public function getRol(){
+    		return $this->idRol;
+    	}
 
-		public function getIdUsuario(){
-			return $this->id_usuario;
-		}
+    	public function setIdRol($idRol){
+    		$this->idRol = $idRol;
+    	}
 
-		public function setUsuarioNombres($usuario_nombres){
-			$this->$usuario_nombres = $usuario_nombres;
-		}
+    	public function getIdUsuario(){
+    		return $this->idUsuario;
+    	}
 
-		public function getUsuarioNombres(){
-			return $this->usuario_nombres;
-		}
+    	public function setIdUsuario($idUsuario){
+    		$this->idUsuario = $idUsuario;
+    	}
 
-		public function setUsuarioApellidos($usuario_apellidos){
-			$this->$usuario_apellidos = $usuario_apellidos;
-		}
+    	public function getNombresUsuario(){
+    		return $this->nombresUsuario;
+    	}
 
-		public function getUsuarioApellidos(){
-			return $this->usuario_apellidos;
-		}
+    	public function setNombresUsuario($nombresUsuario){
+    		$this->nombresUsuario = $nombresUsuario;
+    	}
 
-		public function setUsuarioCorreo($usuario_correo){
-			$this->$usuario_correo = $usuario_correo;
-		}
+    	public function getApellidosUsuario(){
+    		return $this->apellidosUsuario;
+    	}
 
-		public function getUsuarioCorreo(){
-			return $this->usuario_correo;
-		}
+    	public function setApellidosUsuario($apellidosUsuario){
+    		$this->apellidosUsuario = $apellidosUsuario;
+    	}
 
-		public function setUsuarioPass($usuario_pass){
-			$this->$usuario_pass = $usuario_pass;
-		}
+    	public function getCorreoUsuario(){
+    		return $this->correoUsuario;
+    	}
 
-		public function getUsuarioPass(){
-			return $this->usuario_pass;
-		}
+    	public function setCorreoUsuario($correoUsuario){
+    		$this->correoUsuario = $correoUsuario;
+    	}
+
+    	public function getPassUsuario(){
+    		return $this->passUsuario;
+    	}
+
+    	public function setPassUsuario($passUsuario){
+    		$this->passUsuario = $passUsuario;
+    	}
+
+    	public function getEstadoUsuario(){
+    		return $this->estadoUsuario;
+    	}
+
+    	public function setEstadoUsuario($estadoUsuario){
+    		$this->estadoUsuario = $estadoUsuario;
+    	}
 
 		// Registrar
-		public function registrar($datos){
+		public function registrar($usuario){
 			try {
 				# Consulta
 				$sql = 'INSERT INTO usuarios (
@@ -72,16 +90,13 @@
 				# Prepara la BBDD
 				$dbh = $this->pdo->prepare($sql);
 
-				print($datos->getUsuarioNombres());
-
-
 				# Arreglo de Datos 
-				// $datos = array(
-				// 	'Albeiro',
-				// 	'Ramos',
-				// 	'correo@correo.com',
-				// 	'987654'
-				// );
+				$datos = array(
+					$usuario->getNombresUsuario(),
+					$usuario->getApellidosUsuario(),
+					$usuario->getCorreoUsuario(),
+					$usuario->getPassUsuario()
+				);
 
 				# Ejecuta la Consulta
 				$stmt = $dbh->execute($datos);
