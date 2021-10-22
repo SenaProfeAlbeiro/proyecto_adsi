@@ -100,25 +100,25 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<form id="registro">
+						<form id="registro" action="?c=Users&a=registrar" method="POST">
 							<div class="form-row">
 								<div class="form-group col-6">
 									<label for="nombres">Nombres</label>
-									<input type="text" class="form-control" id="nombres" placeholder="Nombres">
+									<input type="text" name="nombres" class="form-control" id="nombres" placeholder="Nombres">
 								</div>
 								<div class="form-group col-6">
 									<label for="apellidos">Apellidos</label>
-									<input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
+									<input type="text" name="apellidos" class="form-control" id="apellidos" placeholder="Apellidos">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="correo">E-Mail</label>
-								<input type="email" class="form-control" id="correo" placeholder="usuario@correo.com">
+								<input type="email" name="correo" class="form-control" id="correo" placeholder="usuario@correo.com">
 							</div>
 							<div class="form-row">
 								<div class="form-group col-6">
 									<label for="contrasena_reg">Contraseña</label>
-									<input type="password" class="form-control" id="contrasena_reg" placeholder="Entre 5 y 8 caracteres">
+									<input type="password" name="pass" class="form-control" id="contrasena_reg" placeholder="Entre 5 y 8 caracteres">
 								</div>
 								<div class="form-group col-6">
 									<label for="confirmacion">Confirmación</label>

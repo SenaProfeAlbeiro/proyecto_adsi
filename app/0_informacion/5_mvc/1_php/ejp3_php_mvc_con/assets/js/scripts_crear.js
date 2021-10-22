@@ -4,7 +4,7 @@ form = document.getElementById('crear_usuario');
 cierra = document.getElementById('cerrar');
 
 // Eventos click
-cierra.addEventListener('click', cerrar, false);
+// cierra.addEventListener('click', cerrar, false);
 
 // Evento click Submit
 form.addEventListener('submit', function (event){	
@@ -27,12 +27,12 @@ form.addEventListener('submit', function (event){
 	sessionStorage.setItem('perfil', perfil);
 	sessionStorage.setItem('estado', estado);
 	// Llama la función crear_usuario();
-	crear_usuario();
-	event.preventDefault();
+	crear_usuario();	
 });
 
 // Usuario Creado
 function crear_usuario(){
+	band = false;
 	if (doc_identidad == "") {		
 		swal({
 			title: "Verifique el Documento de Identidad!",
@@ -113,9 +113,16 @@ function crear_usuario(){
 			button: "Aceptar",
 		})
 		.then((value) => {
-			window.location = '?c=Users&a=consultar';
+			// band = true;
+			// window.location = '?c=Users&a=consultar';
 		});		
 	}
+
+	// if (!band) {
+	// 	event.preventDefault();
+	// }
+	
+	
 }
 
 function cerrar(){
@@ -126,6 +133,6 @@ function cerrar(){
 			button: "Aceptar",
 		})
 		.then((value) => {
-			window.location = '?c=Users&a=consultar';
+			// window.location = '?c=Users&a=consultar';
 		});	
 }

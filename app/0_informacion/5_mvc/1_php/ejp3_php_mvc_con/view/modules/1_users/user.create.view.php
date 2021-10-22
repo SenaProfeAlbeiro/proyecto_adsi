@@ -26,51 +26,51 @@
 <!-- Área Principal -->
 <div class="section-pg row">
 	<div class="col p-2 bg-light">
-		<form id="crear_usuario" class="card p-3 bg-white d-lg-flex justify-content-center w-100 border rounded p-2">
+		<form id="crear_usuario" action="?c=Users&a=crear" method="POST" class="card p-3 bg-white d-lg-flex justify-content-center w-100 border rounded p-2">
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="doc_identidad">Documento de Identidad</label>
-					<input type="text" class="form-control" id="doc_identidad" placeholder="123456789">
+					<input type="text" name="documento" class="form-control" id="doc_identidad" placeholder="123456789">
 				</div>
 				<div class="form-group col-md-6">
 					<label for="correo">E-Mail</label>
-					<input type="email" class="form-control" id="correo" placeholder="usuario@correo.com">							
+					<input type="email" name="correo" class="form-control" id="correo" placeholder="usuario@correo.com">							
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="nombres">Nombres</label>
-					<input type="text" class="form-control" id="nombres" placeholder="Nombres">
+					<input type="text" name="nombres" class="form-control" id="nombres" placeholder="Nombres">
 				</div>
 				<div class="form-group col-md-6">
 					<label for="apellidos">Apellidos</label>
-					<input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
+					<input type="text" name="apellidos" class="form-control" id="apellidos" placeholder="Apellidos">
 				</div>
 			</div>										
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="contrasena_us">Contraseña</label>
-					<input type="password" class="form-control" id="contrasena_us" placeholder="Entre 5 y 8 caracteres">
+					<input type="password" name="pass" class="form-control" id="contrasena_us" placeholder="Entre 5 y 8 caracteres">
 				</div>
 				<div class="form-group col-md-6">
 					<label for="confirmacion">Confirmación</label>
-					<input type="password" class="form-control" id="confirmacion" placeholder="Confirmar contraseña">
+					<input type="password" name="confirmacion" class="form-control" id="confirmacion" placeholder="Confirmar contraseña">
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="perfil_usuario">Perfil</label>
-					<select class="form-control" id="perfil">
-				      <option>administrador</option>
-				      <option>empleado</option>
-				      <option>cliente</option>
+					<select name="rol" class="form-control" id="perfil">
+				      <option value="3">cliente</option>
+				      <option value="4">vendedor</option>
+				      <option value="1">administrador</option>
 				    </select>
 				</div>
 				<div class="form-group col-md-6">
 					<label for="estado">Estado</label>
-					<select class="form-control" id="estado">
-				      <option>activo</option>
-				      <option>inactivo</option>
+					<select name="estado" class="form-control" id="estado">
+				      <option value="1">activo</option>
+				      <option value="0">inactivo</option>
 				    </select>
 				</div>
 			</div>

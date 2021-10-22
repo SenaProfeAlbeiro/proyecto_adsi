@@ -29,7 +29,7 @@
 		<table id="tbl_consultar" class="table table-striped table-bordered table-responsive text-center">
 			<thead class="fondo">
 				<tr>
-					<th scope="col">Itm</th>
+					<th scope="col">ID</th>
 					<th scope="col">D.I.</th>
 					<th scope="col">E-Mail</th>
 					<th scope="col">Nombres</th>
@@ -41,34 +41,34 @@
 				</tr>
 			</thead>
 			<tbody>
+			<?php foreach($users as $user): ?>
 				<tr>
-					<th class="font-weight-normal">1</th>
-					<td>7318924</td>
-					<td>profealbeiro2020@gmail.com</td>
-					<td>Albeiro</td>
-					<td>Ramos</td>
-					<td>12345</td>
-					<td>administrador</td>
-					<td>activo</td>
+					<th class="font-weight-normal"><?php echo $user->getIdUsuario() ?></th>
+					<td><?php echo $user->getDocIdUsuario() ?></td>
+					<td><?php echo $user->getCorreoUsuario() ?></td>
+					<td><?php echo $user->getNombresUsuario() ?></td>
+					<td><?php echo $user->getApellidosUsuario() ?></td>
+					<td><?php echo $user->getPassUsuario() ?></td>
+					<td>
+						<?php
+							if ($user->getIdRol() == 1) {
+								echo 'Administrador';
+							} elseif ($user->getIdRol() == 2) {
+								echo 'Usuario';
+							} elseif ($user->getIdRol() == 3) {
+								echo 'Cliente';
+							} elseif ($user->getIdRol() == 4) {
+								echo 'Vendedor';
+							}
+						?>							
+					</td>
+					<td><?php echo $user->getEstadoUsuario() == 1 ? 'Activo' : 'Inactivo'; ?></td>
 					<td class="d-flex flex-row pt-2 justify-content-center">
 						<a href="?c=Users&a=actualizar" class="btn btn-info btn-sm mx-1"><i class="fas fa-pencil-alt"></i></a>
 						<a class="btn btn-danger btn-sm mx-1" onclick="eliminar(this);"><i class="fas fa-trash-alt"></i></a>
 					</td>
 				</tr>
-				<tr>
-					<th class="font-weight-normal">2</th>
-					<td>123456789</td>
-					<td>empleado@correo.com</td>
-					<td>Marinita</td>
-					<td>García</td>
-					<td>54321</td>
-					<td>empleado</td>
-					<td>activo</td>
-					<td id="botones" class="d-flex flex-row pt-2 justify-content-center">
-						<a href="?c=Users&a=actualizar" class="btn btn-info btn-sm mx-1"><i class="fas fa-pencil-alt"></i></a>
-						<a class="btn btn-danger btn-sm mx-1" onclick="eliminar(this);"><i class="fas fa-trash-alt"></i></a>
-					</td>
-				</tr>
+			<?php endforeach; ?>	
 			</tbody>
 		</table>				
 	</div>

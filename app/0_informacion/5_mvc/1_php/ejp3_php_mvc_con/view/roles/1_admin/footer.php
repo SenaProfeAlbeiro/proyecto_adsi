@@ -26,7 +26,7 @@
 	<script src="assets/js/buttons.print.js"></script>	
 	<script src="assets/js/dataTables.bootstrap4.min.js"></script>	
 	<script src="assets/js/scripts_dash.js"></script>
-	<script src="assets/js/scripts_crear.js"></script>	
-	<script src="assets/js/scripts_cons.js"></script>
+	<!-- <script src="assets/js/scripts_crear.js"></script>	 -->
+	<!-- <script src="assets/js/scripts_cons.js"></script> -->
 </body>
 </html>
