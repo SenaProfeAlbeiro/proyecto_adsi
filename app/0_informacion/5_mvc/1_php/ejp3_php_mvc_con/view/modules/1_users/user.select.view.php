@@ -64,8 +64,8 @@
 					</td>
 					<td><?php echo $user->getEstadoUsuario() == 1 ? 'Activo' : 'Inactivo'; ?></td>
 					<td class="d-flex flex-row pt-2 justify-content-center">
-						<a href="?c=Users&a=actualizar" class="btn btn-info btn-sm mx-1"><i class="fas fa-pencil-alt"></i></a>
-						<a class="btn btn-danger btn-sm mx-1" onclick="eliminar(this);"><i class="fas fa-trash-alt"></i></a>
+						<a href="?c=Users&a=actualizar&id=<?php echo $user->getIdUsuario() ?>" class="btn btn-info btn-sm mx-1"><i class="fas fa-pencil-alt"></i></a>
+						<a href="?c=Users&a=eliminar&id=<?php echo $user->getIdUsuario() ?>" class="btn btn-danger btn-sm mx-1" onclick="eliminar(this);"><i class="fas fa-trash-alt"></i></a>
 					</td>
 				</tr>
 			<?php endforeach; ?>	

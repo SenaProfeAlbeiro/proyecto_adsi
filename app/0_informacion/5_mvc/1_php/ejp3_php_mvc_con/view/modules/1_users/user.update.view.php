@@ -24,51 +24,65 @@
 <!-- Área Principal -->
 <div class="section-pg row">
 	<div class="col p-2 bg-light">
-		<form id="crear_usuario" class="card p-3 bg-white d-lg-flex justify-content-center w-100 border rounded p-2">
+		<form id="crear_usuario" action="?c=Users&a=crear" method="POST" class="card p-3 bg-white d-lg-flex justify-content-center w-100 border rounded p-2">
 			<div class="form-row">
+				<input type="hidden" name="id" class="form-control" id="id" value="<?php echo $user->getIdUsuario(); ?>">
 				<div class="form-group col-md-6">
 					<label for="doc_identidad">Documento de Identidad</label>
-					<input type="text" class="form-control" id="doc_identidad" placeholder="123456789">
+					<input type="text" name="documento" class="form-control" id="doc_identidad" value="<?php echo $user->getDocIdUsuario(); ?>">
 				</div>
 				<div class="form-group col-md-6">
 					<label for="correo">E-Mail</label>
-					<input type="email" class="form-control" id="correo" placeholder="usuario@correo.com">							
+					<input type="email" name="correo" class="form-control" id="correo" value="<?php echo $user->getCorreoUsuario(); ?>">							
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="nombres">Nombres</label>
-					<input type="text" class="form-control" id="nombres" placeholder="Nombres">
+					<input type="text" name="nombres" class="form-control" id="nombres" value="<?php echo $user->getNombresUsuario(); ?>">
 				</div>
 				<div class="form-group col-md-6">
 					<label for="apellidos">Apellidos</label>
-					<input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
+					<input type="text" name="apellidos" class="form-control" id="apellidos" value="<?php echo $user->getApellidosUsuario(); ?>">
 				</div>
 			</div>										
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="contrasena_us">Contraseña</label>
-					<input type="password" class="form-control" id="contrasena_us" placeholder="Entre 5 y 8 caracteres">
+					<input type="password" name="pass" class="form-control" id="contrasena_us" value="<?php echo $user->getPassUsuario(); ?>">
 				</div>
 				<div class="form-group col-md-6">
 					<label for="confirmacion">Confirmación</label>
-					<input type="password" class="form-control" id="confirmacion" placeholder="Confirmar contraseña">
+					<input type="password" name="confirmacion" class="form-control" id="confirmacion" value="<?php echo $user->getPassUsuario(); ?>">
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="perfil_usuario">Perfil</label>
-					<select class="form-control" id="perfil">
-				      <option>administrador</option>
-				      <option>empleado</option>
-				      <option>cliente</option>
+					<select name="rol" class="form-control" id="perfil">
+						<?php 
+							for ($i=1; $i <= 4; $i++) { 
+								if ($user->getIdRol() == $i) {
+									echo '<option value="' . ($i) . '" selected>' . $perfil[$i-1] . '</option>';
+								} else {
+									echo '<option value="' . ($i) . '">' . $perfil[$i-1] . '</option>';
+								}
+							}
+						?>
 				    </select>
 				</div>
 				<div class="form-group col-md-6">
 					<label for="estado">Estado</label>
-					<select class="form-control" id="estado">
-				      <option>activo</option>
-				      <option>inactivo</option>
+					<select name="estado" class="form-control" id="estado">
+						<?php 
+							for ($i=0; $i <= 1; $i++) { 
+								if ($user->getEstadoUsuario() == $i) {
+									echo '<option value="' . ($i) . '" selected>' . $estado[$i] . '</option>';
+								} else {
+									echo '<option value="' . ($i) . '">' . $estado[$i] . '</option>';
+								}
+							}
+						?>
 				    </select>
 				</div>
 			</div>
