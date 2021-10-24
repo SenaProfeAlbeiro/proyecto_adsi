@@ -75,11 +75,11 @@
 						<form id="enviar" action="?c=Login" method="POST">
 							<div class="form-group">
 								<label for="usuario">usuario</label>
-								<input type="email" class="form-control" id="usuario" aria-describedby="emailHelp" value="admin@correo.com">
+								<input type="email" name="usuario" class="form-control" id="usuario" aria-describedby="emailHelp" value="admin@correo.com">
 							</div>
 							<div class="form-group">
 								<label for="contrasena">Contraseña</label>
-								<input type="password" class="form-control" id="contrasena" value="12345">
+								<input type="password" name="pass" class="form-control" id="contrasena" value="12345">
 							</div>							
 							<button type="submit" class="btn btn-primary">Enviar</button>
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

@@ -29,6 +29,11 @@
 			}
 		}
 
+		function __construct2($correo, $pass){			
+	    	$this->correoUsuario = $correo;			
+	    	$this->passUsuario = $pass;	    	
+		}
+
 		function __construct8($id, $doc, $correo, $nombres, $apellidos,  
 			$pass, $perfil, $estado){
 			$this->idUsuario = $id;
@@ -104,6 +109,53 @@
     	public function setEstadoUsuario($estadoUsuario){
     		$this->estadoUsuario = boolval($estadoUsuario);
     	}
+
+		/******************************************************************/
+		
+		// Iniciar Sesión
+		public function iniciarSesion($usuario){
+			try {
+				# Consulta
+				$sql = 'SELECT * FROM usuarios WHERE 
+						usuario_correo = :usuario_correo AND
+						usuario_pass = :usuario_pass';
+
+				# Prepara la BBDD
+				$dbh = $this->pdo->prepare($sql);
+
+				// # Vincula Datos
+				$dbh->bindValue('usuario_correo', $usuario->getCorreoUsuario());
+				$dbh->bindValue('usuario_pass', $usuario->getPassUsuario());
+
+				// # Ejecuta la Consulta
+				$dbh->execute();
+
+				// # Encontrar en la BBDD
+				$userDb = $dbh->fetch();
+
+				if ($userDb) {					
+					# Crear Objeto
+					$user = new User(
+						$userDb['id_usuario'],
+						$userDb['usuario_doc_identidad'],
+						$userDb['usuario_correo'],
+						$userDb['usuario_nombres'],
+						$userDb['usuario_apellidos'],
+						$userDb['usuario_pass'],
+						$userDb['id_rol'],
+						$userDb['usuario_estado']
+					);
+					return $user;
+				} else {
+					return false;
+				}
+
+			} catch (Exception $e) {
+				die($e->getMessage());
+			}
+		}
+
+		// Cerrar Sesión
 
 		// Registrar
 		public function registrar($usuario){
@@ -227,6 +279,7 @@
 
 				# Vincula datos
 				$dbh->bindValue('id_rol', $usuario->getIdRol());
+				$dbh->bindValue('id_usuario', $usuario->getIdUsuario());
 				$dbh->bindValue('usuario_doc_identidad', $usuario->getDocIdUsuario());
 				$dbh->bindValue('usuario_nombres', $usuario->getNombresUsuario());
 				$dbh->bindValue('usuario_apellidos', $usuario->getApellidosUsuario());
@@ -256,6 +309,7 @@
 
 				# Ejecuta la Consulta
 				$stmt = $dbh->execute();
+				
 			} catch (Exception $e) {
 				die($e->getMessage());
 			}

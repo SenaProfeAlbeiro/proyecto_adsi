@@ -19,10 +19,10 @@
 		// Registrar Usuario desde el LandingPage
 		public function registrar(){
 			$usuario = new User();			
-			$usuario->setNombresUsuario($_REQUEST['nombres']);			
-			$usuario->setApellidosUsuario($_REQUEST['apellidos']);
-			$usuario->setCorreoUsuario($_REQUEST['correo']);			
-			$usuario->setPassUsuario(sha1($_REQUEST['pass']));
+			$usuario->setNombresUsuario($_POST['nombres']);			
+			$usuario->setApellidosUsuario($_POST['apellidos']);
+			$usuario->setCorreoUsuario($_POST['correo']);			
+			$usuario->setPassUsuario(sha1($_POST['pass']));
 			$this->model->registrar($usuario);
 			header('Location: ?');
 		}
@@ -36,13 +36,13 @@
 			} 
 			if (($_SERVER['REQUEST_METHOD']) == 'POST') {
 				$usuario = new User();
-				$usuario->setIdRol($_REQUEST['rol']);
-				$usuario->setDocIdUsuario($_REQUEST['documento']);
-				$usuario->setNombresUsuario($_REQUEST['nombres']);
-				$usuario->setApellidosUsuario($_REQUEST['apellidos']);
-				$usuario->setCorreoUsuario($_REQUEST['correo']);
-				$usuario->setPassUsuario(sha1($_REQUEST['pass']));
-				$usuario->setEstadoUsuario($_REQUEST['estado']);
+				$usuario->setIdRol($_POST['rol']);
+				$usuario->setDocIdUsuario($_POST['documento']);
+				$usuario->setNombresUsuario($_POST['nombres']);
+				$usuario->setApellidosUsuario($_POST['apellidos']);
+				$usuario->setCorreoUsuario($_POST['correo']);
+				$usuario->setPassUsuario(sha1($_POST['pass']));
+				$usuario->setEstadoUsuario($_POST['estado']);
 				$this->model->registrar($usuario);
 				header('Location: ?c=Users&a=consultar');
 			}
@@ -60,7 +60,7 @@
 		public function actualizar(){
 			# Envía el Id para que devuelva el usuario de la BBDD
 			if (($_SERVER['REQUEST_METHOD']) == 'GET') {
-				$user = $this->model->getById($_REQUEST['id']);
+				$user = $this->model->getById($_GET['id']);
 				$perfil = ['admin', 'usuario', 'cliente', 'vendedor'];
 				$estado = ['inactivo', 'activo'];
 				require_once 'view/roles/1_admin/header.php'; 
@@ -70,14 +70,14 @@
 			# Envía los cambios a través de un objeto que actualiza la BBDD
 			if (($_SERVER['REQUEST_METHOD']) == 'POST') {
 				$usuario = new User();
-				$usuario->setIdRol($_REQUEST['rol']);
-				$usuario->setIdUsuario($_REQUEST['id']);
-				$usuario->setDocIdUsuario($_REQUEST['documento']);
-				$usuario->setNombresUsuario($_REQUEST['nombres']);
-				$usuario->setApellidosUsuario($_REQUEST['apellidos']);
-				$usuario->setCorreoUsuario($_REQUEST['correo']);
-				$usuario->setPassUsuario(sha1($_REQUEST['pass']));
-				$usuario->setEstadoUsuario($_REQUEST['estado']);
+				$usuario->setIdRol($_POST['rol']);
+				$usuario->setIdUsuario($_POST['id']);
+				$usuario->setDocIdUsuario($_POST['documento']);
+				$usuario->setNombresUsuario($_POST['nombres']);
+				$usuario->setApellidosUsuario($_POST['apellidos']);
+				$usuario->setCorreoUsuario($_POST['correo']);
+				$usuario->setPassUsuario(sha1($_POST['pass']));
+				$usuario->setEstadoUsuario($_POST['estado']);
 				$this->model->actualizar($usuario);
 				header('Location: ?c=Users&a=consultar');
 			}

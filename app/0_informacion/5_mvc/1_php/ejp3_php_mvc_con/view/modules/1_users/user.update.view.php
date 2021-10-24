@@ -24,7 +24,7 @@
 <!-- Área Principal -->
 <div class="section-pg row">
 	<div class="col p-2 bg-light">
-		<form id="crear_usuario" action="?c=Users&a=crear" method="POST" class="card p-3 bg-white d-lg-flex justify-content-center w-100 border rounded p-2">
+		<form id="crear_usuario" action="?c=Users&a=actualizar" method="POST" class="card p-3 bg-white d-lg-flex justify-content-center w-100 border rounded p-2">
 			<div class="form-row">
 				<input type="hidden" name="id" class="form-control" id="id" value="<?php echo $user->getIdUsuario(); ?>">
 				<div class="form-group col-md-6">
@@ -33,7 +33,7 @@
 				</div>
 				<div class="form-group col-md-6">
 					<label for="correo">E-Mail</label>
-					<input type="email" name="correo" class="form-control" id="correo" value="<?php echo $user->getCorreoUsuario(); ?>">							
+					<input type="email" name="correo" class="form-control" id="correo" value="<?php echo $user->getCorreoUsuario(); ?>">
 				</div>
 			</div>
 			<div class="form-row">
