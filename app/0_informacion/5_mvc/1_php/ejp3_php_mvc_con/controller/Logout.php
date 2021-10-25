@@ -1,13 +1,13 @@
-<?php 
+<?php session_start();
 
 	class Logout {
 
-		public function __construct(){
-
-		}
+		public function __construct(){}
 
 		public function index(){
-			header('Location: ?');
+			session_destroy();
+			$_SESSION = array();
+			header('Location: ?');			
 		}
 
 	}

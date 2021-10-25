@@ -1,4 +1,4 @@
-<?php 
+<?php session_start();
 	
 	require_once 'model/User.php';
 
@@ -16,20 +16,29 @@
 				$usuario = new User($_POST['usuario'], sha1($_POST['pass']));
 				$usuario = $this->model->iniciarSesion($usuario);
 				if ($usuario) {
-					if ($usuario->getIdRol() == 1 && $usuario->getEstadoUsuario() == 1) {
-						header('Location: ?c=DashboardAdmin');
+					if ($usuario->getEstadoUsuario() == 1) {
+						$_SESSION['usuario'] = $usuario;
+						if ($usuario->getIdRol() == 1) {
+							$_SESSION['modulo'] = 'admin';
+						} elseif ($usuario->getIdRol() == 3) {
+							$_SESSION['modulo'] = 'cliente';
+							echo 'Cliente en Construcción';
+						} elseif ($usuario->getIdRol() == 4) {
+							$_SESSION['modulo'] = 'vendedor';
+							echo 'Vendedor en Construcción';
+						}
+						header('Location: ?c=Dashboard');
 					} else {
-						echo "<script>alert('Todavía no estoy Activo o no está construida la interfaz del perfil');event.preventDefault();</script>";
+						echo 'El usuario no está registrado';
 						// header('Location: ?');
-					}
+					}					
 				} else {
+					session_destroy();					
 					header('Location: ?');
-					echo "<script>alert('No existo')</script>";
 				}
 			}
 		}
 
 	}
-
 
 ?>
