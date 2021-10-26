@@ -25,8 +25,9 @@
 
 		// Registrar Usuario desde el Dashboard
 		public function crear(){
+			$usuario = unserialize($_SESSION['usuario']);			
 			if (isset($_SESSION['usuario'])) {			
-				if (($_SERVER['REQUEST_METHOD']) == 'GET') {
+				if (($_SERVER['REQUEST_METHOD']) == 'GET') {					
 					require_once 'view/roles/'.$this->modulo.'/header.php'; 
 					require_once 'view/modules/1_users/user.create.view.php';
 					require_once 'view/roles/'.$this->modulo.'/footer.php';
@@ -44,7 +45,7 @@
 					header('Location: ?c=Users&a=consultar');
 				}				
 			} else {
-				header('Location: ?');
+				header('Location: ?c=Dashboard');
 			}
 		}
 

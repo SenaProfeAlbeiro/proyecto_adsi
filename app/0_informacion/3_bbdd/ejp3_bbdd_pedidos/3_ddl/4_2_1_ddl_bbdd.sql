@@ -42,7 +42,7 @@ CREATE TABLE pedidos (
   descuento FLOAT(10,2),
   enviado BIT(1),  
   PRIMARY KEY (numero_pedido),
-  KEY fk_pedidos_clientes (codigo_cliente),
+  INDEX ind_pedidos_clientes (codigo_cliente),
   CONSTRAINT fk_pedidos_clientes
     FOREIGN KEY (codigo_cliente)
     REFERENCES clientes (codigo_cliente)
