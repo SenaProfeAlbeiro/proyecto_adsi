@@ -25,8 +25,8 @@
 
 		// Registrar Usuario desde el Dashboard
 		public function crear(){
-			$usuario = unserialize($_SESSION['usuario']);			
-			if (isset($_SESSION['usuario'])) {			
+			$valUsuario = unserialize($_SESSION['usuario']);
+			if (isset($_SESSION['usuario']) && ($valUsuario->getIdRol() == 1 || $valUsuario->getIdRol() == 4)) {
 				if (($_SERVER['REQUEST_METHOD']) == 'GET') {					
 					require_once 'view/roles/'.$this->modulo.'/header.php'; 
 					require_once 'view/modules/1_users/user.create.view.php';
@@ -51,19 +51,21 @@
 
 		// Consultar Usuarios desde el Dashboard
 		public function consultar(){
-			if (isset($_SESSION['usuario'])) {
+			$valUsuario = unserialize($_SESSION['usuario']);
+			if (isset($_SESSION['usuario']) && ($valUsuario->getIdRol() == 1 || $valUsuario->getIdRol() == 4)) {
 				$users = $this->model->listar();
 				require_once 'view/roles/'.$this->modulo.'/header.php'; 
 				require_once 'view/modules/1_users/user.select.view.php';
 				require_once 'view/roles/'.$this->modulo.'/footer.php';
 			} else {
-				header('Location: ?');
-			}			
+				header('Location: ?c=Dashboard');
+			}
 		}
 
 		// Actualizar Usuario desde el Dashboard
 		public function actualizar(){
-			if (isset($_SESSION['usuario'])) {
+			$valUsuario = unserialize($_SESSION['usuario']);
+			if (isset($_SESSION['usuario']) && ($valUsuario->getIdRol() == 1 || $valUsuario->getIdRol() == 4)) {
 				# Envía el Id para que devuelva el usuario de la BBDD
 				if (($_SERVER['REQUEST_METHOD']) == 'GET') {
 					$user = $this->model->getById($_GET['id']);
@@ -86,21 +88,20 @@
 					$usuario->setEstadoUsuario($_POST['estado']);
 					$this->model->actualizar($usuario);
 					header('Location: ?c=Users&a=consultar');
-				}								
+				}
 			} else {
-				header('Location: ?');
+				header('Location: ?c=Dashboard');
 			}
 		}
 
 		public function eliminar(){
-			if (isset($_SESSION['usuario'])) {
+			$valUsuario = unserialize($_SESSION['usuario']);
+			if (isset($_SESSION['usuario']) && $valUsuario->getIdRol() == 1) {
 				$this->model->eliminar($_GET['id']);
 				header('Location: ?c=Users&a=consultar');
 			} else {
-				header('Location: ?');
+				header('Location: ?c=Dashboard');	
 			}
 		}
-
 	}
-
 ?>

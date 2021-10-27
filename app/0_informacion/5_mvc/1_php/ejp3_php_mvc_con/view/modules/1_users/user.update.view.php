@@ -87,7 +87,7 @@
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary mb-2">Actualizar</button>
-			<button type="button" class="btn btn-dark" data-dismiss="modal" id="cerrar">Cerrar</button>						
+			<a href="?c=Users&a=consultar" type="button" class="btn btn-dark" data-dismiss="modal" id="cerrar">Cerrar</a>						
 		</form>
 	</div>
 </div>
