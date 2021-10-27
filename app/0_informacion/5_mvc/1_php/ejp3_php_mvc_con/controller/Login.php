@@ -21,17 +21,14 @@
 							$_SESSION['modulo'] = 'admin';
 						} elseif ($usuario->getIdRol() == 3) {
 							$_SESSION['modulo'] = 'cliente';
-							echo 'Cliente en Construcción';
 						} elseif ($usuario->getIdRol() == 4) {
 							$_SESSION['modulo'] = 'vendedor';
-							echo 'Vendedor en Construcción';
 						}
 						$usuario = serialize($usuario);
 						$_SESSION['usuario'] = $usuario;
 						header('Location: ?c=Dashboard');
-					} else {
-						echo 'El usuario no está registrado';
-						// header('Location: ?');
+					} else {						
+						header('Location: ?');
 					}					
 				} else {
 					session_destroy();					

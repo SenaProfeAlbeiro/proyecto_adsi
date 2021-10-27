@@ -3,7 +3,7 @@
 	<div class="col p-0">
 		<div aria-label="breadcrumb">
 			<ol class="breadcrumb rounded-0 m-0 p-2">
-				<li class="breadcrumb-item"><a href="?c=DashboardAdmin">Inicio</a></li>
+				<li class="breadcrumb-item"><a href="?c=Dashboard">Inicio</a></li>
 				<li class="breadcrumb-item">Módulo Usuarios</li>
 				<li class="breadcrumb-item active" aria-current="page">Crear Usuario</li>
 			</ol>
@@ -75,7 +75,7 @@
 				</div>
 			</div>
 			<button type="submit" class="btn btn-primary mb-2">Enviar</button>
-			<button type="button" class="btn btn-dark" data-dismiss="modal" id="cerrar">Cerrar</button>						
+			<a href="?c=Users&a=consultar" type="button" class="btn btn-dark" data-dismiss="modal" id="cerrar">Cerrar</a>						
 		</form>
 	</div>
 </div>

@@ -4,9 +4,19 @@
 	margin: 0;
 }
 
+/* Clases especiales */
+.admin{
+	background: #2D394B;
+}
+.cliente{
+	background: #17A2B8!important;
+}
+.vendedor{
+	background: #1B5240;
+}
+
 /* Navegador */
 nav{	
-	background: #2D394B;
 	border-bottom: 1px solid #dee2e6!important;
 	z-index: 100!important;
 }
@@ -72,9 +82,6 @@ aside .modulos{
 	height: 54.8vh;	
 }
 aside .modulos-amp{	
-}
-aside .card-header{
-	background: #2D394B!important;	
 }
 aside h2 button{
 	color: #fff!important;

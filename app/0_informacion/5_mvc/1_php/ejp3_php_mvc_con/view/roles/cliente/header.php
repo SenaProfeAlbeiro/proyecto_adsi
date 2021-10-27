@@ -11,14 +11,14 @@
 	<link rel="stylesheet" href="assets/css/buttons.dataTables.min.css">
 	<link rel="stylesheet" href="assets/css/dataTables.bootstrap4.css">
 	<link rel="stylesheet" href="assets/css/all.css">
-	<link rel="stylesheet" href="assets/css/styles_cliente.css">
+	<link rel="stylesheet" href="assets/css/styles_dash.css">
 	<link rel="stylesheet" href="assets/css/styles_pg.css">
 </head>
 <body>
 	<div class="container">
 		
 		<!-- Navegador -->
-		<nav class="row sticky-top d-flex">
+		<nav class="cliente row sticky-top d-flex">
 			<div class="logo col-lg-3 d-flex justify-content-center pt-3 border border-bottom-0">
 				<img class="img-fluid" src="assets/img/logo_sistema.png" alt="">
 			</div>
@@ -37,7 +37,7 @@
 						</ul>
 						<ul class="navbar-nav">
 							<li class="nav-item active">
-								<a class="nav-link text-white ocul-navbar" href="?c=DashboardAdmin">Inicio <span class="sr-only">(current)</span></a>
+								<a class="nav-link text-white ocul-navbar" href="?c=Dashboard">Inicio <span class="sr-only">(current)</span></a>
 							</li>
 						</ul>
 						<ul class="navbar-nav">							
@@ -76,7 +76,7 @@
 				<div id="modulos" class="modulos col-12 p-0">
 					<div class="accordion" id="accordionExample">
 						<div class="card">
-							<div class="card-header p-1 p-lg-0" id="headingOne">
+							<div class="cliente card-header p-1 p-lg-0" id="headingOne">
 								<h2 class="mb-0">
 									<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
 										Módulo Usuarios
@@ -88,18 +88,15 @@
 									<div class="card">
 										<ul class="list-group list-group-flush">
 											<li class="list-group-item p-0 bg-light">
-												<a href="?c=Users&a=crear" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Crear Usuario</a>
-											</li>
-											<li class="list-group-item p-0 bg-light">
-												<a href="?c=Users&a=consultar" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Consultar Usuarios</a>
-											</li>
+												<a href="?c=Error404" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Configuración</a>
+											</li>											
 										</ul>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="card">
-							<div class="card-header p-1 p-lg-0" id="headingTwo">
+							<div class="card-header cliente p-1 p-lg-0" id="headingTwo">
 								<h2 class="mb-0">
 									<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
 										Módulo Principal
@@ -122,7 +119,7 @@
 							</div>
 						</div>
 						<div class="card">
-							<div class="card-header p-1 p-lg-0" id="headingThree">
+							<div class="card-header cliente p-1 p-lg-0" id="headingThree">
 								<h2 class="mb-0">
 									<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 										Módulo Secundario
@@ -145,7 +142,7 @@
 							</div>
 						</div>
 						<div class="card">
-							<div class="card-header p-1 p-lg-0" id="headingFour">
+							<div class="card-header cliente p-1 p-lg-0" id="headingFour">
 								<h2 class="mb-0">
 									<button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
 										Módulo Reportes

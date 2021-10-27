@@ -7,7 +7,7 @@
 		private $modulo;		
 
 		public function __construct(){
-			$this->modulo = $_SESSION['modulo'];			
+			$this->modulo = $_SESSION['modulo'];
 		}
 
 		public function index(){
