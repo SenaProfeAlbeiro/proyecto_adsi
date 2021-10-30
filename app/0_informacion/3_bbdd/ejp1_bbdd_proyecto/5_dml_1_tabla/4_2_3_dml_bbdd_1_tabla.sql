@@ -69,13 +69,18 @@ WHERE seccion = 'DEPORTIVOS'
 -- -------------------------------------------------------------------------------------
 -- CONSULTAS DE ACCIÓN: 
 -- REEMPLAZAR REGISTROS (REPLACE)
+-- PUNTO 2.
 -- -------------------------------------------------------------------------------------
-## Reemplazar los datos de el cliente con código 40
+## Reemplazar los datos del cliente con código 40
 -- -------------------------------------------------------------------------------------
 REPLACE INTO clientes VALUES 
 (40, "EMPANADAS S.A.", "AVENIDA SIEMPRE VIVA", "BOGOTÁ", "3153304545", "JACINTO JUAREZ", NULL);
 -- -------------------------------------------------------------------------------------
-
+## Descripción de lo que va a hacer
+-- -------------------------------------------------------------------------------------
+REPLACE INTO clientes VALUES 
+(15, "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", "XXXXXXX", NULL);
+-- -------------------------------------------------------------------------------------
 
 -- -------------------------------------------------------------------------------------
 -- CONSULTAS DE ACCIÓN: 
@@ -122,6 +127,7 @@ WHERE seccion = 'DEPORTES' AND precio BETWEEN 50 AND 100
 -- -------------------------------------------------------------------------------------
 -- CONSULTAS DE SELECCIÓN:
 -- CONSULTAS GENERALES (SELECT, *, CAMPOS, FROM)
+-- PUNTO 3.
 -- -------------------------------------------------------------------------------------
 ## Seleccione todos (*) los campos de la tabla productos
 -- -------------------------------------------------------------------------------------
@@ -141,6 +147,7 @@ SELECT seccion, nombre_articulo, precio FROM productos;
 -- -------------------------------------------------------------------------------------
 -- CONSULTAS DE SELECCIÓN:
 -- CONSULTAS CON CRITERIOS (WHERE)
+-- Punto 3. 
 -- -------------------------------------------------------------------------------------
 ## Seleccione los campos sección, nombre_articulo y precio de la tabla productos donde
 -- la sección sea 'CERÁMICA'
@@ -148,7 +155,12 @@ SELECT seccion, nombre_articulo, precio FROM productos;
 SELECT seccion, nombre_articulo, precio FROM productos 
 WHERE seccion = 'CERÁMICA';
 -- -------------------------------------------------------------------------------------
-
+## Seleccione los campos sección, nombre_articulo y precio de la tabla productos donde
+-- la sección sea 'CERÁMICA'
+-- -------------------------------------------------------------------------------------
+SELECT poblacion, empresa, telefono, responsable FROM clientes 
+WHERE poblacion <> 'BARCELONA';
+-- -------------------------------------------------------------------------------------
 
 
 -- -------------------------------------------------------------------------------------
@@ -156,6 +168,7 @@ WHERE seccion = 'CERÁMICA';
 -- CONSULTAS CON CRITERIOS Y OPERADORES
 -- 		# OPERADORES LÓGICOS (AND, OR, NOT)
 -- 		# OPERADORES DE COMPARACIÓN (LIKE, <>, <=, >=, <, >, BEETWEEN)
+-- Punto 4.
 -- -------------------------------------------------------------------------------------
 ## Seleccione los campos sección, nombre_articulo y precio de la tabla productos donde
 -- sección sea igual a 'CERÁMICA' y (realmente es 'OR') 'DEPORTES'
@@ -166,18 +179,21 @@ WHERE seccion = 'CERÁMICA' OR seccion = 'DEPORTES';
 ## Seleccione todos los campos de productos donde sección sea igual a 'DEPORTES' y su
 -- país de origen sea 'USA'
 -- -------------------------------------------------------------------------------------
-SELECT * FROM productos WHERE seccion = 'DEPORTES' AND pais_origen = 'USA';
+SELECT seccion, nombre_articulo, precio, pais_origen FROM productos
+WHERE seccion = 'DEPORTES' AND NOT(pais_origen = 'ESPAÑA');
 -- -------------------------------------------------------------------------------------
 ## - Seleccione todos los campos de la tabla productos donde precio sea mayor 300
 -- -------------------------------------------------------------------------------------
-SELECT * FROM productos WHERE precio > 300;
+SELECT seccion, nombre_articulo, precio FROM productos WHERE precio >= 300;
 -- -------------------------------------------------------------------------------------
 ## Seleccione todos los campos productos donde la fecha esté entre '2000-03-01' y
 -- '2000-04-30'
 -- -------------------------------------------------------------------------------------
-SELECT * FROM productos WHERE fecha BETWEEN '2000-03-01' AND '2000-04-30';
+SELECT fecha, nombre_articulo, precio FROM productos 
+WHERE fecha BETWEEN '2000-03-01' AND '2000-04-30';
 -- -------------------------------------------------------------------------------------
-SELECT * FROM productos WHERE fecha >= '2000-03-01' AND fecha <= '2000-04-30';
+SELECT seccion, nombre_articulo, precio, fecha FROM productos 
+WHERE fecha >= '2000-03-01' AND fecha <= '2000-04-30';
 -- -------------------------------------------------------------------------------------
 
 
@@ -216,7 +232,7 @@ WHERE pais_origen NOT LIKE "C%";
 -- -------------------------------------------------------------------------------------
 SELECT * FROM productos 
 WHERE seccion = 'CERÁMICA' OR seccion = 'DEPORTES' 
-ORDER BY seccion ASC;
+ORDER BY seccion DESC, precio ASC;
 -- -------------------------------------------------------------------------------------
 ## Seleccione todos los campos de la tabla productos donde la sección sea igual a 
 -- 'CERÁMICA' y 'DEPORTES' y que lo ordene por la sección (Descendente)
@@ -255,10 +271,15 @@ ORDER BY seccion, pais_origen, precio;
 -- 		# FUNCIONES DE AGREGADO (SUM(), AVG(), COUNT(), MAX(), MIN ()).
 -- 		# CAMPO AGRUPACIÓN DE CÁLCULO (GROUP BY, AS (ALIAS), HAVING (POR WHERE)
 -- -------------------------------------------------------------------------------------
+SELECT pais_origen
+FROM productos
+GROUP BY pais_origen
+-- -------------------------------------------------------------------------------------
 ## Seleccione la sección (agrupación) y sume los precios (cálculo) de la tabla productos
 -- y lo agrupe por la sección
 -- -------------------------------------------------------------------------------------
-SELECT seccion, SUM(precio) FROM productos GROUP BY seccion;
+SELECT seccion, COUNT(codigo_articulo) AS cantidad_articulos 
+FROM productos GROUP BY seccion;
 -- -------------------------------------------------------------------------------------
 ## Seleccione la sección (agrupación) y sume los precios (cálculo) de productos, lo 
 -- agrupe por la sección y los ordene por precio
@@ -270,9 +291,9 @@ GROUP BY seccion ORDER BY sum_articulos;
 -- tabla productos, lo agrupe (HAVING) por la sección DEPORTES y CONFECCIÓN y los ordene
 -- por la media de los artículos
 -- -------------------------------------------------------------------------------------
-SELECT seccion, AVG(precio) AS media_articulos FROM productos 
+SELECT seccion, SUM(precio) AS suma_articulos FROM productos 
 GROUP BY seccion HAVING seccion = 'DEPORTES' OR seccion = 'CONFECCIÓN' 
-ORDER BY media_articulos;
+ORDER BY suma_articulos;
 -- -------------------------------------------------------------------------------------
 ## Seleccione la población (agrupación) y cuente los clientes (cálculo) de la tabla
 -- clientes, lo agrupe por población y ordene descendentemente por cantidad de clientes
@@ -302,7 +323,7 @@ SELECT nombre_articulo, seccion, precio, precio*1.19 FROM productos
 ## Seleccione el articulo, seccion y precio de la tabla productos y cree un campo 
 --      calculado del precio más el IVA, llame el nuevo campo como precio_con_iva
 -- -------------------------------------------------------------------------------------
-SELECT nombre_articulo, seccion, precio, precio*1.19 AS precio_con_iva 
+SELECT nombre_articulo, seccion, precio, precio*0.19 AS iva 
 FROM productos
 -- -------------------------------------------------------------------------------------
 ## Seleccione el articulo, seccion y precio de la tabla productos y cree un campo 

@@ -4,8 +4,6 @@
 
 	class Login {
 
-		private $model;
-
 		public function __construct(){
 			$this->model = new User();
 		}
@@ -31,11 +29,11 @@
 						header('Location: ?');
 					}					
 				} else {					
-					// require_once 'view/roles/0_business/header.php';
-					// require_once 'view/business/landing.main.view.php';
-					// require_once 'view/roles/0_business/footer.php';
+					require_once 'view/roles/0_business/header.php';
+					require_once 'view/business/landing.main.view.php';
+					require_once 'view/roles/0_business/footer.php';
 
-					// echo '<script src="../assets/js/scripts.js">validarUsuario();</script>';
+					echo "<script>validarUsuario()</script>";					
 				}
 			}
 		}

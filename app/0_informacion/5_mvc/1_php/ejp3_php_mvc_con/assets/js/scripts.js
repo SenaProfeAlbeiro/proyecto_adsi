@@ -72,11 +72,14 @@ function validarBasico(){
 		});
 		event.preventDefault();
 	} else {		
-		event.preventDefault();
-		event.true;
+		// event.preventDefault();		
 	}
 }
 
+function validarUsuario(){
+	alert('Estoy en la función');
+	window.location = '?';	
+}
 
 // Registro
 form2  = document.getElementById('registro');
