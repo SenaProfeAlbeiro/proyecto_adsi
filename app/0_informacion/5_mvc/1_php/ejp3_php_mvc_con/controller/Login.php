@@ -14,7 +14,7 @@
 			# Envía los cambios a través de un objeto que actualiza la BBDD
 			if (($_SERVER['REQUEST_METHOD']) == 'POST') {
 				$usuario = new User($_POST['usuario'], sha1($_POST['pass']));
-				$usuario = $this->model->iniciarSesion($usuario);
+				$usuario = $this->model->iniciarSesion($usuario);				
 				if ($usuario) {
 					if ($usuario->getEstadoUsuario() == 1) {
 						if ($usuario->getIdRol() == 1) {
@@ -30,13 +30,14 @@
 					} else {						
 						header('Location: ?');
 					}					
-				} else {
-					session_destroy();					
-					header('Location: ?');
+				} else {					
+					// require_once 'view/roles/0_business/header.php';
+					// require_once 'view/business/landing.main.view.php';
+					// require_once 'view/roles/0_business/footer.php';
+
+					// echo '<script src="../assets/js/scripts.js">validarUsuario();</script>';
 				}
 			}
 		}
-
 	}
-
 ?>

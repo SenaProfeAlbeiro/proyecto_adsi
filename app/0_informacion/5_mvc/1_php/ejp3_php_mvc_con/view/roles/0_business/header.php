@@ -52,7 +52,7 @@
 								</a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 									<a class="dropdown-item ocul-navbar" data-toggle="modal" data-target="#registro" href="#">Registro</a>
-									<a class="dropdown-item ocul-navbar" href="#" data-toggle="modal" data-target="#iniciar-sesion">Iniciar Sesión</a>
+									<a class="dropdown-item ocul-navbar" data-toggle="modal" data-target="#iniciar-sesion">Iniciar Sesión</a>
 								</div>
 							</li>						
 						</ul>						

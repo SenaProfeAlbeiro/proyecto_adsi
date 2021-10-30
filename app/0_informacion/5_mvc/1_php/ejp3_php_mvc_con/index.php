@@ -1,6 +1,6 @@
 <?php 
 	
-	require_once 'conection/DataBase.php';
+	require_once 'model/DataBase.php';
 	
 	$controller = 'LandingPage';
 	

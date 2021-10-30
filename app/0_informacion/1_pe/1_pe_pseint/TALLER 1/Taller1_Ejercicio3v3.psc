@@ -1,15 +1,13 @@
-Algoritmo taller1_Ejercio1
+Algoritmo taller1_Ejercio3
 	
 	// Descripción del Ejercicio	
 	Escribir Sin Saltar "Diseñe un programa (en consola) que por teclado solicite dos números y los sume, como ";
-	Escribir Sin Saltar "resultado debe mostrar en pantalla la suma de su número A más su número B es Resultado";
+	Escribir "resultado debe mostrar en pantalla la multiplicación de su número A más su número B es Resultado";
 	
 	// Declarar Variables
 	Definir num1 Como Real;
 	Definir num2 Como Real;
 	Definir res Como Real;
-	
-	
 	
 	// Inicialización Variables
 	num1 <- 0.0;
@@ -23,9 +21,9 @@ Algoritmo taller1_Ejercio1
 	Leer num2;
 	
 	// Proceso 
-	res <- num1 + num2; 
+	res <- num1 * num2;
 	
 	// Salida Datos
-	Escribir "La Suma de ", num1, " mas ", num2, " es = ", res;
+	Escribir "La Multiplicación de ", num1, " por ", num2, " es = ", res;
 	
 FinAlgoritmo

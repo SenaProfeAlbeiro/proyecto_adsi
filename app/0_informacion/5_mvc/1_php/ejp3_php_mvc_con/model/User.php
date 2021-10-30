@@ -199,7 +199,7 @@
 				$userList = [];
 
 				# Consulta
-				$sql = $this->pdo->query('SELECT * FROM usuarios');
+				$sql = $this->pdo->query('CALL muestraUsuarios()');
 
 				# Recorre la BBDD
 				foreach ($sql->fetchAll() as $user) {
@@ -215,7 +215,7 @@
 					);
 				}
 
-				# Ejecuta la Consulta
+				# Retorna la Lista 
 				return $userList;				
 
 			} catch (Exception $e) {
@@ -227,20 +227,15 @@
 		public function getById($id){
 			try {
 				# Consulta
-				$sql = 'SELECT * FROM usuarios WHERE id_usuario=:id_usuario';
-
+				$sql = 'CALL obtenerUsuario(:id_usuario)';
 				# Prepara la BBDD
 				$dbh = $this->pdo->prepare($sql);
-
 				# Vincula Datos
 				$dbh->bindValue('id_usuario', $id);
-
 				# Ejecuta la Consulta
 				$dbh->execute();
-
 				# Encontrar en la BBDD
 				$userDb = $dbh->fetch();
-
 				# Crear Objeto
 				$user = new User(
 					$userDb['id_usuario'],
@@ -252,9 +247,7 @@
 					$userDb['id_rol'],
 					$userDb['usuario_estado']
 				);
-
 				return $user;
-
 			} catch (Exception $e) {
 				die($e->getMessage());
 			}
@@ -264,15 +257,16 @@
 		public function actualizar($usuario){
 			try {
 				# Consulta
-				$sql = 'UPDATE usuarios SET 
-							id_rol=:id_rol,							
-							usuario_doc_identidad=:usuario_doc_identidad,
-							usuario_nombres=:usuario_nombres,
-							usuario_apellidos=:usuario_apellidos,
-							usuario_correo=:usuario_correo,
-							usuario_pass=:usuario_pass,
-							usuario_estado=:usuario_estado
-						WHERE id_usuario=:id_usuario';
+				$sql = "CALL actualizarUsuario(
+					:id_rol, 
+					:id_usuario, 
+					:usuario_doc_identidad, 
+					:usuario_nombres, 
+					:usuario_apellidos, 
+					:usuario_correo, 
+					:usuario_pass, 
+					:usuario_estado 
+				)";				 
 
 				# Prepara la BBDD
 				$dbh = $this->pdo->prepare($sql);
@@ -299,7 +293,7 @@
 		public function eliminar($id){
 			try {
 				# Consulta
-				$sql = 'DELETE FROM usuarios WHERE id_usuario=:id_usuario';
+				$sql = 'CALL eliminarUsuario(:id_usuario)';
 
 				# Prepara la BBDD
 				$dbh = $this->pdo->prepare($sql);

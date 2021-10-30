@@ -91,3 +91,64 @@ UPDATE productos SET precio = 8500 WHERE codigo_articulo = 1;
 -- -------------------------------------------------------------------------------------
 UPDATE productos SET precio = -85 WHERE codigo_articulo = 1;
 -- -------------------------------------------------------------------------------------
+## Consultar los Usuarios de la Tabla Usuarios
+-- -------------------------------------------------------------------------------------
+DELIMITER $$
+CREATE PROCEDURE mostrarUsuarios()
+BEGIN	
+	SELECT * FROM usuarios;
+END;$$
+DELIMITER ;
+-- -------------------------------------------------------------------------------------
+CALL mostrarUsuarios();
+-- -------------------------------------------------------------------------------------
+## Obtener un Usuarios de la Tabla Usuarios
+-- -------------------------------------------------------------------------------------
+DELIMITER $$
+CREATE PROCEDURE obtenerUsuario(id INT(11))
+BEGIN
+	SELECT * FROM usuarios WHERE id_usuario=id;	
+END;$$
+DELIMITER ;
+-- -------------------------------------------------------------------------------------
+CALL obtenerUsuario(1);
+-- -------------------------------------------------------------------------------------
+## Actualizar un Usuario de la Tabla Usuarios
+-- -------------------------------------------------------------------------------------
+DELIMITER $$
+CREATE PROCEDURE actualizarUsuario(
+	idRol INT, 
+	idUsuario INT, 
+	doc_ident INT, 
+	nombres VARCHAR(100), 
+	apellidos VARCHAR(100), 
+	correo VARCHAR(100), 
+	pass VARCHAR(200), 
+	estado BIT)
+BEGIN
+	UPDATE usuarios SET 
+		id_rol=idRol,
+		usuario_doc_identidad=doc_ident,
+		usuario_nombres=nombres,
+		usuario_apellidos=apellidos,
+		usuario_correo=correo,
+		usuario_pass=pass,
+		usuario_estado=estado
+	WHERE id_usuario=idUsuario;	
+END;$$
+DELIMITER ;
+-- -------------------------------------------------------------------------------------
+CALL actualizarUsuario(3, 8, 12345, 'Procedimientos', 'Almacenados', 
+	'procedimientos@almacenados', '12345678', 0);
+-- -------------------------------------------------------------------------------------
+## Eliminar un Usuario de la Tabla Usuarios
+-- -------------------------------------------------------------------------------------
+DELIMITER $$
+CREATE PROCEDURE eliminarUsuario(id INT(11))
+BEGIN
+	DELETE FROM usuarios WHERE id_usuario=id;	
+END;$$
+DELIMITER ;
+-- -------------------------------------------------------------------------------------
+CALL eliminarUsuario(8);
+-- -------------------------------------------------------------------------------------

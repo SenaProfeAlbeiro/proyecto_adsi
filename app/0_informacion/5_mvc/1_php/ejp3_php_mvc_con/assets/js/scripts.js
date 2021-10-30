@@ -11,22 +11,72 @@ botones.forEach(boton => {
 	boton.addEventListener("click", cuandoSeHaceClick);	
 });
 
-// Iniciar Sesión
+// Valida el Inicio de Sesión
 form  = document.getElementById('enviar');
 form.addEventListener('submit', function (event) {
 	usuario  = document.getElementById('usuario').value;	
 	contrasena  = document.getElementById('contrasena').value;
-	
-	if (usuario == "admin@correo.com" && contrasena == 12345) {		
-		window.location = 'app/index_admin.html';
-		event.preventDefault();
-	} else {
-		alert("Datos Incorrectos");
-		document.getElementById('contrasena').value = "";
-		document.getElementById('usuario').value = "";		
-		event.preventDefault();		
-	}		
+	validarBasico();
 });
+
+// Validación básica
+function validarBasico(){
+	// Expresión que muestra la estructura de un correo electrónico
+	let expresion = /\w+@+\w+\.+\w/;
+	// Valida que el campo Usuario no esté vacío
+	if (usuario === "") {		
+		swal({
+			title: "Verifique el Campo Usuario!",
+			text: "El Usuario NO puede estar vacío",
+			icon: "warning",
+			button: "Aceptar",
+		})
+		.then((value) => {			
+			document.getElementById('usuario').focus();
+		});
+		event.preventDefault();
+	// Valida que el campo Usuario sea un Correo Electrónico
+	} else if (!expresion.test(usuario)) {
+		swal({
+			title: "Verifique el Campo Usuario!",
+			text: "El Usuario NO es válido, NO es un correo electrónico",
+			icon: "warning",
+			button: "Aceptar",
+		})
+		.then((value) => {			
+			document.getElementById('usuario').focus();
+		});
+		event.preventDefault();
+	// Valida que el campo Contraseña tenga entre 5 y 8 caracteres
+	} else if (contrasena === "") {
+		swal({
+			title: "Verifique el Campo Contraseña!",
+			text: "La Contraseña NO puede estar vacío",
+			icon: "warning",
+			button: "Aceptar",
+		})
+		.then((value) => {			
+			document.getElementById('contrasena').focus();
+		});
+		event.preventDefault();
+	// Valida que el campo Contraseña tenga entre 5 y 8 caracteres
+	} else if (contrasena.length < 5 || contrasena.length > 8) {
+		swal({
+			title: "Verifique el Campo Contraseña!",
+			text: "La Contraseña debe tener entre 5 y 8 caracteres",
+			icon: "warning",
+			button: "Aceptar",
+		})
+		.then((value) => {			
+			document.getElementById('contrasena').focus();
+		});
+		event.preventDefault();
+	} else {		
+		event.preventDefault();
+		event.true;
+	}
+}
+
 
 // Registro
 form2  = document.getElementById('registro');

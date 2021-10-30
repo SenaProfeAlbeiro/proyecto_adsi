@@ -64,7 +64,9 @@ WHERE seccion = 'DEPORTES'
 UPDATE productos SET seccion = 'DEPORTES'
 WHERE seccion = 'DEPORTIVOS'
 -- -------------------------------------------------------------------------------------
-
+UPDATE productos_pedidos SET
+unidades = 10
+WHERE numero_pedido = 1 AND codigo_articulo = 5;
 
 -- -------------------------------------------------------------------------------------
 -- CONSULTAS DE ACCIÓN: 
@@ -99,7 +101,8 @@ WHERE seccion = 'DEPORTES' OR seccion = 'CERÁMICA'
 DELETE FROM productos 
 WHERE seccion = 'DEPORTES' AND precio BETWEEN 50 AND 100
 -- -------------------------------------------------------------------------------------
-
+DELETE FROM productos_pedidos 
+WHERE numero_pedido = 1 AND codigo_articulo = 3;
 
 
 -- -------------------------------------------------------------------------------------
