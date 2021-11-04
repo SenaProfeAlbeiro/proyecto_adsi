@@ -339,11 +339,10 @@ FROM productos WHERE seccion = 'DEPORTES'
 -- -------------------------------------------------------------------------------------
 ## Nombre y sección de los productos cuyo precio sea inferior a la media
 -- -------------------------------------------------------------------------------------
-SELECT nombre_articulo, seccion FROM productos 
-WHERE precio < (SELECT AVG(precio) FROM productos)
+SELECT nombre_articulo, seccion, precio FROM productos 
+WHERE precio > (SELECT AVG(precio) FROM productos)
+ORDER BY precio DESC;
 -- -------------------------------------------------------------------------------------
-
-
 
 -- -------------------------------------------------------------------------------------
 -- CONSULTAS DE SELECCIÓN (SUBCONSULTAS):

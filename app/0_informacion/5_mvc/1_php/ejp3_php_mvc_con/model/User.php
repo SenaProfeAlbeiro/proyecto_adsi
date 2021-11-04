@@ -199,7 +199,7 @@
 				$userList = [];
 
 				# Consulta
-				$sql = $this->pdo->query('CALL muestraUsuarios()');
+				$sql = $this->pdo->query('CALL mostrarUsuarios()');
 
 				# Recorre la BBDD
 				foreach ($sql->fetchAll() as $user) {
