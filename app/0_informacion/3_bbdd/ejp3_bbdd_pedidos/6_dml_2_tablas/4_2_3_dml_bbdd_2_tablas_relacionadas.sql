@@ -127,7 +127,7 @@ ON clientes.codigo_cliente = pedidos.codigo_cliente
 -- -------------------------------------------------------------------------------------
 SELECT * FROM clientes INNER JOIN pedidos 
 ON clientes.codigo_cliente = pedidos.codigo_cliente
-WHERE poblacion = 'MADRID' ORDER BY clientes.codigo_cliente
+WHERE poblacion = 'ÁVILA' ORDER BY clientes.codigo_cliente
 -- -------------------------------------------------------------------------------------
 ## Campos comunes de clientes y pedidos codigo_cliente, empresa, pobalción, fecha_pedido 
 -- de la tabla clientes que sean de Madrid y que han hecho pedidos
