@@ -75,7 +75,7 @@
 						<form id="enviar" action="?c=Login" method="POST">
 							<div class="form-group">
 								<label for="usuario">usuario</label>
-								<input type="email" name="usuario" class="form-control" id="usuario" aria-describedby="emailHelp" value="<?php echo $user ?>" placeholder="admin@correo.com" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" title="No es un correo válido" required>
+								<input type="email" name="usuario" class="form-control" id="usuario" aria-describedby="emailHelp" value="<?php echo $user ?>" placeholder="admin@correo.com" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}" title="No es un correo válido" required>
 							</div>
 							<div class="form-group">
 								<label for="contrasena">Contraseña</label>

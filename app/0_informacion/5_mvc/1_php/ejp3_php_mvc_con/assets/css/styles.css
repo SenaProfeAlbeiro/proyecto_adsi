@@ -53,17 +53,17 @@ section .mapa iframe{
 .modal form input{
 	border: 2px solid #fff;
 }
-.modal form input:focus:valid{
-	border-color: green;
-}
-.modal form input:focus:invalid{
-	border-color: red;
-}
 .modal form input:valid{
 	border-color: green;
 }
 .modal form input:invalid{
 	border-color: #EF8814;
+}
+.modal form input:focus:valid{
+	border-color: green;
+}
+.modal form input:focus:invalid{
+	border-color: red;
 }
 
 .contacto .esp-temp{
