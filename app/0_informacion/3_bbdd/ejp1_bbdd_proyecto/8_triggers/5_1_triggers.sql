@@ -1,7 +1,7 @@
 -- -------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------
 -- -------------------------------------------------------------------------------------
--- TRIGERS: DISPARADORES -> VALIDACIÓN, TAREAS DE MANTENIMIENTO Y ADMIN DE BBDD			  -- 
+-- TRIGGERS: DISPARADORES -> VALIDACIÓN, TAREAS DE MANTENIMIENTO Y ADMIN DE BBDD			  -- 
 --          (SON OBJETOS, SON EVENTOS, ASOCIADOS A UNA TABLA)												  --
 --			# ¿CUÁNDO?: BEFORE, AFTER												  														--
 --          # TIPOS: INSERT (QUIÉN INSERTÓ, COMPROBAR)		 				  		  						--
@@ -176,7 +176,9 @@ DELIMITER ;
 -- -------------------------------------------------------------------------------------
 ## Actualizar el precio de un artículo (normal)
 -- -------------------------------------------------------------------------------------
-UPDATE productos SET precio = 15 WHERE codigo_articulo = 1;
+UPDATE productos SET 
+	precio = 15 
+WHERE codigo_articulo = 1;
 -- -------------------------------------------------------------------------------------
 ## Actualizar el precio de un artículo (Si sobrepasa los 1000 -> Triger)
 -- -------------------------------------------------------------------------------------

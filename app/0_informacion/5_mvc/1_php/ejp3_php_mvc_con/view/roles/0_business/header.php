@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="assets/css/all.css">	
 	<link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
+<body>	
 	<!-- Contenedor -->
 	<div class="container">		
 		<!-- Navegador -->		
@@ -75,14 +75,15 @@
 						<form id="enviar" action="?c=Login" method="POST">
 							<div class="form-group">
 								<label for="usuario">usuario</label>
-								<input type="email" name="usuario" class="form-control" id="usuario" aria-describedby="emailHelp" value="admin@correo.com">
+								<input type="email" name="usuario" class="form-control" id="usuario" aria-describedby="emailHelp" value="<?php echo $user ?>">
 							</div>
 							<div class="form-group">
 								<label for="contrasena">Contraseña</label>
-								<input type="password" name="pass" class="form-control" id="contrasena" value="12345">
+								<input type="password" name="pass" class="form-control" id="contrasena" value="<?php echo $pass ?>">
 							</div>							
 							<button type="submit" class="btn btn-primary">Enviar</button>
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+							<div class="<?php echo $class ?>"><?php echo $mensaje; ?></div>
 						</form>
 					</div>					
 				</div>

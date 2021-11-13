@@ -51,7 +51,7 @@ function validarBasico(){
 	} else if (contrasena === "") {
 		swal({
 			title: "Verifique el Campo Contraseña!",
-			text: "La Contraseña NO puede estar vacío",
+			text: "La Contraseña NO puede estar vacía",
 			icon: "warning",
 			button: "Aceptar",
 		})
@@ -71,14 +71,18 @@ function validarBasico(){
 			document.getElementById('contrasena').focus();
 		});
 		event.preventDefault();
-	} else {		
-		// event.preventDefault();		
 	}
 }
 
 function validarUsuario(){
-	alert('Estoy en la función');
-	window.location = '?';	
+	swal({
+		title: "Usuario Incorrecto!",
+		text: "Usuario y/o Contraseña Incorrectos",
+		icon: "error",
+		button: "Aceptar",
+	})
+	event.preventDefault();	
+	window.location = '?';
 }
 
 // Registro

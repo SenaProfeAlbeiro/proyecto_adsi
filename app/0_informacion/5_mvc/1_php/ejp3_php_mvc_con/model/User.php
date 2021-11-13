@@ -31,7 +31,7 @@
 
 		function __construct2($correo, $pass){			
 	    	$this->correoUsuario = $correo;			
-	    	$this->passUsuario = $pass;	    	
+	    	$this->passUsuario = sha1($pass);
 		}
 
 		function __construct8($id, $doc, $correo, $nombres, $apellidos,  
