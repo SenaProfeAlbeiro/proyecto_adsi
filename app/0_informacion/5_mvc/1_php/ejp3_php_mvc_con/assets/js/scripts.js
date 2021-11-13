@@ -13,11 +13,18 @@ botones.forEach(boton => {
 
 // Valida el Inicio de Sesión
 form  = document.getElementById('enviar');
+cerrar = document.getElementById('cerrar');
+
 form.addEventListener('submit', function (event) {
 	usuario  = document.getElementById('usuario').value;	
 	contrasena  = document.getElementById('contrasena').value;
 	validarBasico();
 });
+cerrar.addEventListener('click', function (event) {
+	event.preventDefault();	
+	window.location = '?';
+});
+
 
 // Validación básica
 function validarBasico(){
@@ -76,7 +83,7 @@ function validarBasico(){
 
 function validarUsuario(){
 	swal({
-		title: "Usuario Incorrecto!",
+		title: "Datos Incorrectos!",
 		text: "Usuario y/o Contraseña Incorrectos",
 		icon: "error",
 		button: "Aceptar",

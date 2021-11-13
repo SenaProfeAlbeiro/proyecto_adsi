@@ -50,6 +50,22 @@ section .mapa iframe{
 	width: 100%;
 	height: 40vh!important;		
 }
+.modal form input{
+	border: 2px solid #fff;
+}
+.modal form input:focus:valid{
+	border-color: green;
+}
+.modal form input:focus:invalid{
+	border-color: red;
+}
+.modal form input:valid{
+	border-color: green;
+}
+.modal form input:invalid{
+	border-color: #EF8814;
+}
+
 .contacto .esp-temp{
 	background: rgb(239, 136, 20);
 	color: #fff;

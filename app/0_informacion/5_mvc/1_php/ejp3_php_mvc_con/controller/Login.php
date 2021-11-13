@@ -19,6 +19,8 @@
 				if (empty($user) || empty($pass)) {
 					if (empty($user)) {
 						$mensaje = "El usuario no puede estar vacío";
+					} elseif (!(filter_var($user, FILTER_VALIDATE_EMAIL))) {
+						$mensaje = "No es un usuario válido, escriba el correo registrado";
 					} elseif (empty($pass)) {
 						$mensaje = "La constraseña no puede estar vacía";
 					}
@@ -47,7 +49,7 @@
 						}					
 					} else {
 						$mensaje = "Usuario y/o contraseña Incorrectos";
-						$class = "alert alert-danger mt-2";
+						$class = "alert alert-danger mt-2";						
 						require_once 'view/roles/0_business/header.php';
 						require_once 'view/business/landing.main.view.php';
 						require_once 'view/roles/0_business/footer.php';
