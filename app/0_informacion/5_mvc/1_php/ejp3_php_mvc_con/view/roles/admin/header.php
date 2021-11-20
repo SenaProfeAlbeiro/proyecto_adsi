@@ -160,7 +160,7 @@
 												<a href="?c=Error404" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Reportes Gráficos</a>
 											</li>
 											<li class="list-group-item p-0 bg-light">
-												<a href="?c=Error404" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Reportes Impresos</a>
+												<a href="?c=Reports" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Reportes Impresos</a>
 											</li>
 										</ul>
 									</div>
