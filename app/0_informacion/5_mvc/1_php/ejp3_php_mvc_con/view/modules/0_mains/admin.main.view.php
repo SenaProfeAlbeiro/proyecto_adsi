@@ -71,7 +71,7 @@
 				<div class="card-body">							
 					<ul class="list-group list-group-flush">
 					  <li class="list-group-item"><a href="?c=Error404" class="card-link">Reportes Gráficos</a></li>
-					  <li class="list-group-item"><a href="?c=Error404" class="card-link">Reportes Impresos</a></li>							  
+					  <li class="list-group-item"><a href="?c=Reports" class="card-link">Reportes Impresos</a></li>							  
 					</ul>
 				</div>
 			</div>

@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="assets/css/all.css">
 	<link rel="stylesheet" href="assets/css/styles_dash.css">
 	<link rel="stylesheet" href="assets/css/styles_pg.css">
+	<!-- <link rel="stylesheet" href="assets/css/fpdf.css"> -->
 </head>
 <body>
 	<div class="container">
@@ -160,7 +161,7 @@
 												<a href="?c=Error404" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Reportes Gráficos</a>
 											</li>
 											<li class="list-group-item p-0 bg-light">
-												<a href="?c=Error404" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Reportes Impresos</a>
+												<a href="?c=Reports" class="card-link d-block p-2 px-lg-3 py-lg-1 ocul-aside">Reportes Impresos</a>
 											</li>
 										</ul>
 									</div>
