@@ -1,0 +1,164 @@
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+/* Estilos especiales */
+.admin{
+	background: #2D394B;
+}
+.cliente{
+	background: #3EB595;	
+}
+
+.vendedor{
+	background: #F25A38;
+}
+
+/* Navegador */
+nav{	
+	border-bottom: 1px solid #dee2e6!important;
+	z-index: 100!important;
+}
+nav .logo{
+	background: #F8F9F9;
+}
+nav .logo img{
+	width: 40%;
+	height: auto;	
+}
+
+/* Botón de Menú */
+#btn-menu-lateral i{
+	display: block;
+	margin-top: 6px;
+	padding: 7px 12px!important;
+	border: 1px solid #dee2e6!important;	
+	border-radius: 3px;
+	font-size: 1.5em;	
+	color: #fff;
+	cursor: pointer;	
+}
+
+/* Principal */
+section{
+	height: 70vh;	
+}
+.principal{
+	/*height: auto;*/
+}
+
+/* Panel Lateral */
+.activar-panel{	
+	flex: none!important;
+    max-width: 0!important;    
+    transition: all 200ms linear!important;
+    border: 0!important;    
+}
+.ampliar-principal{	
+    flex: 0 0 100%!important;
+    max-width: 100%!important;
+    transition: all 200ms linear!important;     
+    z-index: initial!important;
+}
+aside{	
+    transition: all 200ms linear!important;    
+	border-right: 1px solid #dee2e6!important;	
+}
+aside .logosena{
+	background: #fff;
+}
+.img-ocul{	
+	visibility: hidden!important;
+	transition: all 110ms linear!important;	
+}
+aside .logosena img{
+	visibility: visible;
+	transition: all 110ms linear!important;	
+}
+aside .modulos{	
+	overflow-y: scroll;
+	overflow-x: hidden;
+	height: 54.8vh;	
+}
+aside .modulos-amp{	
+}
+aside .card-header{
+	
+}
+aside h2 button{
+	color: #fff!important;
+	text-decoration: none!important;
+	white-space: nowrap;
+}
+aside a{
+	white-space: nowrap;
+}
+
+/* Área trabajo */
+main{	
+	transition: all 200ms linear!important;
+	height: auto;
+}
+main iframe{
+	width: 100%;
+	/*height: 100%;	*/
+	border: 0;	
+}
+/* Contáctenos */
+.col-arr{
+	height: 70%;
+}
+.col-abj{
+	height: 30%;
+}
+
+/* Pie de página */
+footer{
+	background: #2D394B;
+}
+footer h6{
+	font-size: 0.6em;
+	margin: 0;
+}
+
+/* Tablet */
+@media only screen and (max-width: 991px) {
+	
+	#btn-menu-lateral i{	
+		margin-top: 0px;
+		padding: 5px;			
+	}
+
+	/* Principal */
+	section{
+		position: relative;
+		height: auto;		
+	}
+	.principal{
+		height: 62vh;	
+	}
+
+	/* Panel lateral */
+	aside{
+		/*height: auto;		*/
+		z-index: 1;		
+	}	
+	aside .modulos{
+		height: auto;
+	}
+
+	/* Área Principal */
+	main{
+		position: absolute!important;
+		height: 100%;		
+		z-index: -10;
+	}
+	main iframe{
+		width: 100%;		
+	}
+
+	/* Pie de página */
+	footer{		
+	}
+}
