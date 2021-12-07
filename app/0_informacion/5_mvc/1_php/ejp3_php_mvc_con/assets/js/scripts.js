@@ -1,6 +1,6 @@
-// Cambiar cuando se hace click
+// Ocultar barra de navegación cuando se hace click
 const botones = document.querySelectorAll(".ocul-navbar");
-const cuandoSeHaceClick = function (evento) {	
+const cuandoSeHaceClick = function (evento) {
 	if (screen.width < 992) {
 		document.getElementById("navbarSupportedContent").classList.toggle('show');		
 	}
@@ -10,25 +10,14 @@ botones.forEach(boton => {
 	//Agregar listener
 	boton.addEventListener("click", cuandoSeHaceClick);	
 });
-// Iniciar Sesión
+// Validar: Iniciar Sesión
 formSesion = document.getElementById('frm_iniciar_sesion');
 formSesion.addEventListener('submit', function (event) {
 	usuario = document.getElementById('correo_is').value;	
 	contrasena = document.getElementById('pass_is').value;
 	validarBasico();
 });
-// Registrarse
-formRegis = document.getElementById('frm_registro');
-formRegis.addEventListener('submit', function (event) {
-	nombres = document.getElementById('nombres_rg').value;	
-	apellidos = document.getElementById('apellidos_rg').value;
-	correo = document.getElementById('correo_rg').value;
-	pass = document.getElementById('pass_rg').value;
-	conf = document.getElementById('conf_rg').value;	
-	validarRegistrarse();
-});
-
-// Validación: Inicio de Sesión
+// Validación anterior al envío de datos
 function validarBasico(){
 	// Expresión que muestra la estructura de un correo electrónico
 	let expresion = /\w+@+\w+\.+\w/;
@@ -82,7 +71,7 @@ function validarBasico(){
 		event.preventDefault();
 	}
 }
-// Validación: Usuario y Contraseña Incorrectos
+// Validación posterior al envío de datos
 function validarUsuario(){
 	swal({
 		title: "Datos Incorrectos!",
@@ -90,7 +79,6 @@ function validarUsuario(){
 		icon: "error",
 		button: "Aceptar",
 	})
-	event.preventDefault();
 }
 // Validación: Contraseña enviada al Correo
 function enviarPassCorreo(){
@@ -125,6 +113,16 @@ function passConfirm(){
 		window.location = '?';
 	});	
 }
+// Validar: Registro
+formRegis = document.getElementById('frm_registro');
+formRegis.addEventListener('submit', function (event) {
+	nombres = document.getElementById('nombres_rg').value;	
+	apellidos = document.getElementById('apellidos_rg').value;
+	correo = document.getElementById('correo_rg').value;
+	pass = document.getElementById('pass_rg').value;
+	conf = document.getElementById('conf_rg').value;	
+	validarRegistrarse();
+});
 // Validación: Registrarse
 function validarRegistrarse(){
 	// Expresión que muestra la estructura de un correo electrónico

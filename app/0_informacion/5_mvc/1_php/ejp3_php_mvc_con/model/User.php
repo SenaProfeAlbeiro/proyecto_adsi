@@ -10,7 +10,6 @@
     	private $correoUsuario;
     	private $passUsuario = 0;
     	private $estadoUsuario = false;
-
     	private $pdo;
 
     	// Sobrecarga de Constructores
@@ -21,7 +20,7 @@
 				call_user_func_array(array($this, $f), $a);
 			}
 		}
-		// Constructor sin parámetros: Crea la conexión a la BBDD
+		# Constructor sin parámetros: Crea la conexión a la BBDD
 		public function __construct0(){
 			try {
 				$this->pdo = Database::conexion();
@@ -34,14 +33,14 @@
 	    	$this->correoUsuario = $correo;			
 	    	$this->passUsuario = sha1($pass);	    	
 		}
-		// Constructor con 4 parámetros: Crea el Usuario desde la página empresarial
+		# Constructor con 4 parámetros: Crea el Usuario desde la página empresarial
 		public function __construct4($correo, $nombres, $apellidos, $pass){			
 			$this->correoUsuario = $correo;			
 			$this->nombresUsuario = $nombres;
 			$this->apellidosUsuario = $apellidos;
 			$this->passUsuario = $pass;
 		}
-		// Constructor con 8 parámetros: Crea el Usuario desde los perfiles autorizados
+		# Constructor con 8 parámetros: Crea el Usuario desde los perfiles autorizados
 		public function __construct8($id, $doc, $correo, $nombres, $apellidos, $pass, $perfil, $estado){
 			$this->idUsuario = $id;
 			$this->docIdUsuario = $doc;
@@ -52,7 +51,7 @@
 			$this->passUsuario = $pass;
 			$this->estadoUsuario = $estado;
 		}
-		// // Métodos Getters y Setters
+		// Métodos Getters y Setters
 		# idRol
 		public function getIdRol(){
 			return $this->idRol;
@@ -123,16 +122,17 @@
 				# Prepara la BBDD
 				$dbh = $this->pdo->prepare($sql);
 
-				// # Vincula Datos
+				# Vincula Datos
 				$dbh->bindValue('usuario_correo', $usuario->getCorreoUsuario());
 				$dbh->bindValue('usuario_pass', $usuario->getPassUsuario());
 
-				// # Ejecuta la Consulta
+				# Ejecuta la Consulta
 				$dbh->execute();
 
-				// # Encontrar en la BBDD
+				# Encuentra en la BBDD
 				$userDb = $dbh->fetch();
 
+				# Retorna el registro como Objeto, sino Falso
 				if ($userDb) {					
 					# Crear Objeto
 					$user = new User(
@@ -149,12 +149,50 @@
 				} else {
 					return false;
 				}
-
 			} catch (Exception $e) {
 				die($e->getMessage());
 			}
 		}
+		# Verificar Correo
+		public function verificarCorreo($usuario){
+			try {
+				# Consulta
+				$sql = 'SELECT * FROM usuarios WHERE 
+						usuario_correo = :usuario_correo';
 
+				# Prepara la BBDD
+				$dbh = $this->pdo->prepare($sql);
+
+				# Vincula Datos
+				$dbh->bindValue('usuario_correo', $usuario->getCorreoUsuario());
+
+				# Ejecuta la Consulta
+				$dbh->execute();
+
+				# Encuentra en la BBDD
+				$userDb = $dbh->fetch();
+
+				# Retorna el registro como Objeto, sino Falso
+				if ($userDb) {
+					# Crear Objeto
+					$user = new User(
+						$userDb['id_usuario'],
+						$userDb['usuario_doc_identidad'],
+						$userDb['usuario_correo'],
+						$userDb['usuario_nombres'],
+						$userDb['usuario_apellidos'],
+						$userDb['usuario_pass'],
+						$userDb['id_rol'],
+						$userDb['usuario_estado']
+					);
+					return $user;
+				} else {
+					return false;
+				}
+			} catch (Exception $e) {
+				die($e->getMessage());	
+			}
+		}
 		# Registar (Crear) Usuario
 		public function registrar($usuario){
 			try {
@@ -313,7 +351,5 @@
 		}
 		# Cerrar Sesión
 		public function cerrarSesión(){}
-
 	}
-
 ?>

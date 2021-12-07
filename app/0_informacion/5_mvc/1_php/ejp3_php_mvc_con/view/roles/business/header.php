@@ -13,7 +13,6 @@
 <body>
 	<!-- Contenedor -->
 	<div class="container">
-		
 		<!-- Navegador -->		
 		<nav class="navegacion row sticky-top d-flex p-0">
 			<div class="logo col-lg-3 d-flex justify-content-center p-0">
@@ -60,7 +59,6 @@
 				</div>
 			</div>
 		</nav>
-
 		<!-- Formulario Modal Ingreso -->		
 		<div class="modal fade p-0" id="mdl_iniciar_sesion" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -75,7 +73,7 @@
 						<form id="frm_iniciar_sesion" action="?c=Login" method="POST">
 							<div class="form-group">
 								<label for="correo_is">Usuario</label>
-								<input class="form-control" type="text" name="correo_is" id="correo_is" aria-describedby="emailHelp" placeholder="correo@correo.com" value="<?php echo $user ?>" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}" title="Ingrese un correo válido" required>
+								<input class="form-control" type="email" name="correo_is" id="correo_is" aria-describedby="emailHelp" placeholder="correo@correo.com" value="<?php echo $user ?>" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}" title="Ingrese un correo válido" required>
 							</div>
 							<div class="form-group">
 								<label for="pass_is">Contraseña</label>
@@ -93,7 +91,6 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- Formulario Modal Recurperar Contraseña -->		
 		<div class="modal fade p-0" id="mdl_recupera_pass" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -108,8 +105,9 @@
 						<form id="frm_recupera_pass" action="?c=Login&a=recuperarPass" method="POST">
 							<div class="form-group">
 								<label for="correo_rc">Digite su Correo Electrónico</label>
-								<input class="form-control" type="email" name="correo_rc" id="correo_rc" aria-describedby="emailHelp" placeholder="correo@correo.com" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}" title="No es un correo válido" required>
-							</div>							
+								<input class="form-control" type="text" name="correo_rc" id="correo_rc" value="<?php echo $paraCorreo ?>">
+							</div>
+							<div class="<?php echo $class ?>"><?php echo $mensaje ?></div>
 							<div class="form-inline d-flex justify-content-center">
 								<a href="?" id="cerrar" class="btn btn-secondary mr-2">Cerrar</a>
 								<button type="submit" class="btn btn-success">Enviar</button>
@@ -119,7 +117,6 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- Formulario Modal Código de Verificación -->		
 		<div class="modal fade p-0" id="mdl_verif_cod" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -145,7 +142,6 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- Formulario Modal Contraseña y Confirmación -->		
 		<div class="modal fade p-0" id="mdl_pass_conf" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -177,7 +173,6 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- Formulario Modal Registro -->
 		<div class="modal fade p-0" id="mdl_registro" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			<div class="modal-dialog">
