@@ -80,17 +80,62 @@ function validarUsuario(){
 		button: "Aceptar",
 	})
 }
-// Validación: Contraseña enviada al Correo
-function enviarPassCorreo(){
+// Validar: Recuperar Contraseña
+formSesion = document.getElementById('frm_recupera_pass');
+formSesion.addEventListener('submit', function (event) {
+	usuario = document.getElementById('correo_rc').value;
+	validarCorreo();
+});
+// Validación de Correo para la recuperación de contraseña
+function validarCorreo(){
+	// Expresión que muestra la estructura de un correo electrónico
+	let expresion = /\w+@+\w+\.+\w/;
+	// Valida que el campo Usuario no esté vacío
+	if (usuario === "") {
+		swal({
+			title: "Verifique el Correo!",
+			text: "El Correo NO puede estar vacío",
+			icon: "error",
+			button: "Aceptar",
+		})
+		.then((value) => {			
+			document.getElementById('correo_rc').focus();
+		});
+		event.preventDefault();
+	// Valida que el campo Usuario sea un Correo Electrónico
+	} else if (!expresion.test(usuario)) {
+		swal({
+			title: "Verifique el Correo!",
+			text: "El Correo NO es válido, NO es un Correo Electrónico",
+			icon: "error",
+			button: "Aceptar",
+		})
+		.then((value) => {			
+			document.getElementById('correo_rc').focus();
+		});
+		event.preventDefault();
+	}
+}
+// Validación de Correo Enviado
+function correoEnviado(){
 	swal({
-		title: "Recuperación de Contraseña enviada al Correo!",
-		text: "Ingrese al correo registrado y siga los pasos para recuperar su contraseña",
+		title: "Recuperación de Contraseña Enviada al Correo!",
+		text: "Ingrese al correo registrado y Recupere su contraseña",
 		icon: "success",
 		button: "Aceptar",
 	})
 	.then((value) => {
 		window.location = '?';
-	});	
+	});
+}
+// Validación de Correo Enviado
+function correoNoEnviado(){
+	swal({
+		title: "El Correo No Existe!",
+		text: "El Correo NO se en encuentra Registrado",
+		icon: "error",
+		button: "Aceptar",
+	})
 }
 // Validación: Código de verificación
 function verificarCodigo(){

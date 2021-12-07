@@ -108,7 +108,7 @@
 							<body style="text-align:center;">
 							  <h3>Restauración de Contraseña SenaProfeAlbeiro</h3>
 							  El código de Restauración de Contraseña es: '. $codigo .
-							  '. <a href="http://localhost/2_desarrollo_web/proyecto_php_mvc/?c=Login&a=verificarCodigo">Clic aquí para Restaurar la Contraseña</a>
+							  '. <a href="http://localhost/proyecto_adsi/app/0_informacion/5_mvc/1_php/ejp3_php_mvc_con/?c=Login&a=verificarCodigo">Clic aquí para Restaurar la Contraseña</a>
 							</body>
 							</html>
 							';
@@ -131,7 +131,9 @@
 				echo "<script>$('#mdl_recupera_pass').modal('show')</script>";
 				# Validar: Si se envía el correo aparece un mensaje de confirmación
 				if (mail($paraCorreo, $titulo, $mensajeCorreo, $cabeceras)) {				
-					echo "<script>enviarPassCorreo()</script>";					
+					echo "<script>correoEnviado()</script>";					
+				} else {
+					echo "<script>correoNoEnviado()</script>";
 				}
 				
 			}

@@ -105,7 +105,7 @@
 						<form id="frm_recupera_pass" action="?c=Login&a=recuperarPass" method="POST">
 							<div class="form-group">
 								<label for="correo_rc">Digite su Correo Electrónico</label>
-								<input class="form-control" type="text" name="correo_rc" id="correo_rc" value="<?php echo $paraCorreo ?>">
+								<input class="form-control" type="email" name="correo_rc" id="correo_rc" value="<?php echo $paraCorreo ?>" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,5}" title="No es un correo válido" required>
 							</div>
 							<div class="<?php echo $class ?>"><?php echo $mensaje ?></div>
 							<div class="form-inline d-flex justify-content-center">
@@ -137,7 +137,7 @@
 								<a href="?" id="cerrar" class="btn btn-secondary mr-2">Cerrar</a>
 								<button type="submit" class="btn btn-success">Enviar</button>
 							</div>
-						</form>						
+						</form>
 					</div>					
 				</div>
 			</div>
